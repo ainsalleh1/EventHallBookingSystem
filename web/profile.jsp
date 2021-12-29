@@ -39,6 +39,7 @@
                 </li>
             </ul>
         </div>
+        <br><br>
         <section class="section about-section gray-bg" id="about">
             <div class="container">
                 <div class="row align-items-center flex-row-reverse">
@@ -69,6 +70,10 @@
                                         <p><%= rs.getString("age")%></p>
                                     </div>
                                     <div class="media">
+                                        <label>Gender</label>
+                                        <p><%= rs.getString("userGender")%></p>
+                                    </div>
+                                    <div class="media">
                                         <label>Address</label>
                                         <p><%= rs.getString("address")%>, <%= rs.getString("city")%>, <%= rs.getString("zip")%>, <%= rs.getString("state")%></p>
                                     </div>
@@ -86,20 +91,30 @@
                                         <label>User Level</label>
                                         <p><%= rs.getString("userLevel")%></p>
                                     </div>
-                                    <div class="media">
-                                        <label>User Level</label>
-                                        <p><%= rs.getString("userGender")%></p>
-                                    </div>
+                                    
           
                                 </div>
                             </div>
+                            <div class="container" style="text-align: center">
+                                <a class="btn btn-primary" href="editProfile.jsp?id=<%= rs.getString("id")%>" role="button">Edit</a>
+                            </div>
                         </div>
                     </div>
+                    <% if(rs.getString("userGender").equals("Male")){ %>
                     <div class="col-lg-6">
                         <div class="about-avatar">
                             <img src="https://bootdey.com/img/Content/avatar/avatar7.png" title="" alt="">
                         </div>
                     </div>
+                    <% } else{ %>
+                    <div class="col-lg-6">
+                        <div class="about-avatar">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar3.png" title="" alt="">
+                        </div>
+                    </div>
+                    <% } %>
+                    
+                    
                 </div>
                             
                 <%
@@ -111,6 +126,8 @@
                         }
                     
                     %>
+                    
+                    
                 
             </div>
         </section>
