@@ -46,6 +46,7 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("password");
         String phoneNumber = request.getParameter("phoneNumber");
         String userLevel = request.getParameter("userLevel");
+        String userGender = request.getParameter("userGender");
 //        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 //        Date birthday = null;
 //        try {
@@ -70,11 +71,12 @@ public class RegisterServlet extends HttpServlet {
 //            out.println("<h4>" +" birthday: " + birthday + "</h4>");
             Statement stmt = conn.createStatement();
 //            out.println("<h4>" +" birthday: " + birthday + "</h4>");
-            String sqlinsert = "insert into user(email,password,phoneNumber,userLevel,birthday,age,address,city,zip,state,description)values('"
+            String sqlinsert = "insert into user(email,password,phoneNumber,userLevel,userGender,birthday,age,address,city,zip,state,description)values('"
                 +email+"','"
                 +password+"','"
                 +phoneNumber+"','"
                 +userLevel+"','"
+                +userGender+"','"
                 +birthday+"','"
                 +age+"','"
                 +address+"','"

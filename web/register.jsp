@@ -77,6 +77,24 @@
                     
                 </fieldset>
                 <div class="mb-3">
+                    <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
+                    <div class="col-sm-10">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="userGender" id="gridRadios1" value="Male" checked>
+                        <label class="form-check-label" for="gridRadios1">
+                          Male
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="userGender" id="gridRadios2" value="Female">
+                        <label class="form-check-label" for="gridRadios2">
+                          Female
+                        </label>
+                      </div>
+                      
+                    </div>
+                  </div>
+                <div class="mb-3">
                     <label for="inputBirthday" class="form-label">Birthday:</label>
                     <input type="date" class="form-control" id="inputBirthday" placeholder="Insert birthday" name="birthday">
                   </div>

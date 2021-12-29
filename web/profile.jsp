@@ -86,6 +86,10 @@
                                         <label>User Level</label>
                                         <p><%= rs.getString("userLevel")%></p>
                                     </div>
+                                    <div class="media">
+                                        <label>User Level</label>
+                                        <p><%= rs.getString("userGender")%></p>
+                                    </div>
           
                                 </div>
                             </div>
