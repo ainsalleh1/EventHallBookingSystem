@@ -18,16 +18,16 @@ and open the template in the editor.
                   <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Halls</a>
+                  <a class="nav-link" href="MainHall.jsp">Halls</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Booking</a>
+                  <a class="nav-link" href="MainBooking.jsp">Booking</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Promo</a>
+                  <a class="nav-link" href="MainPromo">Promo</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">About Us</a>
+                  <a class="nav-link" href="AboutUs.html">About Us</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="profile.jsp">Profile</a>
@@ -56,7 +56,7 @@ and open the template in the editor.
         </div>
         
         <div class="container">
-            <h3>
+            <h3 style="text-align: center">
                 <small class="text-muted">Make Your Dream Comes True</small>
             </h3>
         </div>

@@ -52,6 +52,7 @@ public class LoginServlet extends HttpServlet {
 //                    JOptionPane.showMessageDialog(null, "Login Successfull", "Login Success", JOptionPane.INFORMATION_MESSAGE);
                     HttpSession session = request.getSession();
                     session.setAttribute("sessionEmail", user_email);
+//                    session.setAttribute("Login", "Yes");
                     session.setAttribute("sessionUserLevel", rs.getString("userLevel"));
                     
 //                    if(rs.getString("userLevel").equals("Customer")){
