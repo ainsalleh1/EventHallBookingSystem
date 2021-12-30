@@ -33,6 +33,77 @@
                     </li>
                 </ul>
             </div>
+            
+            <div class="container">
+                <h1 class="display-1">Book With Us!</h1>
+                <br><br>
+                <div class="container">
+                    <div class="row">
+                      <div class="col">
+                        <div class="card h-100">
+                            <img src="media/hall1.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="col">
+                            <div class="card h-100">
+                                <img src="media/hall1.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="col">
+                            <div class="card h-100">
+                                <img src="media/hall1.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                      <div class="col">
+                        <div class="col">
+                            <div class="card h-100">
+                                <img src="media/hall1.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="col-5">
+                        <div class="col">
+                            <div class="card h-100">
+                                <img src="media/hall1.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="col">
+                            <div class="card h-100">
+                                <img src="media/hall1.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <br>
+                </div>
+            </div>
         </div>
     </body>
 </html>
