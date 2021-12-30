@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.servlet.ServletException;
@@ -43,17 +44,19 @@ public class LoginServlet extends HttpServlet {
     
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection(connectionUrl+database,userid,"");
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("select * from user");
+            String sql = "select * from user WHERE email=? and password=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, user_email);
+            ps.setString(2, user_password);
+            ResultSet result = ps.executeQuery();
             
-            while(rs.next()){
-                if(rs.getString("email").equals(user_email) && rs.getString("password").equals(user_password) ){
+            if(result.next()){
 //                    out.println("<h1> before jpane " + request.getContextPath() + "</h1>");
 //                    JOptionPane.showMessageDialog(null, "Login Successfull", "Login Success", JOptionPane.INFORMATION_MESSAGE);
-                    HttpSession session = request.getSession();
-                    session.setAttribute("sessionEmail", user_email);
+                HttpSession session = request.getSession();
+                session.setAttribute("sessionEmail", user_email);
 //                    session.setAttribute("Login", "Yes");
-                    session.setAttribute("sessionUserLevel", rs.getString("userLevel"));
+                session.setAttribute("sessionUserLevel", result.getString("userLevel"));
                     
 //                    if(rs.getString("userLevel").equals("Customer")){
 //                        request.getRequestDispatcher("MainCustomerHomepage.jsp").forward(request, response);                       
@@ -62,16 +65,15 @@ public class LoginServlet extends HttpServlet {
 //                        request.getRequestDispatcher("MainStaffHomepage.jsp").forward(request, response);                        
 //                    }
                     
-                    request.getRequestDispatcher("MainHomepage.jsp").forward(request, response);  
+                request.getRequestDispatcher("MainHomepage.jsp").forward(request, response);  
                     
                     
-                }
-                else{
-                    out.println("<p style=\"color:red;\">Invalid username of password. Please try again... </p>");
-                    request.getRequestDispatcher("login.jsp").include(request, response);
-                }
             }
-            
+            else{
+                out.println("<p style=\"color:red;\">Invalid username or password. Please try again... </p>");
+                request.getRequestDispatcher("login.jsp").include(request, response);
+            }
+
             conn.close();
         
         }
