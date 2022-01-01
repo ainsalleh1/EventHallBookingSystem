@@ -59,7 +59,7 @@
                           <a class="nav-link active" aria-current="page" href="#">Hall List</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">Add Hall</a>
+                          <a class="nav-link" href="InsertHall.jsp">Add Hall</a>
                         </li>
                         
                     </ul>
@@ -70,7 +70,28 @@
                 </div>
                 </div>
             </nav>
-        
+            
+            <br><br>  
+            
+            <div class="card w-100">    
+                <div class="card-body">               
+                    <div class="row">
+                       <div class="col">
+                            <h5 class="card-title">Hall Name</h5>
+                            <img src="media/hall1.jpg" class="card-img-bottom" alt="hall">
+                        </div>
+                        <div class="col-6">
+                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        </div>
+                        <div class="col">
+                            <a href="#" class="btn btn-primary">Detail</a>
+                        </div>
+
+                    </div>          
+                </div>                
+            </div>
+            
+            <br><br>
         </div>
     </body>
 </html>
