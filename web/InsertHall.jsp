@@ -27,7 +27,7 @@
                       <a class="nav-link" href="MainBooking.jsp">Booking</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="MainPromo">Promo</a>
+                      <a class="nav-link" href="MainPromo.jsp">Promo</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="AboutUs.html">About Us</a>
