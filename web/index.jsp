@@ -28,6 +28,13 @@ and open the template in the editor.
         
     </head>
     <body>
+        <% 
+            if(session.getAttribute("sessionEmail") != null){
+                response.sendRedirect("MainHomepage.jsp");
+            }
+            else{
+        
+        %>
         <div class="container">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
@@ -91,6 +98,9 @@ and open the template in the editor.
             }
     
         </script>
+        <%
+            }
+        %>
     </body>
     
 </html>

@@ -23,16 +23,16 @@
                   <a class="nav-link" href="MainHomepage.jsp">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Halls</a>
+                  <a class="nav-link" href="MainHalls.jsp">Halls</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Booking</a>
+                  <a class="nav-link" href="MainBooking.jsp">Booking</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Promo</a>
+                  <a class="nav-link" href="MainPromo.jsp">Promo</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">About Us</a>
+                  <a class="nav-link" href="AboutUs.html">About Us</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link active" aria-current="page" href="profile.jsp">Profile</a>

@@ -57,7 +57,7 @@
                           <a class="nav-link active" aria-current="page" href="#">Hall List</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="InsertHall.jsp">Add Hall</a>
+                          <a class="nav-link" href="InsertHall.html">Add Hall</a>
                         </li>
                         
                     </ul>
