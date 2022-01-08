@@ -21,6 +21,7 @@ and open the template in the editor.
                 background-position: center;
                 background-repeat: no-repeat;
                 background-size: cover;
+                background-attachment: fixed;
             }
         </style>
     </head>
@@ -37,7 +38,7 @@ and open the template in the editor.
                   <a class="nav-link" href="MainBooking.jsp">Booking</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="MainPromo">Promo</a>
+                  <a class="nav-link" href="MainPromo.jsp">Promo</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="AboutUs.html">About Us</a>

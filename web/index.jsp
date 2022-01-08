@@ -42,6 +42,13 @@ and open the template in the editor.
         
     </head>
     <body>
+        <% 
+            if(session.getAttribute("sessionEmail") != null){
+                response.sendRedirect("MainHomepage.jsp");
+            }
+            else{
+        
+        %>
         <div class="container">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
@@ -54,7 +61,7 @@ and open the template in the editor.
                   <a class="nav-link" href="GeneralPromo.jsp">Promo</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="AboutUs.html">About Us</a>
+                  <a class="nav-link" href="GeneralAboutUs.html">About Us</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="login.jsp">Login</a>
@@ -107,6 +114,9 @@ and open the template in the editor.
             }
     
         </script>
+        <%
+            }
+        %>
     </body>
     
 </html>
