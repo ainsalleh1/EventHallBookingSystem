@@ -10,8 +10,16 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" crossorigin="anonymous">
+        <link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet'>
         <title>Halls</title>
     </head>
+    <style>
+            h1{
+               text-align: center;
+               font-family: 'Playfair Display';
+               font-size: 42px;
+            }
+    </style>
     <body>
         <div class="container">
             <div class="container">
@@ -35,7 +43,8 @@
             </div>
             
             <div class="container">
-                <h1 class="display-1">Book With Us!</h1>
+                <br>
+                <h1><b>Book With Us!</b></h1>
                 <br><br>
                 <div class="container">
                     <div class="row">

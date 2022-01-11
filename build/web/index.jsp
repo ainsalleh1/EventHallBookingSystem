@@ -11,9 +11,11 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" crossorigin="anonymous">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet'>
         <style>
-            .mySlides {display:none;}
-            body {
+                .mySlides {display:none;}
+                
+                body {
                 background-image: url("media/background.png");
                 height: 100%;
 
@@ -21,8 +23,20 @@ and open the template in the editor.
                 background-position: center;
                 background-repeat: no-repeat;
                 background-size: cover;
-                background-attachment: fixed;
-            }
+                }
+                
+                h1{
+                    text-align: center;
+                    font-family: 'Playfair Display';
+                    font-size: 42px;
+                }
+            
+                a:link{
+                    color: black;
+                    text-decoration: none;
+                    text-align: center;
+                }
+            
         </style>
         
         
@@ -57,14 +71,16 @@ and open the template in the editor.
         </div>
         
         <div class="container">
+            <br>
             <h1>
-                Halls Booking System
-            </h1>
+                <b>Halls Booking System</b>
+            </h1><br><br>
+            
             <div class="w3-content w3-display-container">
-                <img class="mySlides" src="media/hall1.jpg" style="width:100%">
-                <img class="mySlides" src="media/hall2.jpg" style="width:100%">
-                <img class="mySlides" src="media/hall3.jpg" style="width:100%">
-                <img class="mySlides" src="media/hall4.jpg" style="width:100%">
+                <img class="mySlides" src="media/1.jpg" style="max-width:100%">
+                <img class="mySlides" src="media/2.jpg" style="max-width:100%">
+                <img class="mySlides" src="media/3.jpg" style="max-width:100%">
+                <img class="mySlides" src="media/4.jpg" style="max-width:100%">
 
                 <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
                 <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
