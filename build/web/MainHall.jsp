@@ -4,6 +4,10 @@
     Author     : End-User
 --%>
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -72,15 +76,28 @@
             
             <br><br>  
             
+            <%
+                try{
+                    Class.forName("com.mysql.jdbc.Driver");
+                    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
+                    String sql = "select * from hall";
+//                    Statement stmt = conn.createStatement();
+                    PreparedStatement ps = conn.prepareStatement(sql);
+                    ResultSet rs = ps.executeQuery();
+                    
+                    while(rs.next()){             
+                
+            %>
+            
             <div class="card w-100">    
                 <div class="card-body">               
                     <div class="row">
                        <div class="col">
-                            <h5 class="card-title">Hall Name</h5>
+                            <h5 class="card-title" style="text-align: center"><%= rs.getString("name")%></h5>
                             <img src="media/hall1.jpg" class="card-img-bottom" alt="hall">
                         </div>
                         <div class="col-6">
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            <p class="card-text"><%= rs.getString("description") %></p>
                         </div>
                         <div class="col">
                             <a href="#" class="btn btn-primary">Detail</a>
@@ -91,6 +108,11 @@
             </div>
             
             <br><br>
+            <%
+                    }
+                }
+                catch(Exception ex){}
+                %>
         </div>
     </body>
 </html>

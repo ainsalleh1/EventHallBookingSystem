@@ -67,12 +67,11 @@ and open the template in the editor.
             <hr>
             <br>
             
-            <form method="POST" class="container text-left" >
-            <form class="row g-3">
-
+            <form method="POST" class="container text-left" action="./InsertHall" enctype="multipart/form-data">
+            
               <div class="col-md-6">
                 <label for="inputHallName" class="form-label">Hall Name : </label>
-                <input class="form-control" id="inputHallName" name="HallName" rows="10" cols="10" placeholder="Enter hall name" required></textarea>
+                <input type="text" class="form-control" id="inputHallName" name="HallName" placeholder="Enter hall name" required>
               </div>
               <br/><br/>
               <div class="row g-3">
@@ -110,18 +109,18 @@ and open the template in the editor.
               <br/><br/>
               <div class="col-md-6">
                 <label for="inputCharge" class="form-label">Charge (RM) : </label>
-                <input type="number" class="form-control" id="inputCharge" name="Charge" rows="10" cols="10" step="0.2" placeholder="Enter Charge" required></textarea>
+                <input type="number" class="form-control" id="inputCharge" name="HallCharge" step="0.02" placeholder="1000.00" required>
               </div>
               <br/><br/>
               
               <div class="col-md-6">
                 <label for="inputCapacity" class="form-label">Capacity : </label>
-                <input class="form-control" id="inputCapacity" name="Capacity" rows="10" cols="10" placeholder="Enter Capacity" required></textarea>
+                <input type="text" class="form-control" id="inputCapacity" name="Capacity" placeholder="Enter Capacity" required>
               </div>
               <br/><br/>
               <div class="col-md-6">
                 <label for="inputDescription" class="form-label">Description : </label>
-                <input class="form-control" id="inputDescription" name="Description" rows="10" cols="10" placeholder="Enter description" required></textarea>
+                <input type="text" class="form-control" id="inputDescription" name="Description" placeholder="Enter description" required>
               </div>
               <br/><br/>
               <div class="mb-3">
