@@ -1,6 +1,6 @@
 <%-- 
-    Document   : MainHall
-    Created on : Dec 29, 2021, 9:48:12 PM
+    Document   : HallDetails
+    Created on : Jan 13, 2022, 10:20:01 PM
     Author     : End-User
 --%>
 
@@ -14,8 +14,34 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" crossorigin="anonymous">     
-        <title>Halls</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" crossorigin="anonymous">   
+        <title>HallDetails</title>
+        <style>
+                              
+                body {
+                background-image: url("media/background.png");
+                height: 100%;
+
+                /* Center and scale the image nicely */
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-attachment: fixed;
+                }
+                
+                #hall{
+                    border: 4px solid black;
+                }
+                .center {
+                    margin-left: auto;
+                    margin-right: auto;
+                    
+                }
+                table {
+                    border-collapse: separate;
+                    border-spacing: 0 1em;
+                }
+        </style>
     </head>
     <body>
         <div class="container">
@@ -45,10 +71,9 @@
                     </li>
                 </ul>
             </div>
-           
-        
+                  
             <br><br>
-        
+            
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="MainHall.jsp">Halls Management</a>
@@ -74,37 +99,68 @@
                 </div>
             </nav>
             
-            <br><br>  
+            <br><br>
             
             <%
+                
+                String hallID = request.getParameter("hallID");
+                
                 try{
                     Class.forName("com.mysql.jdbc.Driver");
+                    
                     Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
-                    String sql = "select * from hall";
-//                    Statement stmt = conn.createStatement();
+                    String sql = "select * from hall where id=?";
+                    
                     PreparedStatement ps = conn.prepareStatement(sql);
+                    
+                    ps.setString(1, hallID);
                     ResultSet rs = ps.executeQuery();
                     
                     while(rs.next()){             
                 
             %>
             
-            <div class="card w-100">    
-                <div class="card-body">               
-                    <div class="row">
-                       <div class="col">
-                            <h5 class="card-title" style="text-align: center"><%= rs.getString("name")%></h5>
-                            <img src="media/hall1.jpg" class="card-img-bottom" alt="hall">
-                        </div>
-                        <div class="col-6">
-                            <p class="card-text"><%= rs.getString("description") %></p>
-                        </div>
-                        <div class="col">
-                            <a href="HallDetails.jsp?hallID=<%= rs.getString("id")%>" class="btn btn-primary">Detail</a>
-                        </div>
-
-                    </div>          
-                </div>                
+            <div class="container border border-dark">
+                <h2 style="text-align: center">Hall Details</h2>
+                
+                <table width="100%" style="text-align:center">
+                    <tr>
+                        <th style="width: 30%;">Hall Name</th>
+                        <td style="width: 70%;background-color: lightblue"><%= rs.getString("name") %></td>
+                    </tr>
+                    <tr>
+                        <th style="width: 30%">Location</th>
+                        <td style="width: 70%;background-color: lightblue"><%= rs.getString("location") %></td>
+                    </tr>
+                    <tr>
+                        <th style="width: 30%">Charge</th>
+                        <td style="width: 70%;background-color: lightblue"><%= rs.getString("charge") %></td>
+                    </tr>
+                    <tr>
+                        <th style="width: 30%">Capacity</th>
+                        <td style="width: 70%;background-color: lightblue"><%= rs.getString("capacity") %></td>
+                    </tr>
+                    <tr>
+                        <th style="width: 30%">Description</th>
+                        <td style="width: 70%;background-color: lightblue"><%= rs.getString("description") %></td>
+                    </tr>
+                    <tr>
+                        
+                        <td colspan="2" style="text-align:right">
+                            <form action="UpdateData.jsp" method="get">
+                                            <input type="hidden" name="id" value="<%= rs.getString("id")%>">
+                                            <button type="submit" class="btn btn-primary">Update</button>                                                 
+                            </form>
+                        </td>
+                        <td>
+                            <form action="UpdateData.jsp" method="get">
+                                            <input type="hidden" name="id" value="<%= rs.getString("id")%>">
+                                            <button type="submit" class="btn btn-primary">Delete</button>                                                 
+                                        </form>
+                        </td>
+                    </tr>
+                </table>
+                <br>
             </div>
             
             <br><br>
@@ -113,6 +169,7 @@
                 }
                 catch(Exception ex){}
                 %>
+            
         </div>
     </body>
 </html>
