@@ -38,8 +38,8 @@ public class InsertPromo extends HttpServlet {
         
         String name = request.getParameter("name");
         double discount = Double.parseDouble(request.getParameter("discount"));
-        String startDate = request.getParameter("startDate");
-        String endDate = request.getParameter("endDate");
+        String startDate = request.getParameter("StartDate");
+        String endDate = request.getParameter("EndDate");
         String description = request.getParameter("description");
         String status = request.getParameter("status");
         
@@ -48,7 +48,7 @@ public class InsertPromo extends HttpServlet {
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
             
-            String sqlinsert = "insert into promo(name,discount,startDate,endDate,description,status)values(?,?,?,?,?,?)";
+            String sqlinsert = "insert into promotion(name,discount,startDate,endDate,description,status)values(?,?,?,?,?,?)";
             
             PreparedStatement ps = conn.prepareStatement(sqlinsert);
             ps.setString(1, name);
