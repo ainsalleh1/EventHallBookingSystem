@@ -4,6 +4,10 @@
     Author     : End-User
 --%>
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -55,7 +59,7 @@
                           <a class="nav-link active" aria-current="page" href="#">Promo List</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="InsertPromo.html">Add Promo</a>
+                          <a class="nav-link" href="PackageView/InsertPromo.html">Add Promo</a>
                         </li>
                         
                     </ul>
@@ -70,23 +74,44 @@
             
             <br><br>  
             
+            
+            <%
+                try{
+                    Class.forName("com.mysql.jdbc.Driver");
+                    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
+                    String sql = "select * from promo";
+//                    Statement stmt = conn.createStatement();
+                    PreparedStatement ps = conn.prepareStatement(sql);
+                    ResultSet rs = ps.executeQuery();
+                    
+                    while(rs.next()){             
+                
+            %>
+            
             <div class="card w-100">    
                 <div class="card-body">               
                     <div class="row">
                        <div class="col">
-                            <h5 class="card-title">Promo Name</h5>
+                            <h5 class="card-title" style="text-align: center"><%= rs.getString("name")%></h5>
                             <img src="media/hall1.jpg" class="card-img-bottom" alt="hall">
                         </div>
                         <div class="col-6">
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            <p class="card-text"><%= rs.getString("discount") %></p>
                         </div>
                         <div class="col">
-                            <a href="#" class="btn btn-primary">Detail</a>
+                            <a href="PromoDetails.jsp?promoID=<%= rs.getString("id")%>" class="btn btn-primary">Detail</a>
                         </div>
 
                     </div>          
                 </div>                
             </div>
+            
+            <br><br>
+            <%
+                    }
+                }
+                catch(Exception ex){}
+                %>
             
             <br><br>
            

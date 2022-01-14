@@ -67,26 +67,56 @@ and open the template in the editor.
             <hr>
             <br>
             
-            <form method="POST" class="container text-left" >
+            <form method="POST" class="container text-left" id="usrform" action="../InsertPromo">
             <form class="row g-3">
 
               <div class="col-md-6">
-                <label for="inputPromoName" class="form-label">Package Name : </label>
-                <input class="form-control" id="inputPromoName" name="PackageName" placeholder="Enter hall name" required>
+                <label for="inputPromoName" class="form-label">Promo Name : </label>
+                <input class="form-control" id="inputPromoName" name="name" placeholder="Enter package name" required>
               </div>
               <br/><br/>
                          
               
               <div class="col-md-6">
-                <label for="inputPrice" class="form-label">Price (RM) : </label>
-                <input type="number" class="form-control" id="inputPrice" name="Charge" step="0.2" placeholder="Enter price" required>
+                <label for="inputPrice" class="form-label">Discount : </label>
+                <input type="number" class="form-control" id="inputPrice" name="discount" step="0.01" placeholder="Enter price" required>
+              </div>
+              <br/><br/>
+              
+              <div class="col-md-6">
+                <label for="inputStartDate" class="form-label">Start Date : </label>
+                <input type="date" class="form-control" id="inputStartDate" name="StartDate" required>
+              </div>
+              <br/><br/>
+              
+              <div class="col-md-6">
+                <label for="inputEndDate" class="form-label">End Date : </label>
+                <input type="date" class="form-control" id="inputStartDate" name="EndDate" required>
               </div>
               <br/><br/>
               
               
               <div class="col-md-6">
                 <label for="inputDescription" class="form-label">Description : </label>
-                <input class="form-control" id="inputDescription" name="Description" placeholder="Enter description" required>
+                <textarea class="form-control" id="inputDescription" rows="4" cols="50" name="description" form="usrform" placeholder="Enter description" required></textarea>
+              </div>
+              <br/>
+              
+              <div class="col-md-6">
+                <label for="inputStatus" class="form-label">Status : </label>
+                <div class="col-sm-10">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="status" id="gridRadios1" value="Valid" checked>
+                        <label class="form-check-label" for="gridRadios1">
+                          Valid
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="status" id="gridRadios2" value="Invalid">
+                        <label class="form-check-label" for="gridRadios2">
+                          Invalid
+                        </label>
+                      </div>
               </div>
               <br/><br/>
               
