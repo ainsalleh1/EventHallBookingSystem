@@ -49,7 +49,7 @@
         
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="MainPromo.jsp">Promo Management</a>
+                    <a class="navbar-brand" href="MainPromo.jsp">Promotion Management</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -59,7 +59,7 @@
                           <a class="nav-link active" aria-current="page" href="#">Promo List</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="PackageView/InsertPromo.html">Add Promo</a>
+                          <a class="nav-link" href="PromotionView/InsertPromo.html">Add Promo</a>
                         </li>
                         
                     </ul>
@@ -79,12 +79,13 @@
                 try{
                     Class.forName("com.mysql.jdbc.Driver");
                     Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
-                    String sql = "select * from promo";
+                    String sql = "select * from promotion";
 //                    Statement stmt = conn.createStatement();
                     PreparedStatement ps = conn.prepareStatement(sql);
                     ResultSet rs = ps.executeQuery();
                     
-                    while(rs.next()){             
+                    while(rs.next()){ 
+                        double calcDiscount = rs.getDouble("discount")*100;
                 
             %>
             
@@ -96,10 +97,10 @@
                             <img src="media/hall1.jpg" class="card-img-bottom" alt="hall">
                         </div>
                         <div class="col-6">
-                            <p class="card-text"><%= rs.getString("discount") %></p>
+                            <h2 class="card-text" style="text-align: center">Discount: <%= calcDiscount %> %</h2>
                         </div>
                         <div class="col">
-                            <a href="PromoDetails.jsp?promoID=<%= rs.getString("id")%>" class="btn btn-primary">Detail</a>
+                            <a href="./PromotionView/PromoDetails.jsp?promoID=<%= rs.getString("id")%>" class="btn btn-primary">Detail</a>
                         </div>
 
                     </div>          
