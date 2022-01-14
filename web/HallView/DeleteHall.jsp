@@ -1,6 +1,6 @@
 <%-- 
-    Document   : HallDetails
-    Created on : Jan 13, 2022, 10:20:01 PM
+    Document   : DeleteHall
+    Created on : Jan 14, 2022, 1:03:58 AM
     Author     : End-User
 --%>
 
@@ -19,7 +19,7 @@
         <style>
                               
                 body {
-                background-image: url("media/background.png");
+                background-image: url("./media/background.png");
                 height: 100%;
 
                 /* Center and scale the image nicely */
@@ -121,45 +121,72 @@
             %>
             
             <div class="container border border-dark">
-                <h2 style="text-align: center">Hall Details</h2>
+                <h2 style="text-align: center">Delete Hall Confirmation</h2>
                 
-                <table width="100%" style="text-align:center">
-                    <tr>
-                        <th style="width: 30%;">Hall Name</th>
-                        <td style="width: 70%;background-color: lightblue"><%= rs.getString("name") %></td>
-                    </tr>
-                    <tr>
-                        <th style="width: 30%">Location</th>
-                        <td style="width: 70%;background-color: lightblue"><%= rs.getString("location") %></td>
-                    </tr>
-                    <tr>
-                        <th style="width: 30%">Charge</th>
-                        <td style="width: 70%;background-color: lightblue"><%= rs.getString("charge") %></td>
-                    </tr>
-                    <tr>
-                        <th style="width: 30%">Capacity</th>
-                        <td style="width: 70%;background-color: lightblue"><%= rs.getString("capacity") %></td>
-                    </tr>
-                    <tr>
-                        <th style="width: 30%">Description</th>
-                        <td style="width: 70%;background-color: lightblue"><%= rs.getString("description") %></td>
-                    </tr>
-                    <%
-                        if(session.getAttribute("sessionUserLevel").equals("Staff")){
-                    %>
-                    <tr>
+                <form method="POST" ACTION="../DeleteHall">                
+                    
+                    <table width="100%" style="text-align:center">
+                        <tr>
+                            <th style="width: 30%;">Hall ID</th>
+                            <td style="width: 70%;background-color: lightblue">
+                                
+                                <input type="text" class="form-control" id="inputHallID" name="id" value="<%= rs.getString("id") %>" disabled>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="width: 30%;">Hall Name</th>
+                            <td style="width: 70%;background-color: lightblue">
+                                
+                                <input type="text" class="form-control" id="inputHallName" name="HallName" value="<%= rs.getString("name") %>" disabled>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="width: 30%">Location</th>
+                            <td style="width: 70%;background-color: lightblue">
+                                
+                                <input type="text" class="form-control" aria-label="Address" name="Location" value="<%= rs.getString("location") %>" disabled>         
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="width: 30%">Charge</th>
+                            <td style="width: 70%;background-color: lightblue">
+                                
+                                <input type="number" class="form-control" id="inputCharge" name="HallCharge" step="0.02" value="<%= rs.getString("charge") %>" disabled>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="width: 30%">Capacity</th>
+                            <td style="width: 70%;background-color: lightblue">
+                                
+                                <input type="text" class="form-control" id="inputCapacity" name="Capacity" value="<%= rs.getString("capacity") %>" disabled>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="width: 30%">Description</th>
+                            <td style="width: 70%;background-color: lightblue">
+                               
+                                <input type="text" class="form-control" id="inputDescription" name="Description" value="<%= rs.getString("description") %>" disabled>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Media</th>
+                            <td>
+                                <input class="form-control" type="file" id="formFile" name="HallMedia" value="<%= rs.getString("media") %>" disabled>
+
+                            </td>
+                        </tr>
                         
-                        <td colspan="2" style="text-align:right">
-                            <a href="HallView/UpdateHall.jsp?hallID=<%= rs.getString("id")%>" class="btn btn-primary">Update</a>
-                        </td>
-                        <td>
-                            <a href="HallView/DeleteHall.jsp?hallID=<%= rs.getString("id")%>" class="btn btn-primary">Delete</a>
-                        </td>
-                    </tr>
-                    <%
-                        }
-                    %>
-                </table>
+                    </table>
+                    <input type="text" class="form-control" id="inputHallID" name="hallID" value="<%= rs.getString("id") %>" hidden>
+                    <p style="text-align:center">
+                        <button type="submit" class="btn btn-success">Confirm</button>
+                    <p>
+                    
+                </form>            
+                
                 <br>
             </div>
             
