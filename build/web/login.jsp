@@ -1,3 +1,9 @@
+<%-- 
+    Document   : login
+    Created on : Dec 24, 2021, 10:31:11 PM
+    Author     : End-User
+--%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -5,28 +11,61 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" crossorigin="anonymous">
         
-        
+        <style>
+            h3{
+                text-align: center;
+            }
+            
+            body {
+                background-image: url("media/cool1.jpg");
+                height: 750px;
+
+                /* Center and scale the image nicely */
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                }
+            .box
+            {
+                width: 520px;
+                padding: 10px;
+                border: 1px solid white;
+                background-color: white;
+                margin-left:390px;
+                opacity: 0.8;
+                border-radius: 25px;
+            }
+            
+            h4{
+                font-size: 16px;
+            }
+            h5{
+                font-size: 14px;
+            }
+        </style>
         <title>Login</title>
     </head>
     <body>
         <div class="container">
-            <h1>Event Halls Booking System</h1>            
+            <!--<h1>Event Halls Booking System</h1>-->            
         </div>
         
         <div class="container">
-            <h3>Login</h3>
+            <br><br><br><h3>Login</h3><br><br>
+            <div class="box">
             <div>
                 <form method="POST" class="container text-center" action="LoginServlet">
                     <div class="form-group">
-                        <label for="InputEmail1" class="container text-left" >Email</label>
+                        <label for="InputEmail1" class="container text-left" ><h4>Email</h4></label>
                         <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp"placeholder="Enter email" name="email" required >
                         <br/>
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        <small id="emailHelp" class="form-text text-muted"><h5>We'll never share your email with anyone else.</h5></small>
                     </div>
+                    <br>
                     <div class="form-group">
-                        <label for="InputPassword" class="container text-left" >Password</label>
+                        <label for="InputPassword" class="container text-left" ><h4>Password</h4></label>
                         <input type="password" class="form-control" id="InputPassword" placeholder="Enter password" name="password" required>
-                        <input type="checkbox" onclick="myFunction()">Show Password
+                        <br><h4><input type="checkbox" onclick="myFunction()">   Show Password</h4><br><br>
                         <script>
                             function myFunction() {
                                 var x = document.getElementById("InputPassword");
@@ -65,6 +104,7 @@
                 <br/><br/><br/>
                 <em>Do not have an account? <a href="register.jsp" >Click here</a></em>
             </div>
+        </div>
         </div>
     </body>
 </html>
