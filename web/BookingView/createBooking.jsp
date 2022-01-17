@@ -71,9 +71,9 @@
                 try{
                     Class.forName("com.mysql.jdbc.Driver");
                     
-                    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
-                    String sql = "select * from hall where id=?";
+                    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");                   
                     
+                    String sql = "select * from hall where id=?";                   
                     PreparedStatement ps = conn.prepareStatement(sql);
                     
                     ps.setString(1, hallID);
@@ -89,7 +89,8 @@
                   <img src="../media/hall1.jpg" class="img-fluid" alt="hall">
                 </div>
                 <div class="col">
-                    <form id="bookingForm">
+                    
+                    <form id="bookingForm" action="../createBooking" method="POST">
                             
                         <div class="col-md-6">
                             <label for="startDate" class="form-label">Start Date:</label>
@@ -99,6 +100,7 @@
                             <label for="endDate" class="form-label">End Date:</label>
                             <input type="date" class="form-control" id="startDate" name="endDate">
                         </div>
+                        <input type="hidden" value="">
                             
                     </form>
                     
