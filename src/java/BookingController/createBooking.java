@@ -10,6 +10,12 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,10 +42,18 @@ public class createBooking extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        int hallID = Integer.parseInt(request.getParameter("hallID"));
         String startDate = request.getParameter("startDate");
         String endDate = request.getParameter("endDate");
+        try { 
+            Date dateStart =new SimpleDateFormat("yyyy-mm-dd").parse(startDate);
+            Date dateEnd =new SimpleDateFormat("yyyy-mm-dd").parse(endDate);
+        } catch (ParseException ex) {
+            Logger.getLogger(createBooking.class.getName()).log(Level.SEVERE, null, ex);
+        }
         HttpSession session = request.getSession();
         String email = (String)session.getAttribute("sessionEmail");
+        int userID = 0;
         
         try{
             
@@ -49,25 +63,29 @@ public class createBooking extends HttpServlet {
             String selectUser = "select * from user where email=?";
             PreparedStatement us = conn.prepareStatement(selectUser);
             us.setString(1, email);
-            urs = us.executeQuery();
+            ResultSet urs = us.executeQuery();
+//            while(urs.next()){
+                userID = urs.getInt("id");
+//            }
             
-            String sqlinsert = "insert into hall(name,location,charge,capacity,description,media)values(?,?,?,?,?,?)";
+//            String checkAvalaibility = "select * from dateAvailability where hall=?";
+//            PreparedStatement ca = conn.prepareStatement(checkAvalaibility);
+//            ca.setInt(1, hallID);
+//            ResultSet cas = ca.executeQuery();
+//            while(cas.next()){
+//                
+//            }
+            
+            String sqlinsert = "insert into booking(hallBooked,customer)values(?,?)";
             
             PreparedStatement ps = conn.prepareStatement(sqlinsert);
-            ps.setString(1, name);
-            ps.setString(2, location);
-            ps.setDouble(3, charge);
-            ps.setString(4, capacity);
-            ps.setString(5, description);
-            out.println("<h1> " + file + "</h1>");
-//            ps.setBinaryStream(6, fileContent, (int)file.length());
-//            ps.setBlob(6, fileContent);
-            ps.setString(6, file);
+            ps.setInt(1, hallID);
+            ps.setInt(2, userID);
             ps.executeUpdate();
             
             conn.close();
             
-            response.sendRedirect("MainHall.jsp");
+            response.sendRedirect("../BookingView/MainBooking.jsp");
             
             
         }

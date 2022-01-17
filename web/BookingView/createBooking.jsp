@@ -100,7 +100,7 @@
                             <label for="endDate" class="form-label">End Date:</label>
                             <input type="date" class="form-control" id="startDate" name="endDate">
                         </div>
-                        <input type="hidden" value="">
+                        <input type="hidden" value="<%= rs.getInt("id") %>" name="hallID">
                             
                     </form>
                     

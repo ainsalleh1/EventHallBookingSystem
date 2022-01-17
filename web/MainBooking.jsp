@@ -89,7 +89,10 @@
                     <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                         <li class="nav-item">
                           <a class="nav-link active" aria-current="page" href="#">Booking List</a>
-                        </li>                        
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" aria-current="page" href="BookingView/myBooking.jsp">My Booking</a>
+                        </li> 
                     </ul>
                     <span class="navbar-text">Booking :</span>
                     <form class="d-flex">                
