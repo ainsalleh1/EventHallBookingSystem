@@ -4,6 +4,10 @@
     Author     : End-User
 --%>
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -100,6 +104,18 @@
                 }
             %>
             
+            <%
+                try{
+                    Class.forName("com.mysql.jdbc.Driver");
+                    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
+                    String sql = "select * from hall";
+                    PreparedStatement ps = conn.prepareStatement(sql);
+                    ResultSet rs = ps.executeQuery();
+                    
+                    while(rs.next()){             
+                
+            %>
+            
             <div class="row">
                 <div class="col">
                   <img src="media/hall1.jpg" class="img-fluid" alt="hall">
@@ -107,9 +123,10 @@
                 <div class="col">
                   <div class="card text-center h-100">
                         <div class="card-body">
-                          <h5 class="card-title">Hall Name</h5>
-                          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                          <a href="#" class="btn btn-primary">Book Now</a>
+                          <h5 class="card-title"><%= rs.getString("name")%></h5>
+                          <p class="card-text"><%= rs.getString("description") %></p>
+                          <a href="BookingView/createBooking.jsp?hallID=<%= rs.getString("id")%>" class="btn btn-primary">Book Now</a>
+                          
                         </div>
                     </div>
                 </div>  
@@ -118,7 +135,12 @@
             <br>
             <hr>
             
-            
+            <%
+                    }
+                } catch(Exception ex){}              
+            %>            
+                
+            <br>
         </div>
     </body>
 </html>
