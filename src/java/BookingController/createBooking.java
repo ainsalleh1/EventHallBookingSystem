@@ -42,21 +42,27 @@ public class createBooking extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        out.println("cubaan");
+        
         int hallID = Integer.parseInt(request.getParameter("hallID"));
         String startDate = request.getParameter("startDate");
         String endDate = request.getParameter("endDate");
-        try { 
-            Date dateStart =new SimpleDateFormat("yyyy-mm-dd").parse(startDate);
-            Date dateEnd =new SimpleDateFormat("yyyy-mm-dd").parse(endDate);
-        } catch (ParseException ex) {
-            Logger.getLogger(createBooking.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        Date dateStart = null;
+        Date dateEnd = null;
+//        try { 
+//            dateStart =new SimpleDateFormat("yyyy-mm-dd").parse(startDate);
+//            dateEnd =new SimpleDateFormat("yyyy-mm-dd").parse(endDate);
+//        } catch (ParseException ex) {
+//            Logger.getLogger(createBooking.class.getName()).log(Level.SEVERE, null, ex);
+//        }
         HttpSession session = request.getSession();
         String email = (String)session.getAttribute("sessionEmail");
         int userID = 0;
-        
+        out.println("cubaan");
         try{
-            
+            out.println("cubaan");
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
             
@@ -64,28 +70,51 @@ public class createBooking extends HttpServlet {
             PreparedStatement us = conn.prepareStatement(selectUser);
             us.setString(1, email);
             ResultSet urs = us.executeQuery();
-//            while(urs.next()){
+            out.println("cubaan");
+            if(urs.next()){
                 userID = urs.getInt("id");
-//            }
-            
-//            String checkAvalaibility = "select * from dateAvailability where hall=?";
-//            PreparedStatement ca = conn.prepareStatement(checkAvalaibility);
-//            ca.setInt(1, hallID);
-//            ResultSet cas = ca.executeQuery();
-//            while(cas.next()){
-//                
-//            }
-            
-            String sqlinsert = "insert into booking(hallBooked,customer)values(?,?)";
-            
-            PreparedStatement ps = conn.prepareStatement(sqlinsert);
+            }
+            out.println(userID);
+            //check date availability
+            String checkDate = "select * from dateAvailability where hallBooked=? AND startDate>=? AND endDate<=?";
+            out.println("cubaan");
+            PreparedStatement check = conn.prepareStatement(checkDate);
+            out.println("cubaan");
+            check.setInt(1, hallID);
+            out.println(startDate);
+//            check.setDate(2, (java.sql.Date) dateStart);
+//            check.setDate(3, (java.sql.Date) dateEnd);
+            check.setDate(2,java.sql.Date.valueOf(startDate));
+            check.setDate(3,java.sql.Date.valueOf(endDate));
+            out.println("/ncubaan penanda");
+            ResultSet cas = check.executeQuery();
+            out.println("cubaan");
+            if(cas.next()){
+                out.println("cubaan");
+                out.println("<p style=\"color:red;\">Chosen dates are unavailable </p>");                
+                request.getRequestDispatcher("BookingView/createBooking.jsp").include(request, response);
+            }
+            out.println("cubaanddd");
+            String sqlinsertBooking = "insert into booking(hallBooked,customer)values(?,?)";          
+            out.println("cubaan");
+            PreparedStatement ps = conn.prepareStatement(sqlinsertBooking);
             ps.setInt(1, hallID);
             ps.setInt(2, userID);
             ps.executeUpdate();
+            out.println("cubaan");
+            String sqlinsertDateAvailability = "insert into dateAvailability(startDate, endDate, hallBooked)values(?,?,?)";
+            PreparedStatement ps_date = conn.prepareStatement(sqlinsertDateAvailability);
+ 
+//            ps_date.setDate(1, (java.sql.Date) dateStart);
+//            ps_date.setDate(2, (java.sql.Date) dateEnd);
+            ps_date.setDate(1,java.sql.Date.valueOf(startDate));
+            ps_date.setDate(2,java.sql.Date.valueOf(endDate));
+            ps_date.setInt(3,hallID);
+            ps_date.executeUpdate();
             
             conn.close();
             
-            response.sendRedirect("../BookingView/MainBooking.jsp");
+            response.sendRedirect("BookingView/myBooking.jsp");
             
             
         }
