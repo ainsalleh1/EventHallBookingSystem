@@ -101,16 +101,18 @@
                     if(user.next()){
                         user_id=user.getInt("id");
                     }
-                    String sql_book = "select * from booking where customer=?";                   
+                    String sql_book = "select date,name,charge from booking,hall where hallBooked=hall_id and customer=?";                   
                     PreparedStatement ps_book = conn.prepareStatement(sql_book);
-                    
                     ps_book.setInt(1, user_id);
                     ResultSet booking = ps_book.executeQuery();
-                    
                     while(booking.next()){  
                         counter=counter+1;
                 
             %>
+            
+            <hr>
+            <h2>My Booking List</h2>
+            <hr>
             
             <table class="table table-hover">
                <thead>
@@ -118,6 +120,7 @@
                       <th scope="col">Number</th>
                       <th scope="col">Hall Booked</th>
                       <th scope="col">Hall Charge (RM)</th>
+                      <th scope="col">Booking date</th>
                       <th scope="col">Payment</th>
                       <th scope="col">Status</th>
                     </tr>
@@ -125,8 +128,9 @@
                   <tbody>
                     <tr>
                       <th scope="row"><%= counter %></th>
-                      <td><%= booking.getInt("hallBooked")%> name</td>
-                      <td><%= booking.getInt("hallBooked")%> charge</td>
+                      <td><%= booking.getString("name")%> name</td>
+                      <td><%= booking.getDouble("charge")%> charge</td>
+                      <td><%= booking.getDate("date")%></td>
                       <td>...</td>
                       <td>...</td>
                     </tr>
