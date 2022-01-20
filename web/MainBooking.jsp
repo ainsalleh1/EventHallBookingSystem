@@ -131,7 +131,7 @@
             <%
                 }
             %>
-            
+            <br>
             
             <%
                 try{
@@ -154,7 +154,7 @@
                         <div class="card-body">
                           <h5 class="card-title"><%= rs.getString("name")%></h5>
                           <p class="card-text"><%= rs.getString("description") %></p>
-                          <a href="BookingView/createBooking.jsp?hallID=<%= rs.getString("id")%>" class="btn btn-primary">Book Now</a>
+                          <a href="BookingView/createBooking.jsp?hallID=<%= rs.getString("hall_id")%>" class="btn btn-primary">Book Now</a>
                           
                         </div>
                     </div>

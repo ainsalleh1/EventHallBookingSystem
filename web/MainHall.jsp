@@ -100,7 +100,7 @@
                             <p class="card-text"><%= rs.getString("description") %></p>
                         </div>
                         <div class="col">
-                            <a href="HallDetails.jsp?hallID=<%= rs.getString("id")%>" class="btn btn-primary">Detail</a>
+                            <a href="HallDetails.jsp?hallID=<%= rs.getString("hall_id")%>" class="btn btn-primary">Detail</a>
                         </div>
 
                     </div>          

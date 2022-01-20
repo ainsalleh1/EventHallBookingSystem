@@ -70,7 +70,7 @@ public class createBooking extends HttpServlet {
             PreparedStatement us = conn.prepareStatement(selectUser);
             us.setString(1, email);
             ResultSet urs = us.executeQuery();
-            out.println("cubaan");
+//            out.println("cubaan");
             if(urs.next()){
                 userID = urs.getInt("id");
             }
@@ -88,20 +88,16 @@ public class createBooking extends HttpServlet {
             check.setDate(3,java.sql.Date.valueOf(endDate));
             out.println("/ncubaan penanda");
             ResultSet cas = check.executeQuery();
-            out.println("cubaan");
             if(cas.next()){
                 out.println("cubaan");
                 out.println("<p style=\"color:red;\">Chosen dates are unavailable </p>");                
                 request.getRequestDispatcher("BookingView/createBooking.jsp").include(request, response);
             }
-            out.println("cubaanddd");
             String sqlinsertBooking = "insert into booking(hallBooked,customer)values(?,?)";          
-            out.println("cubaan");
             PreparedStatement ps = conn.prepareStatement(sqlinsertBooking);
             ps.setInt(1, hallID);
             ps.setInt(2, userID);
             ps.executeUpdate();
-            out.println("cubaan");
             String sqlinsertDateAvailability = "insert into dateAvailability(startDate, endDate, hallBooked)values(?,?,?)";
             PreparedStatement ps_date = conn.prepareStatement(sqlinsertDateAvailability);
  

@@ -73,7 +73,7 @@
                     
                     Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");                   
                     
-                    String sql = "select * from hall where id=?";                   
+                    String sql = "select * from hall where hall_id=?";                   
                     PreparedStatement ps = conn.prepareStatement(sql);
                     
                     ps.setString(1, hallID);
@@ -100,7 +100,7 @@
                             <label for="endDate" class="form-label">End Date:</label>
                             <input type="date" class="form-control" id="startDate" name="endDate">
                         </div>
-                        <input type="hidden" value="<%= rs.getInt("id") %>" name="hallID">
+                        <input type="hidden" value="<%= rs.getInt("hall_id") %>" name="hallID">
                             
                     </form>
                     
