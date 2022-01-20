@@ -1,6 +1,6 @@
 <%-- 
-    Document   : MainInventory
-    Created on : Jan 20, 2022, 5:49:20 PM
+    Document   : InsertHallInventory
+    Created on : Jan 20, 2022, 8:56:50 PM
     Author     : End-User
 --%>
 
@@ -20,7 +20,7 @@
         <style>
             .mySlides {display:none;}
             body {
-                background-image: url("media/background.png");
+                background-image: url("../media/background.png");
                 height: 100%;
 
                 /* Center and scale the image nicely */
@@ -30,7 +30,7 @@
                 background-attachment: fixed;
             }
         </style>
-        <title>Main Inventory</title>
+        <title>Hall Inventory</title>
     </head>
     <body>
         <div class="container">
@@ -40,7 +40,7 @@
                   <a class="nav-link" aria-current="page" href="../MainHomepage.jsp">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="MainHall.jsp">Halls</a>
+                  <a class="nav-link" href="../MainHall.jsp">Halls</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="MainBooking.jsp">Booking</a>
@@ -64,7 +64,7 @@
             </ul>
             
             <br><br>
-        
+            
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="MainInventory.jsp">Inventory Management</a>
@@ -74,10 +74,10 @@
                   <div class="collapse navbar-collapse" id="navbarScroll">
                     <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                         <li class="nav-item">
-                          <a class="nav-link active" aria-current="page" href="#">Item List</a>
+                          <a class="nav-link" aria-current="page" href="#">Item List</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" aria-current="page" href="InventoryHall.jsp">Hall Inventory</a>
+                          <a class="nav-link active" aria-current="page" href="InventoryHall.jsp">Hall Inventory</a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="InsertItem.html">Add Item</a>
@@ -91,55 +91,92 @@
                     </form>
                 </div>
                 </div>
-            </nav>
+            </nav>                
             
-            <hr>
-            <h2>Items</h2>
-            <hr>
+            <br><br>
             
-            <table class="table table-hover">              
-                <thead>
-                    <tr>
-                      <th scope="col">Number</th>
-                      <th scope="col">Name</th>
-                      <th scope="col">Type</th>
-                    </tr>
-                  </thead>
-                  <tbody>
             
-            <%
-                int counter=0;
-                try{                  
-                    Class.forName("com.mysql.jdbc.Driver");
-                    
-                    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");                   
-                    
-                    String sql = "select * from item";                   
-                    PreparedStatement ps_item = conn.prepareStatement(sql);
-
-                    ResultSet item = ps_item.executeQuery();
-                    while(item.next()){
-                        counter=counter+1;
+            <h2>Insert Item into Hall Inventory</h2>
+            
+            <br><br>
+            
+            <form action="../InsertInventoryHall" method="POST">           
                 
-            %>          
-            
-            <tr>                    
-                <th scope="row"><%= counter %></th>
-                      <td><%= item.getString("item_name")%></td>
-                      <td><%= item.getString("item_type")%></td>                   
-            </tr>
-            
+                
+                <%
+                    int counter = 0;
+                    int hall_ID = Integer.parseInt(request.getParameter("hallID"));
+                    try{                  
+                        Class.forName("com.mysql.jdbc.Driver");
+
+                        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");   
+
+
+                        String sqlHall = "select * from hall where hall_id=?";                   
+                        PreparedStatement ps_hall = conn.prepareStatement(sqlHall);
+                        ps_hall.setInt(1, hall_ID);
+                        ResultSet hall = ps_hall.executeQuery();
+                        if(hall.next()){
+                            
+                %>
+                        
+                 <div class="mb-6 row">
+                    <label for="hallName" class="col-sm-2 col-form-label">Hall Name</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" placeholder="Disabled input" aria-label="Disabled input example" value="<%= hall.getString("name") %>" disabled>
+                    </div>
+                  </div>
+                  <input type="text" class="form-control" id="inputHallID" name="hall_id" value="<%= hall.getString("hall_id") %>" hidden>
+                    <br><br>
+                 <%
+                     }
+                 %>
+                 <label for="hall_item">Choose a car:</label>
+                 <select name="hall_item" id="hall_item" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                        <%
+                        String sql = "select * from item";                   
+                        PreparedStatement ps_item = conn.prepareStatement(sql);
+
+                        ResultSet item = ps_item.executeQuery();
+                        while(item.next()){
+                            counter=counter+1;
+
+                %> 
+
+
+                    <option value="<%= item.getInt("item_id") %>"><%= item.getString("item_name") %></option>
+
+
+    <!--            <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="<%= item.getString("item_name") %>" id="<%=counter%>">
+                    <label class="form-check-label" for="<%=counter%>">
+                      <%= item.getString("item_name") %>
+                    </label>
+                </div> -->
+
+                <%      
+                        }
+                %>
+                </select>
+                
+                <div class="col-md-3">
+                <label for="inputQuantity" class="form-label">Quantity: </label>
+                <input type="number" class="form-control" id="inputQuantity" name="quantity" required>
+              </div>
+                <br><br>
+                <div class="col-12">
+                <button type="submit" class="btn btn-success">Save</button>
+              </div>
+            </form>
             <%
-               
-                    }
                     conn.close();
                 }catch(Exception ex){}
                 
             %>
-                            
-                  </tbody>
-            </table>
             
+                        
+            
+                
         </div>
     </body>
 </html>

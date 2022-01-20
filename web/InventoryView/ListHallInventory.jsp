@@ -1,9 +1,8 @@
 <%-- 
-    Document   : MainInventory
-    Created on : Jan 20, 2022, 5:49:20 PM
+    Document   : ListHallInventory
+    Created on : Jan 20, 2022, 8:27:06 PM
     Author     : End-User
 --%>
-
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>
@@ -20,7 +19,7 @@
         <style>
             .mySlides {display:none;}
             body {
-                background-image: url("media/background.png");
+                background-image: url("../media/background.png");
                 height: 100%;
 
                 /* Center and scale the image nicely */
@@ -30,17 +29,17 @@
                 background-attachment: fixed;
             }
         </style>
-        <title>Main Inventory</title>
+        <title>Inventory Hall</title>
     </head>
     <body>
         <div class="container">
             
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="../MainHomepage.jsp">Home</a>
+                  <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="MainHall.jsp">Halls</a>
+                  <a class="nav-link" href="../MainHall.jsp">Halls</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="MainBooking.jsp">Booking</a>
@@ -49,7 +48,7 @@
                   <a class="nav-link" href="MainPromo.jsp">Promo</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" href="MainInventory.jsp">Inventory</a>
+                  <a class="nav-link" href="MainInventory.jsp">Inventory</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="AboutUs.html">About Us</a>
@@ -64,7 +63,7 @@
             </ul>
             
             <br><br>
-        
+            
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="MainInventory.jsp">Inventory Management</a>
@@ -74,10 +73,10 @@
                   <div class="collapse navbar-collapse" id="navbarScroll">
                     <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                         <li class="nav-item">
-                          <a class="nav-link active" aria-current="page" href="#">Item List</a>
+                          <a class="nav-link" aria-current="page" href="#">Item List</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" aria-current="page" href="InventoryHall.jsp">Hall Inventory</a>
+                          <a class="nav-link active" aria-current="page" href="InventoryHall.jsp">Hall Inventory</a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="InsertItem.html">Add Item</a>
@@ -91,55 +90,102 @@
                     </form>
                 </div>
                 </div>
-            </nav>
+            </nav>                
             
-            <hr>
-            <h2>Items</h2>
-            <hr>
+            <br><br>
+            <%
+                if(session.getAttribute("sessionUserLevel").equals("Staff")){
             
-            <table class="table table-hover">              
-                <thead>
-                    <tr>
-                      <th scope="col">Number</th>
-                      <th scope="col">Name</th>
-                      <th scope="col">Type</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-            
+            %>
+            <div class="container">
+                <a href="InsertHallInventory.jsp?hallID=<%= Integer.parseInt(request.getParameter("hallID"))%>" class="btn btn-light">Insert Hall Item</a>
+            </div>
+                <%
+                    }
+                    %>
+    
             <%
                 int counter=0;
-                try{                  
+                int hall_ID = Integer.parseInt(request.getParameter("hallID"));
+                
+                try{
                     Class.forName("com.mysql.jdbc.Driver");
                     
-                    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");                   
+                    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", ""); 
                     
-                    String sql = "select * from item";                   
-                    PreparedStatement ps_item = conn.prepareStatement(sql);
+                    String hall = "select * from hall where hall_id=?";                   
+                    PreparedStatement hallObj = conn.prepareStatement(hall);
+                    hallObj.setInt(1, hall_ID);
 
-                    ResultSet item = ps_item.executeQuery();
-                    while(item.next()){
-                        counter=counter+1;
+                    ResultSet hall_rs = hallObj.executeQuery();
+                    if(hall_rs.next()){
+
+                    %>
+                  
+                    <br>
+                  <hr>
+                  <h2><%= hall_rs.getString("name") %> Hall Inventory</h2>
+                  <hr>
+                  <p><em>
+                    Dear customer, please make sure that you complete this inventory and note down anything which is missing or damaged, and also indicate to what extent you are satisfied with the condition of each item. Any damaged or missing items found at a later date may be charged for.
+                      </em>
+                  </p>
+                  <br>
+                  
+                  <table class="table table-hover">              
+                    <thead>
+                        <tr>
+                          <th scope="col">Num</th>
+                          <th scope="col">Item Name</th>
+                          <th scope="col">Item Type</th>
+                          <th scope="col">Quantity</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                    <%
+                        }
+                    String sqlHall = "select * from inventoryhall where hallInventory=?";                   
+                    PreparedStatement ps_hall = conn.prepareStatement(sqlHall);
+                    ps_hall.setInt(1, hall_ID);
+
+                    ResultSet inventory = ps_hall.executeQuery();
+                    if(inventory.next()){
+                        
+                        String hallItems = "select quantity,item_name,item_type from inventoryhall,item where itemInventory=item_id";                   
+                        PreparedStatement ps_hallItem = conn.prepareStatement(hallItems);
+
+                        ResultSet hallInventory = ps_hallItem.executeQuery();
+                        
+                        while(hallInventory.next()){
+                            counter=counter+1;
                 
             %>          
             
             <tr>                    
-                <th scope="row"><%= counter %></th>
-                      <td><%= item.getString("item_name")%></td>
-                      <td><%= item.getString("item_type")%></td>                   
+                <th scope="row"><%= counter  %></th>
+                <td><%= hallInventory.getString("item_name")%></td>
+                <td><%= hallInventory.getString("item_type")%></td>     
+                <td><%= hallInventory.getInt("quantity")%></td> 
             </tr>
             
             <%
                
                     }
                     conn.close();
+        
+                }else{ %>
+                  <p>This hall does not has any items in its inventory.</p>
+                <%
+                    }
+                    
                 }catch(Exception ex){}
                 
             %>
                             
                   </tbody>
             </table>
-            
+            <br>
         </div>
     </body>
 </html>
+

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : MainInventory
-    Created on : Jan 20, 2022, 5:49:20 PM
+    Document   : InventoryHall
+    Created on : Jan 20, 2022, 8:08:46 PM
     Author     : End-User
 --%>
 
@@ -20,7 +20,7 @@
         <style>
             .mySlides {display:none;}
             body {
-                background-image: url("media/background.png");
+                background-image: url("../media/background.png");
                 height: 100%;
 
                 /* Center and scale the image nicely */
@@ -30,17 +30,17 @@
                 background-attachment: fixed;
             }
         </style>
-        <title>Main Inventory</title>
+        <title>Inventory Hall</title>
     </head>
     <body>
         <div class="container">
             
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="../MainHomepage.jsp">Home</a>
+                  <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="MainHall.jsp">Halls</a>
+                  <a class="nav-link" href="../MainHall.jsp">Halls</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="MainBooking.jsp">Booking</a>
@@ -49,7 +49,7 @@
                   <a class="nav-link" href="MainPromo.jsp">Promo</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" href="MainInventory.jsp">Inventory</a>
+                  <a class="nav-link" href="MainInventory.jsp">Inventory</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="AboutUs.html">About Us</a>
@@ -64,7 +64,7 @@
             </ul>
             
             <br><br>
-        
+            
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="MainInventory.jsp">Inventory Management</a>
@@ -77,7 +77,7 @@
                           <a class="nav-link active" aria-current="page" href="#">Item List</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" aria-current="page" href="InventoryHall.jsp">Hall Inventory</a>
+                          <a class="nav-link" aria-current="page" href="InventoryHall">Inventory List</a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="InsertItem.html">Add Item</a>
@@ -93,40 +93,36 @@
                 </div>
             </nav>
             
-            <hr>
-            <h2>Items</h2>
-            <hr>
-            
             <table class="table table-hover">              
                 <thead>
                     <tr>
-                      <th scope="col">Number</th>
+                      <th scope="col">Hall ID</th>
                       <th scope="col">Name</th>
-                      <th scope="col">Type</th>
+                      <th scope="col">Location</th>
+                      <th scope="col">&nbsp;</th>
                     </tr>
                   </thead>
                   <tbody>
             
             <%
-                int counter=0;
                 try{                  
                     Class.forName("com.mysql.jdbc.Driver");
                     
                     Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");                   
                     
-                    String sql = "select * from item";                   
-                    PreparedStatement ps_item = conn.prepareStatement(sql);
+                    String sql = "select * from hall";                   
+                    PreparedStatement ps_hall = conn.prepareStatement(sql);
 
-                    ResultSet item = ps_item.executeQuery();
-                    while(item.next()){
-                        counter=counter+1;
+                    ResultSet hall = ps_hall.executeQuery();
+                    while(hall.next()){
                 
             %>          
             
             <tr>                    
-                <th scope="row"><%= counter %></th>
-                      <td><%= item.getString("item_name")%></td>
-                      <td><%= item.getString("item_type")%></td>                   
+                <th scope="row"><%= hall.getInt("hall_id")  %></th>
+                <td><%= hall.getString("name")%></td>
+                <td><%= hall.getString("location")%></td>     
+                <td> <a href="ListHallInventory.jsp?hallID=<%= hall.getInt("hall_id")%>"> View Inventory</a> </td> 
             </tr>
             
             <%

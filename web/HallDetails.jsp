@@ -109,7 +109,7 @@
                     Class.forName("com.mysql.jdbc.Driver");
                     
                     Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
-                    String sql = "select * from hall where id=?";
+                    String sql = "select * from hall where hall_id=?";
                     
                     PreparedStatement ps = conn.prepareStatement(sql);
                     
@@ -150,10 +150,10 @@
                     <tr>
                         
                         <td colspan="2" style="text-align:right">
-                            <a href="HallView/UpdateHall.jsp?hallID=<%= rs.getString("id")%>" class="btn btn-primary">Update</a>
+                            <a href="HallView/UpdateHall.jsp?hallID=<%= rs.getString("hall_id")%>" class="btn btn-primary">Update</a>
                         </td>
                         <td>
-                            <a href="HallView/DeleteHall.jsp?hallID=<%= rs.getString("id")%>" class="btn btn-primary">Delete</a>
+                            <a href="HallView/DeleteHall.jsp?hallID=<%= rs.getString("hall_id")%>" class="btn btn-primary">Delete</a>
                         </td>
                     </tr>
                     <%
@@ -162,10 +162,15 @@
                 </table>
                 <br>
             </div>
+                <br><br>
+                <div class="container">
+                    <a href="InventoryView/InventoryHall.jsp?hallID=<%= rs.getString("hall_id")%>" class="btn btn-info">Inventory List</a>
+                </div>
             
             <br><br>
             <%
                     }
+                    conn.close();
                 }
                 catch(Exception ex){}
                 %>
