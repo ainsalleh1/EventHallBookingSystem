@@ -41,6 +41,9 @@ and open the template in the editor.
                   <a class="nav-link" href="MainPromo.jsp">Promo</a>
                 </li>
                 <li class="nav-item">
+                  <a class="nav-link" href="InventoryView/MainInventory.jsp">Inventory</a>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link" href="AboutUs.html">About Us</a>
                 </li>
                 <li class="nav-item">
