@@ -12,6 +12,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <%--<%@include file="../head.html" %>--%>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" crossorigin="anonymous">
@@ -46,7 +47,7 @@
                       <a class="nav-link" href="MainHall.jsp">Halls</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="MainBooking.jsp">Booking</a>
+                      <a class="nav-link active" aria-current="page" href="../MainBooking.jsp">Booking</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="MainPromo.jsp">Promo</a>
@@ -94,11 +95,11 @@
                             
                         <div class="col-md-6">
                             <label for="startDate" class="form-label">Start Date:</label>
-                            <input type="date" class="form-control" id="startDate" name="startDate">
+                            <input type="date" class="form-control" id="startDate" name="startDate" required>
                         </div>
                         <div class="col-md-6">
                             <label for="endDate" class="form-label">End Date:</label>
-                            <input type="date" class="form-control" id="startDate" name="endDate">
+                            <input type="date" class="form-control" id="startDate" name="endDate" required>
                         </div>
                         <input type="hidden" value="<%= rs.getInt("hall_id") %>" name="hallID">
                             
@@ -126,6 +127,7 @@
                           
             <%
                     }
+                    conn.close();
                 }catch(Exception ex){}
                 
             %>

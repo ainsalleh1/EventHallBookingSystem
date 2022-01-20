@@ -164,8 +164,9 @@
             <br>
             <hr>
             
-            <%
+            <%              
                     }
+                    conn.close();
                 } catch(Exception ex){}              
             %>            
                 

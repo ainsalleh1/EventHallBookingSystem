@@ -110,6 +110,7 @@
             <br><br>
             <%
                     }
+                    conn.close();
                 }
                 catch(Exception ex){}
                 %>

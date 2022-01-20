@@ -83,7 +83,23 @@
                 </div>
                 </div>
             </nav>
-            
+                      
+            <hr>
+            <h2>My Booking List</h2>
+            <hr>
+              
+            <table class="table table-hover">
+               <thead>
+                    <tr>
+                      <th scope="col">Number</th>
+                      <th scope="col">Hall Booked</th>
+                      <th scope="col">Hall Charge (RM)</th>
+                      <th scope="col">Booking date</th>
+                      <th scope="col">Payment</th>
+                      <th scope="col">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
             <%
                 String email = (String)session.getAttribute("sessionEmail");
                 int counter=0;
@@ -110,22 +126,6 @@
                 
             %>
             
-            <hr>
-            <h2>My Booking List</h2>
-            <hr>
-            
-            <table class="table table-hover">
-               <thead>
-                    <tr>
-                      <th scope="col">Number</th>
-                      <th scope="col">Hall Booked</th>
-                      <th scope="col">Hall Charge (RM)</th>
-                      <th scope="col">Booking date</th>
-                      <th scope="col">Payment</th>
-                      <th scope="col">Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
                     <tr>
                       <th scope="row"><%= counter %></th>
                       <td><%= booking.getString("name")%> name</td>
@@ -134,15 +134,18 @@
                       <td>...</td>
                       <td>...</td>
                     </tr>
-                </tbody>
-            </table>
+
             
             <%
+               
                     }
+                    conn.close();
                 }catch(Exception ex){}
                 
             %>
-            
+                            
+                  </tbody>
+            </table>
         </div>
     </body>
 </html>
