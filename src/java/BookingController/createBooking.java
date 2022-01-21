@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -50,6 +51,7 @@ public class createBooking extends HttpServlet {
         String endDate = request.getParameter("endDate");
         Date dateStart = null;
         Date dateEnd = null;
+        String status = "Not confirmed";
 //        try { 
 //            dateStart =new SimpleDateFormat("yyyy-mm-dd").parse(startDate);
 //            dateEnd =new SimpleDateFormat("yyyy-mm-dd").parse(endDate);
@@ -59,6 +61,7 @@ public class createBooking extends HttpServlet {
         HttpSession session = request.getSession();
         String email = (String)session.getAttribute("sessionEmail");
         int userID = 0;
+        int getRecordId = 0;
 //        out.println("cubaan");
         try{
 //            out.println("cubaan");
@@ -81,8 +84,7 @@ public class createBooking extends HttpServlet {
             check.setInt(1, hallID);
 //            out.println(startDate);
 //            out.println(endDate);
-//            check.setDate(2, (java.sql.Date) dateStart);
-//            check.setDate(3, (java.sql.Date) dateEnd);
+
             check.setDate(2,java.sql.Date.valueOf(startDate));
             check.setDate(3,java.sql.Date.valueOf(endDate));
 //            out.println("/ncubaan penanda");
@@ -93,12 +95,28 @@ public class createBooking extends HttpServlet {
                 request.getRequestDispatcher("BookingView/createBooking.jsp").include(request, response);
             }
             else{
-                String sqlinsertBooking = "insert into booking(hallBooked,customer)values(?,?)";          
-                PreparedStatement ps = conn.prepareStatement(sqlinsertBooking);
-                ps.setInt(1, hallID);
-                ps.setInt(2, userID);
+                String sqlinsertBooking = "insert into booking(status,hallBooked,customer)values(?,?,?)";    
+//                out.println(status);
+                PreparedStatement ps = conn.prepareStatement(sqlinsertBooking, Statement.RETURN_GENERATED_KEYS);
+//                out.println("cubaan dalam checking");
+                ps.setString(1, status);
+//                out.println("cubaan dalam checking");
+                ps.setInt(2, hallID);
+//                out.println("cubaan dalam checking");
+                ps.setInt(3, userID);
+//                out.println(hallID);
                 ps.executeUpdate();
-                String sqlinsertDateAvailability = "insert into dateAvailability(startDate, endDate, hallBooked)values(?,?,?)";
+                out.println("penanda");
+                ResultSet rs = ps.getGeneratedKeys();
+                out.println("penanda");
+                if(rs.next()){
+                    getRecordId = rs.getInt(1);
+                }
+                out.println(getRecordId);                
+                
+                String sqlinsertDateAvailability = "insert into dateAvailability(startDate, endDate, hallBooked, bookingID)values(?,?,?,?)";
+                
+                
                 PreparedStatement ps_date = conn.prepareStatement(sqlinsertDateAvailability);
 
     //            ps_date.setDate(1, (java.sql.Date) dateStart);
@@ -106,11 +124,14 @@ public class createBooking extends HttpServlet {
                 ps_date.setDate(1,java.sql.Date.valueOf(startDate));
                 ps_date.setDate(2,java.sql.Date.valueOf(endDate));
                 ps_date.setInt(3,hallID);
+                ps_date.setInt(4,getRecordId);
                 ps_date.executeUpdate();
+                
 
                 conn.close();
 
-                response.sendRedirect("BookingView/myBooking.jsp");
+//                response.sendRedirect("BookingView/myBooking.jsp");
+                response.sendRedirect("BookingView/BookingPayment.jsp?booking="+getRecordId);
             }       
             
         }

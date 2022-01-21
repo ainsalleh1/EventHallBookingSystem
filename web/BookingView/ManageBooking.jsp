@@ -1,6 +1,6 @@
 <%-- 
-    Document   : myBooking
-    Created on : Jan 17, 2022, 7:14:21 PM
+    Document   : ManageBooking
+    Created on : Jan 21, 2022, 2:37:14 PM
     Author     : End-User
 --%>
 
@@ -62,17 +62,20 @@
             
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="MainBooking.jsp">Booking</a>
+                    <a class="navbar-brand" href="MainBooking.jsp">Booking Management</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                   <div class="collapse navbar-collapse" id="navbarScroll">
                     <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                         <li class="nav-item">
-                          <a class="nav-link active" aria-current="page" href="#">My Booking</a>
+                          <a class="nav-link" aria-current="page" href="BookingView/ManageBooking.jsp">Manage Booking</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" aria-current="page">Past Booking</a>
+                          <a class="nav-link" aria-current="page" href="#">Booking List</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" aria-current="page" href="BookingView/myBooking.jsp">My Booking</a>
                         </li> 
                     </ul>
                     <span class="navbar-text">Booking :</span>
@@ -83,9 +86,10 @@
                 </div>
                 </div>
             </nav>
+            <br><br>
                       
             <hr>
-            <h2>My Booking List</h2>
+            <h2>Manage Booking</h2>
             <hr>
               
             <table class="table table-hover">
@@ -102,26 +106,18 @@
                   </thead>
                   <tbody>
             <%
-                String email = (String)session.getAttribute("sessionEmail");
+                
                 int counter=0;
-                int user_id=0;
                 try{
                     
                     Class.forName("com.mysql.jdbc.Driver");
                     
                     Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");                   
-                    
-                    String sql = "select * from user where email=?";                   
-                    PreparedStatement ps = conn.prepareStatement(sql);
-                    ps.setString(1, email);
-                    ResultSet user = ps.executeQuery();
-                    if(user.next()){
-                        user_id=user.getInt("id");
-                    }
-                    String sql_book = "select id,date,name,charge,status,paymentSlip from booking,hall where hallBooked=hall_id and customer=?";                   
-                    PreparedStatement ps_book = conn.prepareStatement(sql_book);
-                    ps_book.setInt(1, user_id);
-                    ResultSet booking = ps_book.executeQuery();
+     
+                    String sql_book = "select id,date,name,charge,status,paymentSlip from booking,hall where hallBooked=hall_id and status!=?";                   
+                    PreparedStatement ps_manageBooking = conn.prepareStatement(sql_book);
+                    ps_manageBooking.setString(1, "Approved");
+                    ResultSet booking = ps_manageBooking.executeQuery();
                     while(booking.next()){  
                         counter=counter+1;
                 
@@ -134,7 +130,7 @@
                       <td><%= booking.getDate("date")%></td>
                       <td><%= booking.getString("paymentSlip")%></td>
                       <td><%= booking.getString("status")%></td>
-                      <td><a href="../BookingView/BookingPayment.jsp?booking=<%= booking.getInt("id") %>" class="btn btn-primary">Insert payment slip</a></td>
+                      <td><a href="../BookingView/UpdateBookingPaymentStatus.jsp?booking=<%= booking.getInt("id") %>" class="btn btn-primary">Update booking status</a></td>
                     </tr>
 
             
@@ -151,3 +147,4 @@
         </div>
     </body>
 </html>
+

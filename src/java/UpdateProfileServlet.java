@@ -79,7 +79,7 @@ public class UpdateProfileServlet extends HttpServlet {
                     + "state=?,"
                     + "zip=?,"
                     + "description=?"
-                    + " WHERE id=?";
+                    + " WHERE user_id=?";
             
             PreparedStatement ps = conn.prepareStatement(sqlupdate);
             ps.setString(1, email);

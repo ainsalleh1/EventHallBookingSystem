@@ -118,7 +118,8 @@
                                 </ul>                  
                             </p>
                             <div class="col-12">                                            
-                                <button type="submit" form="bookingForm" class="btn btn-success">Book</button>    
+                                <button type="submit" form="bookingForm" class="btn btn-success">Book</button>  
+                                <a href="../InventoryView/ListHallInventory.jsp?hallID=<%= rs.getInt("hall_id") %>" target="_blank" class="btn btn-primary">Inventory Detail</a>
                             </div>                          
                         </div>
                     </div>

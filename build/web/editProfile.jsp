@@ -55,7 +55,7 @@
                         try{
                             Class.forName("com.mysql.jdbc.Driver");
                             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
-                            String sql = "select * from user WHERE id=?";
+                            String sql = "select * from user WHERE user_id=?";
                             PreparedStatement ps = conn.prepareStatement(sql);
                             ps.setString(1, userID);
                             ResultSet rs = ps.executeQuery();
@@ -65,7 +65,7 @@
                             %>
                     <div class="form-row field-Id mb-3 row">
                         <div>
-                            <input type="hidden" name="Id" value="<%= rs.getString("id")%>"  class="vTextField" required="" id="id">
+                            <input type="hidden" name="Id" value="<%= rs.getString("user_id")%>"  class="vTextField" required="" id="id">
                         </div>
                       </div>
                     <div class="col-md-6">
