@@ -114,7 +114,7 @@
                     
                     Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");                   
      
-                    String sql_book = "select id,date,name,charge,status,paymentSlip from booking,hall where hallBooked=hall_id and status!=?";                   
+                    String sql_book = "select id,date,name,totalPrice,status,paymentSlip from booking,hall where hallBooked=hall_id and status!=?";                   
                     PreparedStatement ps_manageBooking = conn.prepareStatement(sql_book);
                     ps_manageBooking.setString(1, "Approved");
                     ResultSet booking = ps_manageBooking.executeQuery();
@@ -126,7 +126,7 @@
                     <tr>
                       <th scope="row"><%= counter %></th>
                       <td><%= booking.getString("name")%></td>
-                      <td><%= booking.getDouble("charge")%></td>
+                      <td>RM <%= booking.getDouble("totalPrice")%></td>
                       <td><%= booking.getDate("date")%></td>
                       <td><%= booking.getString("paymentSlip")%></td>
                       <td><%= booking.getString("status")%></td>

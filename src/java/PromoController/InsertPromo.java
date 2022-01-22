@@ -48,7 +48,7 @@ public class InsertPromo extends HttpServlet {
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
             
-            String sqlinsert = "insert into promotion(name,discount,startDate,endDate,description,status)values(?,?,?,?,?,?)";
+            String sqlinsert = "insert into promotion(promo_name,discount,startDate,endDate,description,status)values(?,?,?,?,?,?)";
             
             PreparedStatement ps = conn.prepareStatement(sqlinsert);
             ps.setString(1, name);

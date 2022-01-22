@@ -48,7 +48,7 @@ public class UpdatePromo extends HttpServlet {
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
             
-            String sqlinsert = "update promotion set name=?,discount=?,startDate=?,endDate=?,description=?,status=? where id=?";
+            String sqlinsert = "update promotion set promo_name=?,discount=?,startDate=?,endDate=?,description=?,status=? where id=?";
             
             PreparedStatement ps = conn.prepareStatement(sqlinsert);
             ps.setString(1, name);

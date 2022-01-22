@@ -47,11 +47,13 @@ public class createBooking extends HttpServlet {
         PrintWriter out = response.getWriter();
         
         int hallID = Integer.parseInt(request.getParameter("hallID"));
+        int promo_id = Integer.parseInt(request.getParameter("promotion"));
         String startDate = request.getParameter("startDate");
         String endDate = request.getParameter("endDate");
         Date dateStart = null;
         Date dateEnd = null;
         String status = "Not confirmed";
+        out.println("/ncubaan penanda");
 //        try { 
 //            dateStart =new SimpleDateFormat("yyyy-mm-dd").parse(startDate);
 //            dateEnd =new SimpleDateFormat("yyyy-mm-dd").parse(endDate);
@@ -61,20 +63,21 @@ public class createBooking extends HttpServlet {
         HttpSession session = request.getSession();
         String email = (String)session.getAttribute("sessionEmail");
         int userID = 0;
+        int promoID = 0;
+        double priceDisc = 0;
         int getRecordId = 0;
 //        out.println("cubaan");
         try{
 //            out.println("cubaan");
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
-            
             String selectUser = "select * from user where email=?";
             PreparedStatement us = conn.prepareStatement(selectUser);
             us.setString(1, email);
             ResultSet urs = us.executeQuery();
 //            out.println("cubaan");
             if(urs.next()){
-                userID = urs.getInt("id");
+                userID = urs.getInt("user_id");
             }
             //check date availability
             String checkDate = "select * from dateavailability where hallBooked=? and startDate>=? and endDate<=?";
@@ -84,10 +87,8 @@ public class createBooking extends HttpServlet {
             check.setInt(1, hallID);
 //            out.println(startDate);
 //            out.println(endDate);
-
             check.setDate(2,java.sql.Date.valueOf(startDate));
             check.setDate(3,java.sql.Date.valueOf(endDate));
-//            out.println("/ncubaan penanda");
             ResultSet cas = check.executeQuery();
             if(cas.next()){
 //                out.println("cubaan dalam checking");
@@ -95,16 +96,46 @@ public class createBooking extends HttpServlet {
                 request.getRequestDispatcher("BookingView/createBooking.jsp").include(request, response);
             }
             else{
-                String sqlinsertBooking = "insert into booking(status,hallBooked,customer)values(?,?,?)";    
+
+                String sqlPromo = "select * from promotion where promo_id=?";
+                PreparedStatement ps_promo = conn.prepareStatement(sqlPromo);
+                ps_promo.setInt(1, promo_id);
+                ResultSet promo = ps_promo.executeQuery();
+                out.println("penanda");
+                
+                String selectHall = "select charge from hall where hall_id=?";
+                PreparedStatement ps_hall = conn.prepareStatement(selectHall);
+                ps_hall.setInt(1, hallID);
+                ResultSet rs_hall = ps_hall.executeQuery();
+                
+                if(promo.next()){
+                    out.println("/ncubaan penanda");
+                    promoID = promo.getInt("promo_id");
+                    out.println(promoID);
+                    double disc = promo.getDouble("discount")/100;
+                    if(rs_hall.next()){
+                        priceDisc = rs_hall.getDouble("charge") - (rs_hall.getDouble("charge")*disc);
+                    }
+                } else{
+                    
+                    if(rs_hall.next()){
+                        priceDisc = rs_hall.getDouble("charge");
+                    }
+                    
+                }
+                        
+                String sqlinsertBooking = "insert into booking(totalPrice,status,hallBooked,customer,promo_id)values(?,?,?,?,?)";    
 //                out.println(status);
                 PreparedStatement ps = conn.prepareStatement(sqlinsertBooking, Statement.RETURN_GENERATED_KEYS);
 //                out.println("cubaan dalam checking");
-                ps.setString(1, status);
+                ps.setDouble(1, priceDisc);
+                ps.setString(2, status);
 //                out.println("cubaan dalam checking");
-                ps.setInt(2, hallID);
+                ps.setInt(3, hallID);
 //                out.println("cubaan dalam checking");
-                ps.setInt(3, userID);
+                ps.setInt(4, userID);
 //                out.println(hallID);
+                ps.setInt(5, promoID);
                 ps.executeUpdate();
                 out.println("penanda");
                 ResultSet rs = ps.getGeneratedKeys();

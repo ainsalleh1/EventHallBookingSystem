@@ -116,9 +116,9 @@
                     ps.setString(1, email);
                     ResultSet user = ps.executeQuery();
                     if(user.next()){
-                        user_id=user.getInt("id");
+                        user_id=user.getInt("user_id");
                     }
-                    String sql_book = "select id,date,name,charge,status,paymentSlip from booking,hall where hallBooked=hall_id and customer=?";                   
+                    String sql_book = "select id,date,name,totalPrice,status,paymentSlip from booking,hall where hallBooked=hall_id and customer=?";                   
                     PreparedStatement ps_book = conn.prepareStatement(sql_book);
                     ps_book.setInt(1, user_id);
                     ResultSet booking = ps_book.executeQuery();
@@ -130,7 +130,7 @@
                     <tr>
                       <th scope="row"><%= counter %></th>
                       <td><%= booking.getString("name")%></td>
-                      <td><%= booking.getDouble("charge")%></td>
+                      <td>RM <%= booking.getDouble("totalPrice")%></td>
                       <td><%= booking.getDate("date")%></td>
                       <td><%= booking.getString("paymentSlip")%></td>
                       <td><%= booking.getString("status")%></td>

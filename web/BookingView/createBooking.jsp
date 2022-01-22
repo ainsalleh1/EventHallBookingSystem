@@ -80,6 +80,10 @@
                     ps.setString(1, hallID);
                     ResultSet rs = ps.executeQuery();
                     
+                    String sqlPromo = "select * from promotion";
+                    PreparedStatement ps_promo = conn.prepareStatement(sqlPromo);
+                    ResultSet promo = ps_promo.executeQuery();
+                    
                     while(rs.next()){             
                 
             %>
@@ -102,10 +106,36 @@
                             <input type="date" class="form-control" id="startDate" name="endDate" required>
                         </div>
                         <input type="hidden" value="<%= rs.getInt("hall_id") %>" name="hallID">
-                            
+                                               
+                        <%
+                            if(promo.next()){
+                        %>
+                        <br>
+                        <label for="promotion">Choose a promotion package for discount!</label> 
+                        <select class="form-select" id="promotion" name="promotion">
+                            <option selected>Open this select menu</option>
+                            <option value="<%= promo.getInt("promo_id") %>"> <%= promo.getString("promo_name") %> </option>
+                        <%
+                                while(promo.next()){
+                        %>                                             
+                        
+                        <option value="<%= promo.getInt("promo_id") %>"> <%= promo.getString("promo_name") %> </option>
+                          
+                        <%
+                                }
+                        %>
+                        </select>
+                        <br>
+                        <%
+                            } else{
+                        %>
+                        <br>
+                        <p><i>Note: No promotion package currently available.</i></p>
+                        <%
+                            }
+                        %>
                     </form>
                     
-                    <br>
                     <div class="card text-center h-100">
                         <div class="card-body">
                             <h5 class="card-title"><%= rs.getString("name")%></h5>
