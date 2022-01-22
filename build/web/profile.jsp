@@ -96,7 +96,7 @@
                                 </div>
                             </div>
                             <div class="container" style="text-align: center">
-                                <a class="btn btn-primary" href="editProfile.jsp?id=<%= rs.getString("id")%>" role="button">Edit</a>
+                                <a class="btn btn-primary" href="editProfile.jsp?id=<%= rs.getString("user_id")%>" role="button">Edit</a>
                             </div>
                         </div>
                     </div>

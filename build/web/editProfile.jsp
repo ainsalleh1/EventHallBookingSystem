@@ -86,14 +86,14 @@
                         <legend class="col-form-label col-sm-2 pt-0">User Level</legend>
                         <div class="col-sm-10">
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="userLevel" id="gridRadios1" value="Customer" checked>
-                            <label class="form-check-label" for="gridRadios1">
+                            <input class="form-check-input" type="radio" name="userLevel" id="userLevel1" value="Customer" checked>
+                            <label class="form-check-label" for="userLevel1">
                               Customer
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="userLevel" id="gridRadios2" value="Staff">
-                            <label class="form-check-label" for="gridRadios2">
+                            <input class="form-check-input" type="radio" name="userLevel" id="userLevel2" value="Staff">
+                            <label class="form-check-label" for="userLevel2">
                               Staff
                             </label>
                           </div>
@@ -106,14 +106,14 @@
                         <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
                         <div class="col-sm-10">
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="userGender" id="gridRadios1" value="Male" checked>
-                            <label class="form-check-label" for="gridRadios1">
+                            <input class="form-check-input" type="radio" name="userGender" id="gender1" value="Male" checked>
+                            <label class="form-check-label" for="gender1">
                               Male
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="userGender" id="gridRadios2" value="Female">
-                            <label class="form-check-label" for="gridRadios2">
+                            <input class="form-check-input" type="radio" name="userGender" id="gender2" value="Female">
+                            <label class="form-check-label" for="gender2">
                               Female
                             </label>
                           </div>
@@ -141,75 +141,75 @@
                         <legend class="col-form-label col-sm-2 pt-0">State</legend><br>
                         <div class="col-sm-10">
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="state" id="gridRadios1" value="Melaka" checked>
-                            <label class="form-check-label" for="gridRadios1">
+                            <input class="form-check-input" type="radio" name="state" id="state1" value="Melaka" checked>
+                            <label class="form-check-label" for="state1">
                               Melaka
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="state" id="gridRadios2" value="Selangor">
-                            <label class="form-check-label" for="gridRadios2">
+                            <input class="form-check-input" type="radio" name="state" id="state2" value="Selangor">
+                            <label class="form-check-label" for="state2">
                               Selangor
                             </label>
                           </div>
 
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="state" id="gridRadios3" value="Johor">
-                            <label class="form-check-label" for="gridRadios3">
+                            <input class="form-check-input" type="radio" name="state" id="state3" value="Johor">
+                            <label class="form-check-label" for="state3">
                               Johor
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="state" id="gridRadios4" value="Pahang">
-                            <label class="form-check-label" for="gridRadios4">
+                            <input class="form-check-input" type="radio" name="state" id="state4" value="Pahang">
+                            <label class="form-check-label" for="state4">
                               Pahang
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="state" id="gridRadios5" value="Negeri Sembilan">
-                            <label class="form-check-label" for="gridRadios5">
+                            <input class="form-check-input" type="radio" name="state" id="state5" value="Negeri Sembilan">
+                            <label class="form-check-label" for="state5">
                               Negeri Sembilan
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="state" id="gridRadios6" value="Wilayah Persekutuan (Labuan)">
-                            <label class="form-check-label" for="gridRadios6">
+                            <input class="form-check-input" type="radio" name="state" id="state6" value="Wilayah Persekutuan (Labuan)">
+                            <label class="form-check-label" for="state6">
                               Wilayah Persekutuan (Labuan)
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="state" id="gridRadios7" value="Perak">
-                            <label class="form-check-label" for="gridRadios7">
+                            <input class="form-check-input" type="radio" name="state" id="state7" value="Perak">
+                            <label class="form-check-label" for="state7">
                               Perak
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="state" id="gridRadios8" value="Kedah">
-                            <label class="form-check-label" for="gridRadios8">
+                            <input class="form-check-input" type="radio" name="state" id="state8" value="Kedah">
+                            <label class="form-check-label" for="state8">
                               Kedah
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="state" id="gridRadios9" value="Perlis">
-                            <label class="form-check-label" for="gridRadios9">
+                            <input class="form-check-input" type="radio" name="state" id="state9" value="Perlis">
+                            <label class="form-check-label" for="state9">
                               Perlis
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="state" id="gridRadios10" value="Kelantan">
-                            <label class="form-check-label" for="gridRadios10">
+                            <input class="form-check-input" type="radio" name="state" id="state10" value="Kelantan">
+                            <label class="form-check-label" for="state10">
                               Kelantan
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="state" id="gridRadios11" value="Sarawak">
-                            <label class="form-check-label" for="gridRadios11">
+                            <input class="form-check-input" type="radio" name="state" id="state11" value="Sarawak">
+                            <label class="form-check-label" for="state11">
                               Sarawak
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="state" id="gridRadios12" value="Sabah">
-                            <label class="form-check-label" for="gridRadios12">
+                            <input class="form-check-input" type="radio" name="state" id="state12" value="Sabah">
+                            <label class="form-check-label" for="state12">
                               Sabah
                             </label>
                           </div>

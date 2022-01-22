@@ -99,6 +99,8 @@ public class UpdateProfileServlet extends HttpServlet {
             
             request.getSession().removeAttribute("sessionEmail");
             request.getSession().setAttribute("sessionEmail", email);
+            request.getSession().removeAttribute("sessionUserLevel");
+            request.getSession().setAttribute("sessionUserLevel", userLevel);
             
             conn.close();
             
