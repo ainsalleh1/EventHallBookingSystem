@@ -32,7 +32,7 @@
                 border: 1px solid white;
                 background-color: white;
                 margin-left:390px;
-                opacity: 0.8;
+                opacity: 0.7;
                 border-radius: 25px;
             }
             
@@ -40,6 +40,7 @@
                 font-size: 16px;
             }
             h5{
+                text-align: center;
                 font-size: 14px;
             }
         </style>
@@ -56,16 +57,16 @@
             <div>
                 <form method="POST" class="container text-center" action="LoginServlet">
                     <div class="form-group">
-                        <label for="InputEmail1" class="container text-left" ><h4>Email</h4></label>
+                        <br><br><label for="InputEmail1" class="container text-left" ><h4><b>Email</b></h4></label>
                         <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp"placeholder="Enter email" name="email" required >
                         <br/>
                         <small id="emailHelp" class="form-text text-muted"><h5>We'll never share your email with anyone else.</h5></small>
                     </div>
                     <br>
                     <div class="form-group">
-                        <label for="InputPassword" class="container text-left" ><h4>Password</h4></label>
+                        <label for="InputPassword" class="container text-left" ><h4><b>Password</b></h4></label>
                         <input type="password" class="form-control" id="InputPassword" placeholder="Enter password" name="password" required>
-                        <br><h4><input type="checkbox" onclick="myFunction()">   Show Password</h4><br><br>
+                        <br><h4><input type="checkbox" onclick="myFunction()">   Show Password</h4><br>
                         <script>
                             function myFunction() {
                                 var x = document.getElementById("InputPassword");
@@ -101,8 +102,8 @@
                     <button type="reset" class="btn btn-success" >Reset</button>
                     
                 </form>
-                <br/><br/><br/>
-                <em>Do not have an account? <a href="register.jsp" >Click here</a></em>
+                <br/><br/>
+                <em><h5>Do not have an account? <a href="register.jsp" >Click here</h5></a></em>
             </div>
         </div>
         </div>
