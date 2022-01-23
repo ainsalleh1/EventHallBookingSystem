@@ -1,9 +1,14 @@
+package UserController;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
+import DAO.UserDAO;
+import DAO.UserDAOImpl;
+import Model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -64,49 +69,52 @@ public class RegisterServlet extends HttpServlet {
         
 //        out.println("<h4>" +" birthday: " + birthday + "</h4>");
      
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
+//        try {
+//            Class.forName("com.mysql.jdbc.Driver");
+////            out.println("<h4>" +" birthday: " + birthday + "</h4>");
+//            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
+////            out.println("<h4>" +" birthday: " + birthday + "</h4>");
+//            Statement stmt = conn.createStatement();
+////            out.println("<h4>" +" birthday: " + birthday + "</h4>");
+//            String sqlinsert = "insert into user(email,password,phoneNumber,userLevel,userGender,birthday,age,address,city,zip,state,description)values('"
+//                +email+"','"
+//                +password+"','"
+//                +phoneNumber+"','"
+//                +userLevel+"','"
+//                +userGender+"','"
+//                +birthday+"','"
+//                +age+"','"
+//                +address+"','"
+//                +city+"','"
+//                +zip+"','"
+//                +state+"','"          
+//                +description+"'"
+//                +")"; 
+//            
+////            out.println("<h4>" +" birthday: " + birthday + "</h4>");
+//            
+//            log(sqlinsert);
+//            
+//            stmt.executeUpdate(sqlinsert);
 //            out.println("<h4>" +" birthday: " + birthday + "</h4>");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
-//            out.println("<h4>" +" birthday: " + birthday + "</h4>");
-            Statement stmt = conn.createStatement();
-//            out.println("<h4>" +" birthday: " + birthday + "</h4>");
-            String sqlinsert = "insert into user(email,password,phoneNumber,userLevel,userGender,birthday,age,address,city,zip,state,description)values('"
-                +email+"','"
-                +password+"','"
-                +phoneNumber+"','"
-                +userLevel+"','"
-                +userGender+"','"
-                +birthday+"','"
-                +age+"','"
-                +address+"','"
-                +city+"','"
-                +zip+"','"
-                +state+"','"          
-                +description+"'"
-                +")"; 
-            
-//            out.println("<h4>" +" birthday: " + birthday + "</h4>");
-            
-            log(sqlinsert);
-            
-            stmt.executeUpdate(sqlinsert);
-            out.println("<h4>" +" birthday: " + birthday + "</h4>");
-            
-            conn.close();
-            
-            response.sendRedirect("index.jsp");
- 
-        }
-        catch (Exception ex){
-            
-            out.println("<h4>" +" exception </h4>");
+//            
+//            conn.close();
+//            
+//            response.sendRedirect("index.jsp");
+// 
+//        }
+//        catch (Exception ex){
+//            
+//            out.println("<h4>" +" exception </h4>");
+//        
+//        } 
+
+        User nu = new User(email,password,phoneNumber,userLevel,userGender,birthday,age,address,city,state,zip,description);
+        UserDAO dao = new UserDAOImpl();
+        dao.insertUser(nu);
         
-        } 
-        
-        
-        
-        
+        response.sendRedirect("index.jsp");  
+              
     }
 
 }

@@ -4,6 +4,8 @@
     Author     : End-User
 --%>
 
+<%@page import="Model.Hall"%>
+<%@page import="java.util.List"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>
@@ -61,13 +63,13 @@
                           <a class="nav-link active" aria-current="page" href="MainHall.jsp">Hall List</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="InsertHall.html">Add Hall</a>
+                          <a class="nav-link" href="./HallView/InsertHall.html">Add Hall</a>
                         </li>
                         
                     </ul>
                     <span class="navbar-text">Hall :</span>
-                    <form class="d-flex">                
-                       <input class="form-control me-2" type="search" placeholder="hall name" aria-label="Search">
+                    <form class="d-flex" action="GetHall" method="get">                
+                        <input class="form-control me-2" type="search" placeholder="hall name" aria-label="Search" name="HallName">
                       <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
                 </div>
@@ -77,15 +79,17 @@
             <br><br>  
             
             <%
-                try{
-                    Class.forName("com.mysql.jdbc.Driver");
-                    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
-                    String sql = "select * from hall";
-//                    Statement stmt = conn.createStatement();
-                    PreparedStatement ps = conn.prepareStatement(sql);
-                    ResultSet rs = ps.executeQuery();
-                    
-                    while(rs.next()){             
+//                try{
+//                    Class.forName("com.mysql.jdbc.Driver");
+//                    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
+//                    String sql = "select * from hall";
+////                    Statement stmt = conn.createStatement();
+//                    PreparedStatement ps = conn.prepareStatement(sql);
+//                    ResultSet rs = ps.executeQuery();
+//                    
+//                    while(rs.next()){          
+                List<Hall> hl = (List<Hall>)request.getAttribute("hl");
+                for(int i=0;i<hl.size();i++){
                 
             %>
             
@@ -93,14 +97,14 @@
                 <div class="card-body">               
                     <div class="row">
                        <div class="col">
-                            <h5 class="card-title" style="text-align: center"><%= rs.getString("name")%></h5>
+                            <h5 class="card-title" style="text-align: center"><%= hl.get(i).getName()%></h5>
                             <img src="media/hall1.jpg" class="card-img-bottom" alt="hall">
                         </div>
                         <div class="col-6">
-                            <p class="card-text"><%= rs.getString("description") %></p>
+                            <p class="card-text"><%= hl.get(i).getDescription() %></p>
                         </div>
                         <div class="col">
-                            <a href="HallDetails.jsp?hallID=<%= rs.getString("hall_id")%>" class="btn btn-primary">Detail</a>
+                            <a href="HallView/HallDetails.jsp?hallID=<%= hl.get(i).getHall_id()%>" class="btn btn-primary">Detail</a>
                         </div>
 
                     </div>          
@@ -109,10 +113,7 @@
             
             <br><br>
             <%
-                    }
-                    conn.close();
                 }
-                catch(Exception ex){}
                 %>
         </div>
     </body>

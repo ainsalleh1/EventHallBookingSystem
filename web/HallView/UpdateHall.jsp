@@ -19,7 +19,7 @@
         <style>
                               
                 body {
-                background-image: url("./media/background.png");
+                background-image: url("../media/background.png");
                 height: 100%;
 
                 /* Center and scale the image nicely */
@@ -109,7 +109,7 @@
                     Class.forName("com.mysql.jdbc.Driver");
                     
                     Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
-                    String sql = "select * from hall where id=?";
+                    String sql = "select * from hall where hall_id=?";
                     
                     PreparedStatement ps = conn.prepareStatement(sql);
                     
@@ -123,14 +123,14 @@
             <div class="container border border-dark">
                 <h2 style="text-align: center">Hall Details</h2>
                 
-                <form method="POST" ACTION="../UpdateHall" enctype="multipart/form-data">                
+                <form method="POST" action="../UpdateHall" enctype="multipart/form-data">                
                     
                     <table width="100%" style="text-align:center">
                         <tr>
                             <th style="width: 30%;">Hall ID</th>
                             <td style="width: 70%;background-color: lightblue">
                                 
-                                <input type="text" class="form-control" id="inputHallID" name="id" value="<%= rs.getString("id") %>" readonly>
+                                <input type="text" class="form-control" id="inputHallID" name="id" value="<%= rs.getInt("hall_id") %>" readonly>
                             </td>
                         </tr>
                         <tr>
@@ -192,6 +192,7 @@
             <br><br>
             <%
                     }
+                    conn.close();
                 }
                 catch(Exception ex){}
                 %>
