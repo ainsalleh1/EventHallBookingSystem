@@ -58,7 +58,7 @@
                   <div class="collapse navbar-collapse" id="navbarScroll">
                     <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                         <li class="nav-item">
-                          <a class="nav-link active" aria-current="page" href="#">Hall List</a>
+                          <a class="nav-link active" aria-current="page" href="MainHall.jsp">Hall List</a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="InsertHall.html">Add Hall</a>
@@ -100,7 +100,7 @@
                             <p class="card-text"><%= rs.getString("description") %></p>
                         </div>
                         <div class="col">
-                            <a href="HallDetails.jsp?hallID=<%= rs.getString("id")%>" class="btn btn-primary">Detail</a>
+                            <a href="HallDetails.jsp?hallID=<%= rs.getString("hall_id")%>" class="btn btn-primary">Detail</a>
                         </div>
 
                     </div>          
@@ -110,6 +110,7 @@
             <br><br>
             <%
                     }
+                    conn.close();
                 }
                 catch(Exception ex){}
                 %>

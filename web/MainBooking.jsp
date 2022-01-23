@@ -4,6 +4,10 @@
     Author     : End-User
 --%>
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -84,8 +88,14 @@
                   <div class="collapse navbar-collapse" id="navbarScroll">
                     <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                         <li class="nav-item">
-                          <a class="nav-link active" aria-current="page" href="#">Booking List</a>
-                        </li>                        
+                          <a class="nav-link" aria-current="page" href="BookingView/ManageBooking.jsp">Manage Booking</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" aria-current="page" href="#">Booking List</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" aria-current="page" href="BookingView/myBooking.jsp">My Booking</a>
+                        </li> 
                     </ul>
                     <span class="navbar-text">Booking :</span>
                     <form class="d-flex">                
@@ -97,7 +107,45 @@
             </nav>
             <br><br>
             <%
+                } else{
+            %>
+            
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="MainBooking.jsp">Booking</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                  <div class="collapse navbar-collapse" id="navbarScroll">
+                    <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                        <li class="nav-item">
+                          <a class="nav-link" aria-current="page" href="BookingView/myBooking.jsp">My Booking</a>
+                        </li> 
+                    </ul>
+                    <span class="navbar-text">Booking :</span>
+                    <form class="d-flex">                
+                       <input class="form-control me-2" type="search" placeholder="Booking id" aria-label="Search">
+                      <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+                </div>
+            </nav>
+            
+            <%
                 }
+            %>
+            <br>
+            
+            <%
+                try{
+                    Class.forName("com.mysql.jdbc.Driver");
+                    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
+                    String sql = "select * from hall";
+                    PreparedStatement ps = conn.prepareStatement(sql);
+                    ResultSet rs = ps.executeQuery();
+                    
+                    while(rs.next()){             
+                
             %>
             
             <div class="row">
@@ -107,9 +155,10 @@
                 <div class="col">
                   <div class="card text-center h-100">
                         <div class="card-body">
-                          <h5 class="card-title">Hall Name</h5>
-                          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                          <a href="#" class="btn btn-primary">Book Now</a>
+                          <h5 class="card-title"><%= rs.getString("name")%></h5>
+                          <p class="card-text"><%= rs.getString("description") %></p>
+                          <a href="BookingView/createBooking.jsp?hallID=<%= rs.getString("hall_id")%>" class="btn btn-primary">Book Now</a>
+                          
                         </div>
                     </div>
                 </div>  
@@ -118,7 +167,13 @@
             <br>
             <hr>
             
-            
+            <%              
+                    }
+                    conn.close();
+                } catch(Exception ex){}              
+            %>            
+                
+            <br>
         </div>
     </body>
 </html>

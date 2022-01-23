@@ -3,12 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package PromoController;
+package BookingController;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import javax.servlet.ServletException;
@@ -21,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author End-User
  */
-@WebServlet(name = "InsertPromo", urlPatterns = {"/InsertPromo"})
-public class InsertPromo extends HttpServlet {
+@WebServlet(name = "UpdateBookingStatus", urlPatterns = {"/UpdateBookingStatus"})
+public class UpdateBookingStatus extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,14 +32,11 @@ public class InsertPromo extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost (HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
         
-        String name = request.getParameter("name");
-        double discount = Double.parseDouble(request.getParameter("discount"));
-        String startDate = request.getParameter("StartDate");
-        String endDate = request.getParameter("EndDate");
-        String description = request.getParameter("description");
+        int bookingID = Integer.parseInt(request.getParameter("bookingID"));
         String status = request.getParameter("status");
         
         try{
@@ -48,24 +44,22 @@ public class InsertPromo extends HttpServlet {
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
             
-            String sqlinsert = "insert into promotion(promo_name,discount,startDate,endDate,description,status)values(?,?,?,?,?,?)";
+            String sqlupdate = "update booking set status=? where id=?";
             
-            PreparedStatement ps = conn.prepareStatement(sqlinsert);
-            ps.setString(1, name);
-            ps.setDouble(2, discount);
-            ps.setString(3, startDate);
-            ps.setString(4, endDate);
-            ps.setString(5, description);
-            ps.setString(6, status);
+            PreparedStatement ps = conn.prepareStatement(sqlupdate);
             
+            ps.setString(1, status);
+            ps.setInt(2, bookingID);
             ps.executeUpdate();
             
             conn.close();
             
-            response.sendRedirect("MainPromo.jsp");
+            response.sendRedirect("BookingView/ManageBooking.jsp");
             
             
         }
         catch(Exception ex){}
+        
     }
+
 }

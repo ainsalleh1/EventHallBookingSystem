@@ -79,7 +79,7 @@ public class UpdateProfileServlet extends HttpServlet {
                     + "state=?,"
                     + "zip=?,"
                     + "description=?"
-                    + " WHERE id=?";
+                    + " WHERE user_id=?";
             
             PreparedStatement ps = conn.prepareStatement(sqlupdate);
             ps.setString(1, email);
@@ -99,6 +99,8 @@ public class UpdateProfileServlet extends HttpServlet {
             
             request.getSession().removeAttribute("sessionEmail");
             request.getSession().setAttribute("sessionEmail", email);
+            request.getSession().removeAttribute("sessionUserLevel");
+            request.getSession().setAttribute("sessionUserLevel", userLevel);
             
             conn.close();
             

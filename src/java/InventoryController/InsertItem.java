@@ -3,12 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package PromoController;
+package InventoryController;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import javax.servlet.ServletException;
@@ -21,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author End-User
  */
-@WebServlet(name = "InsertPromo", urlPatterns = {"/InsertPromo"})
-public class InsertPromo extends HttpServlet {
+@WebServlet(name = "InsertItem", urlPatterns = {"/InsertItem"})
+public class InsertItem extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,37 +34,32 @@ public class InsertPromo extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
         
-        String name = request.getParameter("name");
-        double discount = Double.parseDouble(request.getParameter("discount"));
-        String startDate = request.getParameter("StartDate");
-        String endDate = request.getParameter("EndDate");
-        String description = request.getParameter("description");
-        String status = request.getParameter("status");
+        String itemName = request.getParameter("ItemName");
+        String itemType = request.getParameter("ItemType");
         
         try{
             
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
             
-            String sqlinsert = "insert into promotion(promo_name,discount,startDate,endDate,description,status)values(?,?,?,?,?,?)";
+            String sqlinsert = "insert into item(item_name,item_type)values(?,?)";
             
             PreparedStatement ps = conn.prepareStatement(sqlinsert);
-            ps.setString(1, name);
-            ps.setDouble(2, discount);
-            ps.setString(3, startDate);
-            ps.setString(4, endDate);
-            ps.setString(5, description);
-            ps.setString(6, status);
-            
+            ps.setString(1, itemName);
+            ps.setString(2, itemType);
+
             ps.executeUpdate();
             
             conn.close();
             
-            response.sendRedirect("MainPromo.jsp");
+            response.sendRedirect("InventoryView/MainInventory.jsp");
             
             
         }
         catch(Exception ex){}
     }
+        
+    
 }

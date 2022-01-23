@@ -4,6 +4,7 @@
     Author     : End-User
 --%>
 
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>
@@ -84,8 +85,10 @@
                     PreparedStatement ps = conn.prepareStatement(sql);
                     ResultSet rs = ps.executeQuery();
                     
+                    DecimalFormat df = new DecimalFormat("0.00");
+                    
                     while(rs.next()){ 
-                        double calcDiscount = rs.getDouble("discount")*100;
+//                        double calcDiscount = rs.getDouble("discount")*100;
                 
             %>
             
@@ -93,11 +96,11 @@
                 <div class="card-body">               
                     <div class="row">
                        <div class="col">
-                            <h5 class="card-title" style="text-align: center"><%= rs.getString("name")%></h5>
+                            <h5 class="card-title" style="text-align: center"><%= rs.getString("promo_name")%></h5>
                             <img src="media/hall1.jpg" class="card-img-bottom" alt="hall">
                         </div>
                         <div class="col-6">
-                            <h2 class="card-text" style="text-align: center">Discount: <%= calcDiscount %> %</h2>
+                            <h2 class="card-text" style="text-align: center">Discount: <%= df.format(rs.getDouble("discount")) %> %</h2>
                         </div>
                         <div class="col">
                             <a href="./PromotionView/PromoDetails.jsp?promoID=<%= rs.getString("id")%>" class="btn btn-primary">Detail</a>
