@@ -5,6 +5,9 @@
  */
 package HallController;
 
+import DAO.HallDAO;
+import DAO.HallDAOImpl;
+import Model.Hall;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Paths;
@@ -29,8 +32,9 @@ public class UpdateHall extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        String id = request.getParameter("id");        
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        int id = Integer.parseInt(request.getParameter("id"));        
         String name = request.getParameter("HallName");
         String location = request.getParameter("Location");
 //        String address = request.getParameter("HallAddress");
@@ -44,31 +48,38 @@ public class UpdateHall extends HttpServlet {
         Part filePart = request.getPart("HallMedia");
         String file = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
         
-        try{
-            
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
-            
-            String sqlinsert = "update hall set name=?,location=?,charge=?,capacity=?,description=?,media=? where id=?";
-            
-            PreparedStatement ps = conn.prepareStatement(sqlinsert);
-            ps.setString(1, name);
-            ps.setString(2, location);
-            ps.setDouble(3, charge);
-            ps.setString(4, capacity);
-            ps.setString(5, description);
-            ps.setString(6, file);
-            ps.setString(7, id);
-            ps.executeUpdate();
-            
-            conn.close();
-            
-            response.sendRedirect("MainHall.jsp");
-            
-            
-        }
-        catch(Exception ex){}
-        
+//        try{
+//            
+//            Class.forName("com.mysql.jdbc.Driver");
+//            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
+//            
+//            String sqlinsert = "update hall set name=?,location=?,charge=?,capacity=?,description=?,media=? where hall_id=?";
+//            
+//            PreparedStatement ps = conn.prepareStatement(sqlinsert);
+//            ps.setString(1, name);
+//            ps.setString(2, location);
+//            ps.setDouble(3, charge);
+//            ps.setString(4, capacity);
+//            ps.setString(5, description);
+//            ps.setString(6, file);
+//            ps.setString(7, id);
+//            ps.executeUpdate();
+//            
+//            conn.close();
+//            
+//            response.sendRedirect("MainHall.jsp");
+//            
+//            
+//        }
+//        catch(Exception ex){}
+
+        out.println(charge);
+
+        Hall hu = new Hall(name,location,charge,capacity,description,file);
+        HallDAO dao = new HallDAOImpl();
+        dao.updateHall(id, hu);
+
+        response.sendRedirect("MainHall");
     }
 
 }

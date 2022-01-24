@@ -19,7 +19,7 @@
         <style>
                               
                 body {
-                background-image: url("./media/background.png");
+                background-image: url("../media/background.png");
                 height: 100%;
 
                 /* Center and scale the image nicely */
@@ -103,17 +103,17 @@
             
             <%
                 
-                String hallID = request.getParameter("hallID");
+                int hallID = Integer.parseInt(request.getParameter("hallID"));
                 
                 try{
                     Class.forName("com.mysql.jdbc.Driver");
                     
                     Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
-                    String sql = "select * from hall where id=?";
+                    String sql = "select * from hall where hall_id=?";
                     
                     PreparedStatement ps = conn.prepareStatement(sql);
                     
-                    ps.setString(1, hallID);
+                    ps.setInt(1, hallID);
                     ResultSet rs = ps.executeQuery();
                     
                     while(rs.next()){             
@@ -130,7 +130,7 @@
                             <th style="width: 30%;">Hall ID</th>
                             <td style="width: 70%;background-color: lightblue">
                                 
-                                <input type="text" class="form-control" id="inputHallID" name="id" value="<%= rs.getString("id") %>" disabled>
+                                <input type="text" class="form-control" id="inputHallID" name="id" value="<%= rs.getInt("hall_id") %>" readonly>
                             </td>
                         </tr>
                         <tr>
@@ -180,7 +180,7 @@
                         </tr>
                         
                     </table>
-                    <input type="text" class="form-control" id="inputHallID" name="hallID" value="<%= rs.getString("id") %>" hidden>
+                    <input class="form-control" id="inputHallID" name="hallId" value="<%= rs.getInt("hall_id") %>" hidden>
                     <p style="text-align:center">
                         <button type="submit" class="btn btn-success">Confirm</button>
                     <p>
@@ -193,6 +193,7 @@
             <br><br>
             <%
                     }
+                    conn.close();
                 }
                 catch(Exception ex){}
                 %>

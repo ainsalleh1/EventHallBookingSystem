@@ -31,8 +31,11 @@ and open the template in the editor.
                 <li class="nav-item">
                   <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
-                <li class="nav-item">
+<!--                <li class="nav-item">
                   <a class="nav-link" href="MainHall.jsp">Halls</a>
+                </li>-->
+                <li class="nav-item">
+                  <a class="nav-link" href="MainHall">Halls</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="MainBooking.jsp">Booking</a>

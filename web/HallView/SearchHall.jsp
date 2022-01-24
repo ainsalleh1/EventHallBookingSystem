@@ -1,9 +1,10 @@
 <%-- 
-    Document   : HallDetails
-    Created on : Jan 13, 2022, 10:20:01 PM
+    Document   : SearchHall
+    Created on : Jan 24, 2022, 12:28:47 AM
     Author     : End-User
 --%>
 
+<%@page import="Model.Hall"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>
@@ -19,7 +20,7 @@
         <style>
                               
                 body {
-                background-image: url("media/background.png");
+                background-image: url("../media/background.png");
                 height: 100%;
 
                 /* Center and scale the image nicely */
@@ -102,23 +103,8 @@
             <br><br>
             
             <%
-                
-                String hallID = request.getParameter("hallID");
-                
-                try{
-                    Class.forName("com.mysql.jdbc.Driver");
-                    
-                    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
-                    String sql = "select * from hall where hall_id=?";
-                    
-                    PreparedStatement ps = conn.prepareStatement(sql);
-                    
-                    ps.setString(1, hallID);
-                    ResultSet rs = ps.executeQuery();
-                    
-                    while(rs.next()){             
-                
-            %>
+                    Hall hu = (Hall)request.getAttribute("hu");
+                %>
             
             <div class="container border border-dark">
                 <h2 style="text-align: center">Hall Details</h2>
@@ -126,23 +112,23 @@
                 <table width="100%" style="text-align:center">
                     <tr>
                         <th style="width: 30%;">Hall Name</th>
-                        <td style="width: 70%;background-color: lightblue"><%= rs.getString("name") %></td>
+                        <td style="width: 70%;background-color: lightblue"><%= hu.getName() %></td>
                     </tr>
                     <tr>
                         <th style="width: 30%">Location</th>
-                        <td style="width: 70%;background-color: lightblue"><%= rs.getString("location") %></td>
+                        <td style="width: 70%;background-color: lightblue"><%= hu.getLocation() %></td>
                     </tr>
                     <tr>
                         <th style="width: 30%">Charge</th>
-                        <td style="width: 70%;background-color: lightblue"><%= rs.getString("charge") %></td>
+                        <td style="width: 70%;background-color: lightblue"><%= hu.getCharge() %></td>
                     </tr>
                     <tr>
                         <th style="width: 30%">Capacity</th>
-                        <td style="width: 70%;background-color: lightblue"><%= rs.getString("capacity") %></td>
+                        <td style="width: 70%;background-color: lightblue"><%= hu.getCapacity() %></td>
                     </tr>
                     <tr>
                         <th style="width: 30%">Description</th>
-                        <td style="width: 70%;background-color: lightblue"><%= rs.getString("description") %></td>
+                        <td style="width: 70%;background-color: lightblue"><%= hu.getDescription() %></td>
                     </tr>
                     <%
                         if(session.getAttribute("sessionUserLevel").equals("Staff")){
@@ -150,10 +136,10 @@
                     <tr>
                         
                         <td colspan="2" style="text-align:right">
-                            <a href="HallView/UpdateHall.jsp?hallID=<%= rs.getString("hall_id")%>" class="btn btn-primary">Update</a>
+                            <a href="./HallView/UpdateHall.jsp?hallID=<%= hu.getHall_id() %>" class="btn btn-primary">Update</a>
                         </td>
                         <td>
-                            <a href="HallView/DeleteHall.jsp?hallID=<%= rs.getString("hall_id")%>" class="btn btn-primary">Delete</a>
+                            <a href="./HallView/DeleteHall.jsp?hallID=<%= hu.getHall_id() %>" class="btn btn-primary">Delete</a>
                         </td>
                     </tr>
                     <%
@@ -164,17 +150,12 @@
             </div>
                 <br><br>
                 <div class="container">
-                    <a href="InventoryView/InventoryHall.jsp?hallID=<%= rs.getString("hall_id")%>" class="btn btn-info">Inventory List</a>
+                    <a href="./InventoryView/InventoryHall.jsp?hallID=<%= hu.getHall_id() %>" class="btn btn-info">Inventory List</a>
                 </div>
             
             <br><br>
-            <%
-                    }
-                    conn.close();
-                }
-                catch(Exception ex){}
-                %>
             
         </div>
     </body>
 </html>
+
