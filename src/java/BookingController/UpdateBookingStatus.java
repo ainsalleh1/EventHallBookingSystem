@@ -5,6 +5,8 @@
  */
 package BookingController;
 
+import DAO.BookingDAO;
+import DAO.BookingDAOImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -35,30 +37,13 @@ public class UpdateBookingStatus extends HttpServlet {
     protected void doPost (HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        BookingDAO dao = new BookingDAOImpl();
         
         int bookingID = Integer.parseInt(request.getParameter("bookingID"));
         String status = request.getParameter("status");
         
-        try{
-            
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
-            
-            String sqlupdate = "update booking set status=? where id=?";
-            
-            PreparedStatement ps = conn.prepareStatement(sqlupdate);
-            
-            ps.setString(1, status);
-            ps.setInt(2, bookingID);
-            ps.executeUpdate();
-            
-            conn.close();
-            
-            response.sendRedirect("BookingView/ManageBooking.jsp");
-            
-            
-        }
-        catch(Exception ex){}
+        dao.UpdateBookingStatus(bookingID, status);
+        response.sendRedirect("BookingView/ManageBooking.jsp");
         
     }
 

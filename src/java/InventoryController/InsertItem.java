@@ -5,6 +5,9 @@
  */
 package InventoryController;
 
+import DAO.InventoryDAO;
+import DAO.InventoryDAOImpl;
+import Model.Item;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -39,26 +42,13 @@ public class InsertItem extends HttpServlet {
         String itemName = request.getParameter("ItemName");
         String itemType = request.getParameter("ItemType");
         
-        try{
-            
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
-            
-            String sqlinsert = "insert into item(item_name,item_type)values(?,?)";
-            
-            PreparedStatement ps = conn.prepareStatement(sqlinsert);
-            ps.setString(1, itemName);
-            ps.setString(2, itemType);
-
-            ps.executeUpdate();
-            
-            conn.close();
-            
+        InventoryDAO dao = new InventoryDAOImpl();
+        Item i = new Item(itemName, itemType);
+       
             response.sendRedirect("InventoryView/MainInventory.jsp");
             
             
-        }
-        catch(Exception ex){}
+        
     }
         
     

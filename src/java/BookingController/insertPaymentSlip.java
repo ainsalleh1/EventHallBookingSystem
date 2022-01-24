@@ -5,6 +5,8 @@
  */
 package BookingController;
 
+import DAO.BookingDAO;
+import DAO.BookingDAOImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Paths;
@@ -40,33 +42,14 @@ public class insertPaymentSlip extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        
+        BookingDAO dao = new BookingDAOImpl();
         String status = request.getParameter("paymentStatus");
         int booking_id = Integer.parseInt(request.getParameter("bookingID"));
         Part filePart = request.getPart("PaymentSlip");
         String file = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
         
-        try{
-            
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
-            
-            String sqlupdate = "update booking set paymentSlip=?,status=? where id=?";
-            
-            PreparedStatement ps = conn.prepareStatement(sqlupdate);
-       
-            ps.setString(1, file);
-            ps.setString(2, status);
-            ps.setInt(3, booking_id);
-            ps.executeUpdate();
-            
-            conn.close();
-            
-            response.sendRedirect("../BookingView/myBooking.jsp");
-            
-            
-        }
-        catch(Exception ex){}
+        dao.insertPaymentSlip(file, status, booking_id);
+         response.sendRedirect("../BookingView/myBooking.jsp");
     }
         
     

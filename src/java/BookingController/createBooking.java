@@ -5,6 +5,9 @@
  */
 package BookingController;
 
+import DAO.BookingDAO;
+import DAO.BookingDAOImpl;
+import Model.Booking;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -67,106 +70,17 @@ public class createBooking extends HttpServlet {
         double priceDisc = 0;
         int getRecordId = 0;
 //        out.println("cubaan");
-        try{
-//            out.println("cubaan");
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
-            String selectUser = "select * from user where email=?";
-            PreparedStatement us = conn.prepareStatement(selectUser);
-            us.setString(1, email);
-            ResultSet urs = us.executeQuery();
-//            out.println("cubaan");
-            if(urs.next()){
-                userID = urs.getInt("user_id");
-            }
-            //check date availability
-            String checkDate = "select * from dateavailability where hallBooked=? and startDate>=? and endDate<=?";
-//            out.println("cubaan");
-            PreparedStatement check = conn.prepareStatement(checkDate);
-//            out.println("cubaan");
-            check.setInt(1, hallID);
-//            out.println(startDate);
-//            out.println(endDate);
-            check.setDate(2,java.sql.Date.valueOf(startDate));
-            check.setDate(3,java.sql.Date.valueOf(endDate));
-            ResultSet cas = check.executeQuery();
-            if(cas.next()){
-//                out.println("cubaan dalam checking");
-                out.println("<p style=\"color:red;\">Chosen dates are unavailable </p>");                
-                request.getRequestDispatcher("BookingView/createBooking.jsp").include(request, response);
-            }
-            else{
-
-                String sqlPromo = "select * from promotion where promo_id=?";
-                PreparedStatement ps_promo = conn.prepareStatement(sqlPromo);
-                ps_promo.setInt(1, promo_id);
-                ResultSet promo = ps_promo.executeQuery();
-                out.println("penanda");
-                
-                String selectHall = "select charge from hall where hall_id=?";
-                PreparedStatement ps_hall = conn.prepareStatement(selectHall);
-                ps_hall.setInt(1, hallID);
-                ResultSet rs_hall = ps_hall.executeQuery();
-                
-                if(promo.next()){
-                    out.println("/ncubaan penanda");
-                    promoID = promo.getInt("promo_id");
-                    out.println(promoID);
-                    double disc = promo.getDouble("discount")/100;
-                    if(rs_hall.next()){
-                        priceDisc = rs_hall.getDouble("charge") - (rs_hall.getDouble("charge")*disc);
-                    }
-                } else{
-                    
-                    if(rs_hall.next()){
-                        priceDisc = rs_hall.getDouble("charge");
-                    }
-                    
-                }
-                        
-                String sqlinsertBooking = "insert into booking(totalPrice,status,hallBooked,customer,promo_id)values(?,?,?,?,?)";    
-//                out.println(status);
-                PreparedStatement ps = conn.prepareStatement(sqlinsertBooking, Statement.RETURN_GENERATED_KEYS);
-//                out.println("cubaan dalam checking");
-                ps.setDouble(1, priceDisc);
-                ps.setString(2, status);
-//                out.println("cubaan dalam checking");
-                ps.setInt(3, hallID);
-//                out.println("cubaan dalam checking");
-                ps.setInt(4, userID);
-//                out.println(hallID);
-                ps.setInt(5, promoID);
-                ps.executeUpdate();
-                out.println("penanda");
-                ResultSet rs = ps.getGeneratedKeys();
-                out.println("penanda");
-                if(rs.next()){
-                    getRecordId = rs.getInt(1);
-                }
-                out.println(getRecordId);                
-                
-                String sqlinsertDateAvailability = "insert into dateAvailability(startDate, endDate, hallBooked, bookingID)values(?,?,?,?)";
-                
-                
-                PreparedStatement ps_date = conn.prepareStatement(sqlinsertDateAvailability);
-
-    //            ps_date.setDate(1, (java.sql.Date) dateStart);
-    //            ps_date.setDate(2, (java.sql.Date) dateEnd);
-                ps_date.setDate(1,java.sql.Date.valueOf(startDate));
-                ps_date.setDate(2,java.sql.Date.valueOf(endDate));
-                ps_date.setInt(3,hallID);
-                ps_date.setInt(4,getRecordId);
-                ps_date.executeUpdate();
-                
-
-                conn.close();
-
-//                response.sendRedirect("BookingView/myBooking.jsp");
-                response.sendRedirect("BookingView/BookingPayment.jsp?booking="+getRecordId);
-            }       
-            
-        }
-        catch(Exception ex){}
+        BookingDAO dao = new BookingDAOImpl();
+        Booking b = new Booking();
         
-    }
+        b.setTotalPrice(priceDisc);
+        b.setStatus(status);
+        b.setHallBooked(hallID);
+        b.setCustomer(userID);
+        b.setPromo_id(promo_id);
+        
+        dao.createBooking(b,hallID,promo_id,startDate,endDate,dateStart,dateEnd,status,email,userID,promoID,priceDisc,getRecordId);
+
+        response.sendRedirect("BookingView/BookingPayment.jsp?booking="+getRecordId);
+}
 }
