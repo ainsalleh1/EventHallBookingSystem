@@ -1,10 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package PromoController;
 
+import DAO.PromoDAO;
+import DAO.PromoDAOImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -16,47 +13,37 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author End-User
- */
 @WebServlet(name = "DeletePromo", urlPatterns = {"/DeletePromo"})
 public class DeletePromo extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String id = request.getParameter("id");  
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
         
-        try{
-            
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
-            
-            String sqldelete = "DELETE FROM promotion " 
-                    + "WHERE id=?";
-            
-            PreparedStatement ps = conn.prepareStatement(sqldelete);
-            ps.setString(1, id);            
-            ps.executeUpdate();
-            
-            conn.close();
-            
-            response.sendRedirect("MainPromo.jsp");
-            
-            
-        }
-        catch(Exception ex){}
-        
-    }
+        int id = Integer.parseInt(request.getParameter("id"));  
+//        
+//        try{
+//            
+//            Class.forName("com.mysql.jdbc.Driver");
+//            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
+//            
+//            String sqldelete = "DELETE FROM promotion " 
+//                    + "WHERE id=?";
+//            
+//            PreparedStatement ps = conn.prepareStatement(sqldelete);
+//            ps.setString(1, id);            
+//            ps.executeUpdate();
+//            
+//            conn.close();
+//            
+//        }
+//        catch(Exception ex){}
 
+        PromoDAO dao = new PromoDAOImpl();
+        dao.deletePromo(id);
+        response.sendRedirect("MainPromo.jsp");
+    }
 }

@@ -25,16 +25,12 @@ public class DBConnection {
         return conn;
     }
     
-public static void closeConnection(){
+    public static void closeConnection(){
         try {
             conn.close();
         } catch (SQLException ex) {
             Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
-}    
+    }    
 //    close the db connection
-    
-
-}
-
 }
