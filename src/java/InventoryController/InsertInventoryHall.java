@@ -5,6 +5,9 @@
  */
 package InventoryController;
 
+import DAO.InventoryDAO;
+import DAO.InventoryDAOImpl;
+import Model.Inventory;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -41,28 +44,16 @@ public class InsertInventoryHall extends HttpServlet {
         int item = Integer.parseInt(request.getParameter("hall_item"));
         int quantity = Integer.parseInt(request.getParameter("quantity"));
         
-        try{
-            
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
-            
-            String sqlinsert = "insert into inventoryhall(hallInventory,itemInventory,quantity)values(?,?,?)";
-            
-            PreparedStatement ps = conn.prepareStatement(sqlinsert);
-            ps.setInt(1, hallID);
-            ps.setInt(2, item);
-            ps.setInt(3, quantity);
-
-            ps.executeUpdate();
-            
-            conn.close();
+        InventoryDAO dao = new InventoryDAOImpl();
+        Inventory i = new Inventory(hallID, item,quantity);
+        
+        dao.InsertInventoryHall(i);
+       
             
             out.println("<p style=\"color:red;\"> Item added to hall inventory successfully </p>");                
             request.getRequestDispatcher("InventoryView/InsertHallInventory.jsp?hallID="+hallID).include(request, response);
             
-            
-        }
-        catch(Exception ex){}
+        
         
     }
 

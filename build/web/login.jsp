@@ -44,6 +44,7 @@
                 font-size: 16px;
             }
             h5{
+                text-align: center;
                 font-size: 14px;
             }
         </style>
