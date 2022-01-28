@@ -97,7 +97,7 @@ public class PromoDAOImpl implements PromoDAO {
         int promo_id = id;
         try {
             String sqldelete = "DELETE FROM promotion "
-                    + "WHERE id=?";
+                    + "WHERE promo_id=?";
             conn = DBUtility.DBConnection.openConnection();            
             ps = conn.prepareStatement(sqldelete);
 
@@ -114,7 +114,7 @@ public class PromoDAOImpl implements PromoDAO {
         int promo_id = id;
         
         try{            
-            String sqlupdate = "update promotion set promo_name=?,discount=?,startDate=?,endDate=?,description=?,status=? where id=?";
+            String sqlupdate = "update promotion set promo_name=?,discount=?,startDate=?,endDate=?,description=?,status=? where promo_id=?";
             conn = DBUtility.DBConnection.openConnection();            
             ps = conn.prepareStatement(sqlupdate);
             

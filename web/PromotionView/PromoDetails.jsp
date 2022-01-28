@@ -103,17 +103,17 @@
             
             <%
                 
-                String promoID = request.getParameter("promoID");
+                int promoID = Integer.parseInt(request.getParameter("promoID"));
                 
                 try{
                     Class.forName("com.mysql.jdbc.Driver");
                     
                     Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
-                    String sql = "select * from promotion where id=?";
+                    String sql = "select * from promotion where promo_id=?";
                     
                     PreparedStatement ps = conn.prepareStatement(sql);
                     
-                    ps.setString(1, promoID);
+                    ps.setInt(1, promoID);
                     ResultSet rs = ps.executeQuery();
                     
                     while(rs.next()){ 
@@ -127,7 +127,7 @@
                 <table width="100%" style="text-align:center">
                     <tr>
                         <th style="width: 30%;">Promotion Name</th>
-                        <td style="width: 70%;background-color: lightblue"><%= rs.getString("name") %></td>
+                        <td style="width: 70%;background-color: lightblue"><%= rs.getString("promo_name") %></td>
                     </tr>
                     <tr>
                         <th style="width: 30%">Discount</th>
@@ -147,10 +147,10 @@
                     <tr>
                         
                         <td colspan="2" style="text-align:right">
-                            <a href="UpdatePromo.jsp?promoID=<%= rs.getString("id")%>" class="btn btn-primary">Update</a>
+                            <a href="UpdatePromo.jsp?promoID=<%= rs.getInt("promo_id")%>" class="btn btn-primary">Update</a>
                         </td>
                         <td>
-                            <a href="DeletePromo.jsp?promoID=<%= rs.getString("id")%>" class="btn btn-primary">Delete</a>
+                            <a href="DeletePromo.jsp?promoID=<%= rs.getInt("promo_id")%>" class="btn btn-primary">Delete</a>
                         </td>
                     </tr>
                     <%

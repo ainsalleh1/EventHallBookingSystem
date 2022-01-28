@@ -49,7 +49,7 @@ public class insertPaymentSlip extends HttpServlet {
         String file = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
         
         dao.insertPaymentSlip(file, status, booking_id);
-         response.sendRedirect("../BookingView/myBooking.jsp");
+         response.sendRedirect("BookingView/myBooking.jsp");
     }
         
     

@@ -20,28 +20,21 @@ public class DateAvailabilityDAOImpl implements DateAvailabilityDAO{
     PreparedStatement ps;
     ResultSet rs;
     
-
-
     @Override
     public void UpdateDateAvailibity(int id, Date startDate, Date endDate) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 
     try{
-            
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
-            
             String sqlupdate = "update dateavailability set startDate=? set endDate=? where id=?";
-            
-            PreparedStatement ps = conn.prepareStatement(sqlupdate);
-            
+         
+            conn = DBUtility.DBConnection.openConnection();            
+            ps = conn.prepareStatement(sqlupdate);
+       
             ps.setDate(1, startDate);
             ps.setDate(2, endDate);
+            ps.setInt(3, id);
             ps.executeUpdate();
-            
-            conn.close();
-            
-            
+ 
         }
         catch(Exception ex){}
     }

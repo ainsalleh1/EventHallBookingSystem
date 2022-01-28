@@ -122,6 +122,11 @@ public class UpdateProfileServlet extends HttpServlet {
         UserDAO dao = new UserDAOImpl();
         dao.updateUser(userID, nu);
         
+        request.getSession().removeAttribute("sessionEmail");
+        request.getSession().setAttribute("sessionEmail", email);
+        request.getSession().removeAttribute("sessionUserLevel");
+        request.getSession().setAttribute("sessionUserLevel", userLevel);
+        
         response.sendRedirect("profile.jsp");       
         
         

@@ -103,17 +103,17 @@
             
             <%
                 
-                 String promoID = request.getParameter("promoID");
+                 int promoID = Integer.parseInt(request.getParameter("promoID"));
                 
                 try{
                     Class.forName("com.mysql.jdbc.Driver");
                     
                     Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
-                    String sql = "select * from promotion where id=?";
+                    String sql = "select * from promotion where promo_id=?";
                     
                     PreparedStatement ps = conn.prepareStatement(sql);
                     
-                    ps.setString(1, promoID);
+                    ps.setInt(1, promoID);
                     ResultSet rs = ps.executeQuery();
                     
                     while(rs.next()){             
@@ -131,13 +131,13 @@
                             <th style="width: 30%;">Promotion ID</th>
                             <td style="width: 70%;background-color: lightblue">
                                 
-                                <input type="text" class="form-control" id="inputPromoID" name="id" value="<%= rs.getString("id") %>" disabled>
+                                <input type="text" class="form-control" id="inputPromoID" name="id" value="<%= rs.getInt("promo_id") %>" disabled>
                             </td>
                         </tr>
                         <tr>
                             <th style="width: 30%;">Name</th>
                             <td style="width: 70%;background-color: lightblue">                     
-                                <input type="text" class="form-control" id="inputPromoName" name="name" value="<%= rs.getString("name") %>" disabled>
+                                <input type="text" class="form-control" id="inputPromoName" name="name" value="<%= rs.getString("promo_name") %>" disabled>
                             </td>
                         </tr>
                         <tr>
@@ -149,14 +149,14 @@
                         <tr>
                             <th style="width: 30%">Start Date</th>
                             <td style="width: 70%;background-color: lightblue">
-                                <input type="date" class="form-control" id="inputStartDate" name="StartDate" value="<%= rs.getString("startDate") %>" disabled>
+                                <input type="date" class="form-control" id="inputStartDate" name="StartDate" value="<%= rs.getDate("startDate") %>" disabled>
                             </td>
                         </tr>
                         <tr>
                             <th style="width: 30%">End Date</th>
                             <td style="width: 70%;background-color: lightblue">
                                 
-                                <input type="date" class="form-control" id="inputEndDate" name="EndDate" value="<%= rs.getString("startDate") %>" disabled>                                
+                                <input type="date" class="form-control" id="inputEndDate" name="EndDate" value="<%= rs.getDate("endDate") %>" disabled>                                
 
                             </td>
                         </tr>
@@ -177,7 +177,7 @@
                         </tr>
                         
                     </table>
-                    <input type="text" class="form-control" id="inputPromoID" name="id" value="<%= rs.getString("id") %>" hidden>
+                    <input type="text" class="form-control" id="inputPromoID" name="id" value="<%= rs.getInt("promo_id") %>" hidden>
                     <p style="text-align:center">
                         <button type="submit" class="btn btn-success">Delete</button>
                     <p>
@@ -190,6 +190,7 @@
             <br><br>
             <%
                     }
+                    conn.close();
                 }
                 catch(Exception ex){}
                 %>

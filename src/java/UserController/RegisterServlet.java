@@ -109,7 +109,7 @@ public class RegisterServlet extends HttpServlet {
 //        
 //        } 
 
-        User nu = new User(email,password,phoneNumber,userLevel,userGender,birthday,age,address,city,state,zip,description);
+        User nu = new User(email,password,phoneNumber,userLevel,userGender,birthday,age,address,city,zip,state,description);
         UserDAO dao = new UserDAOImpl();
         dao.insertUser(nu);
         

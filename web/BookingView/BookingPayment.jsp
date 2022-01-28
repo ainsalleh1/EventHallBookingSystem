@@ -82,11 +82,11 @@
            
             </dl>
             
-            <form method="POST" class="container text-left" action="../InsertPaymentSlip" enctype="multipart/form-data">
+            <form method="POST" class="container text-left" action="../insertPaymentSlip" enctype="multipart/form-data">
                 
                 <div class="mb-3">
                 <label for="formFile" class="form-label">Payment Slip (.pdf)</label>
-                <input class="form-control" type="file" id="formFile" name="PaymentSlip" accept='.pdf'>
+                <input class="form-control" type="file" id="formFile" name="PaymentSlip" accept='.pdf' required>
               </div>
                 <input type="hidden" value="Payment pending approval" name="paymentStatus">
                 <input type="hidden" value="<%= request.getParameter("booking") %>" name="bookingID">

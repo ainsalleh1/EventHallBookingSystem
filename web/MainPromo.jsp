@@ -103,7 +103,7 @@
                             <h2 class="card-text" style="text-align: center">Discount: <%= df.format(rs.getDouble("discount")) %> %</h2>
                         </div>
                         <div class="col">
-                            <a href="./PromotionView/PromoDetails.jsp?promoID=<%= rs.getString("id")%>" class="btn btn-primary">Detail</a>
+                            <a href="./PromotionView/PromoDetails.jsp?promoID=<%= rs.getInt("promo_id")%>" class="btn btn-primary">Detail</a>
                         </div>
 
                     </div>          
