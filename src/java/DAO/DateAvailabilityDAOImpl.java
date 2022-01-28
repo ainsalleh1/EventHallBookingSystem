@@ -35,9 +35,8 @@ public class DateAvailabilityDAOImpl implements DateAvailabilityDAO{
             
             PreparedStatement ps = conn.prepareStatement(sqlupdate);
             
-            ps.setInt(1, id);
-            ps.setDate(2, startDate);
-            ps.setDate(3, endDate);
+            ps.setDate(1, startDate);
+            ps.setDate(2, endDate);
             ps.executeUpdate();
             
             conn.close();
