@@ -113,7 +113,7 @@
                         <br>
                         <label for="promotion">Choose a promotion package for discount!</label> 
                         <select class="form-select" id="promotion" name="promotion">
-                            <option selected>Open this select menu</option>
+                            <option value="0" selected>Open this select menu</option>
                             <option value="<%= promo.getInt("promo_id") %>"> <%= promo.getString("promo_name") %> </option>
                         <%
                                 while(promo.next()){

@@ -4,12 +4,13 @@ package Model;
 import java.io.Serializable;
 
 public class Booking implements Serializable{
-    private double totalPrice;
-    private String status;
-    private int hallBooked;
-    private int customer;
-    private int promo_id;
-    private String file;
+    int booking_id;
+    double totalPrice;
+    String status;
+    int hallBooked;
+    int customer;
+    int promo_id;
+    String file;
 
     public Booking(double totalPrice, String status, int hallBooked, int customer, int promo_id) {
         this.totalPrice = totalPrice;
@@ -17,6 +18,14 @@ public class Booking implements Serializable{
         this.hallBooked = hallBooked;
         this.customer = customer;
         this.promo_id = promo_id;
+    }
+
+    public int getBooking_id() {
+        return booking_id;
+    }
+
+    public void setBooking_id(int booking_id) {
+        this.booking_id = booking_id;
     }
 
     public void setFile(String file) {
