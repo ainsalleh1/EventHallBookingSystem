@@ -40,8 +40,11 @@ and open the template in the editor.
                 <li class="nav-item">
                   <a class="nav-link" href="MainBooking.jsp">Booking</a>
                 </li>
-                <li class="nav-item">
+<!--                <li class="nav-item">
                   <a class="nav-link" href="MainPromo.jsp">Promo</a>
+                </li>-->
+                <li class="nav-item">
+                  <a class="nav-link" href="MainPromo">Promo</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="InventoryView/MainInventory.jsp">Inventory</a>

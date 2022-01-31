@@ -4,6 +4,8 @@
     Author     : End-User
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="Model.Promo"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -77,18 +79,21 @@
             
             
             <%
-                try{
-                    Class.forName("com.mysql.jdbc.Driver");
-                    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
-                    String sql = "select * from promotion";
-//                    Statement stmt = conn.createStatement();
-                    PreparedStatement ps = conn.prepareStatement(sql);
-                    ResultSet rs = ps.executeQuery();
-                    
+//                try{
+//                    Class.forName("com.mysql.jdbc.Driver");
+//                    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
+//                    String sql = "select * from promotion";
+////                    Statement stmt = conn.createStatement();
+//                    PreparedStatement ps = conn.prepareStatement(sql);
+//                    ResultSet rs = ps.executeQuery();
+//                    
                     DecimalFormat df = new DecimalFormat("0.00");
-                    
-                    while(rs.next()){ 
+//                    
+//                    while(rs.next()){ 
 //                        double calcDiscount = rs.getDouble("discount")*100;
+
+                    List<Promo> p = (List<Promo>)request.getAttribute("pl");
+                for(int i=0;i<p.size();i++){
                 
             %>
             
@@ -96,14 +101,14 @@
                 <div class="card-body">               
                     <div class="row">
                        <div class="col">
-                            <h5 class="card-title" style="text-align: center"><%= rs.getString("promo_name")%></h5>
+                           <h5 class="card-title" style="text-align: center"><%= p.get(i).getPromo_name()  %></h5>
                             <img src="media/hall1.jpg" class="card-img-bottom" alt="hall">
                         </div>
                         <div class="col-6">
-                            <h2 class="card-text" style="text-align: center">Discount: <%= df.format(rs.getDouble("discount")) %> %</h2>
+                            <h2 class="card-text" style="text-align: center">Discount: <%= df.format(p.get(i).getDiscount()) %> %</h2>
                         </div>
                         <div class="col">
-                            <a href="./PromotionView/PromoDetails.jsp?promoID=<%= rs.getInt("promo_id")%>" class="btn btn-primary">Detail</a>
+                            <a href="./PromotionView/PromoDetails.jsp?promoID=<%= p.get(i).getPromo_id() %>" class="btn btn-primary">Detail</a>
                         </div>
 
                     </div>          
@@ -113,8 +118,8 @@
             <br><br>
             <%
                     }
-                }
-                catch(Exception ex){}
+//                }
+//                catch(Exception ex){}
                 %>
             
             <br><br>
