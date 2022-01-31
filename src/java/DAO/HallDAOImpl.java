@@ -55,16 +55,22 @@ public class HallDAOImpl implements HallDAO{
         return hl;
     }
 
+    /**
+     *
+     * @param HallName
+     * @return
+     */
     @Override
     public Hall getHall(String HallName) {
         
         Hall hu = new Hall();
         String cond = HallName;
         try{
-            String SQL = "SELECT * FROM hall WHERE name=?";
+//            String SQL = "SELECT * FROM hall WHERE name=?";
+            String SQL = "SELECT * FROM hall WHERE name LIKE ?";
             conn = DBConnection.openConnection();
             ps = conn.prepareStatement(SQL);
-            ps.setString(1, cond);
+            ps.setString(1, "%" + cond + "%");
             rs = ps.executeQuery();
             
             while(rs.next()){

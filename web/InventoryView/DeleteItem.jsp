@@ -1,6 +1,6 @@
 <%-- 
-    Document   : MainInventory
-    Created on : Jan 20, 2022, 5:49:20 PM
+    Document   : DeleteItem
+    Created on : Jan 31, 2022, 5:50:42 PM
     Author     : End-User
 --%>
 
@@ -20,7 +20,7 @@
         <style>
             .mySlides {display:none;}
             body {
-                background-image: url("media/background.png");
+                background-image: url("../media/background.png");
                 height: 100%;
 
                 /* Center and scale the image nicely */
@@ -30,7 +30,7 @@
                 background-attachment: fixed;
             }
         </style>
-        <title>Main Inventory</title>
+        <title>Delete Item</title>
     </head>
     <body>
         <div class="container">
@@ -40,7 +40,7 @@
                   <a class="nav-link" aria-current="page" href="../MainHomepage.jsp">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="MainHall.jsp">Halls</a>
+                  <a class="nav-link" href="../MainHall.jsp">Halls</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="MainBooking.jsp">Booking</a>
@@ -64,7 +64,7 @@
             </ul>
             
             <br><br>
-        
+            
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="MainInventory.jsp">Inventory Management</a>
@@ -91,73 +91,61 @@
                     </form>
                 </div>
                 </div>
-            </nav>
+            </nav>                
             
-            <hr>
-            <h2>Items</h2>
-            <hr>
+            <br><br>
             
-            <table class="table table-hover">              
-                <thead>
-                    <tr>
-                      <th scope="col">Number</th>
-                      <th scope="col">Name</th>
-                      <th scope="col">Type</th>
-                      <%
-                        if(session.getAttribute("sessionUserLevel").equals("Staff")){
-                    %>
-                          <th scope="col">Actions</th>
-                          <%
-                        }
-                    %>
-                    </tr>
-                  </thead>
-                  <tbody>
             
-            <%
-                int counter=0;
-                try{                  
-                    Class.forName("com.mysql.jdbc.Driver");
+            <h2>Delete Item Details</h2>
+            
+            <br><br>
+            
+                <%
                     
-                    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");                   
-                    
-                    String sql = "select * from item";                   
-                    PreparedStatement ps_item = conn.prepareStatement(sql);
+                    int itemID = Integer.parseInt(request.getParameter("itemID"));
+                    try{                  
+                        Class.forName("com.mysql.jdbc.Driver");
+                       Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");   
 
-                    ResultSet item = ps_item.executeQuery();
-                    while(item.next()){
-                        counter=counter+1;
-                
-            %>          
-            
-            <tr>                    
-                <th scope="row"><%= counter %></th>
-                      <td><%= item.getString("item_name")%></td>
-                      <td><%= item.getString("item_type")%></td>   
-                      <%
-                        if(session.getAttribute("sessionUserLevel").equals("Staff")){
-                    %>
+                        String sql_item = "select * from item where item_id=?";                   
+                        PreparedStatement ps_item = conn.prepareStatement(sql_item);
+                        ps_item.setInt(1, itemID);
+                        ResultSet rs_item = ps_item.executeQuery();
+                        if(rs_item.next()){
+                            
+                %>
                         
-                        <td style="text-align:left;">
-                            <a href="UpdateItem.jsp?itemID=<%= item.getInt("item_id") %>" class="btn btn-warning">Update</a>
-                            <a href="DeleteItem.jsp?itemID=<%= item.getInt("item_id") %>" class="btn btn-danger">Delete</a>
-                        </td>
-                    <%
-                        }
-                    %>
-            </tr>
+                 <form method="POST" class="container text-left" action="../DeleteItem">
             
+              <div class="col-md-6">
+                <label for="inputItemName" class="form-label">Item Name : </label>
+                <input type="text" class="form-control" id="inputItemName" name="ItemName" value="<%= rs_item.getString("item_name") %>" disabled>
+              </div>
+              
+              <br><br>
+              <div class="col-md-6">
+                <label for="inputItemType" class="form-label">Item Type : </label>
+                <input type="text" class="form-control" id="inputItemType" name="ItemType" value="<%= rs_item.getString("item_type") %>" disabled>
+              </div>
+              
+              <br><br>
+              
+              <p style="text-align:left">
+                    <input type="text" class="form-control" id="inputItemID" name="item_id" value="<%= rs_item.getInt("item_id") %>" hidden>
+                    <button type="submit" class="btn btn-success">Confirm</button>
+              <p>
+
+            </form>
             <%
-               
                     }
-                    conn.close();
+                conn.close();
                 }catch(Exception ex){}
                 
             %>
-                            
-                  </tbody>
-            </table>
             
+                        
+            
+                
         </div>
     </body>
 </html>

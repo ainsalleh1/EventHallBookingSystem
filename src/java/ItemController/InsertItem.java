@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package InventoryController;
+package ItemController;
 
-import DAO.InventoryDAO;
-import DAO.InventoryDAOImpl;
+import DAO.ItemDAO;
+import DAO.ItemDAOImpl;
 import Model.Item;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -35,6 +35,7 @@ public class InsertItem extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -42,13 +43,11 @@ public class InsertItem extends HttpServlet {
         String itemName = request.getParameter("ItemName");
         String itemType = request.getParameter("ItemType");
         
-        InventoryDAO dao = new InventoryDAOImpl();
+        ItemDAO dao = new ItemDAOImpl();
         Item i = new Item(itemName, itemType);
         dao.InsertItem(i);
        
-            response.sendRedirect("InventoryView/MainInventory.jsp");
-            
-            
+        response.sendRedirect("InventoryView/MainInventory.jsp");   
         
     }
         
