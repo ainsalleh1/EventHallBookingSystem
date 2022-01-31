@@ -139,6 +139,13 @@
                           <th scope="col">Item Name</th>
                           <th scope="col">Item Type</th>
                           <th scope="col">Quantity</th>
+                          <%
+                        if(session.getAttribute("sessionUserLevel").equals("Staff")){
+                    %>
+                          <th scope="col">Actions</th>
+                          <%
+                        }
+                    %>
                         </tr>
                       </thead>
                       <tbody>
@@ -151,7 +158,7 @@
                     ResultSet inventory = ps_hall.executeQuery();
                     if(inventory.next()){
                         
-                        String hallItems = "select quantity,item_name,item_type from inventoryhall,item where itemInventory=item_id";                   
+                        String hallItems = "select inventory_id,quantity,item_name,item_type from inventoryhall,item where itemInventory=item_id";                   
                         PreparedStatement ps_hallItem = conn.prepareStatement(hallItems);
 
                         ResultSet hallInventory = ps_hallItem.executeQuery();
@@ -166,6 +173,17 @@
                 <td><%= hallInventory.getString("item_name")%></td>
                 <td><%= hallInventory.getString("item_type")%></td>     
                 <td><%= hallInventory.getInt("quantity")%></td> 
+                <%
+                        if(session.getAttribute("sessionUserLevel").equals("Staff")){
+                    %>
+                        
+                        <td style="text-align:left;">
+                            <a href="UpdateHallInventory.jsp?inventoryID=<%= hallInventory.getInt("inventory_id") %>" class="btn btn-warning">Update</a>
+                            <a href="DeleteHallInventory.jsp?inventoryID=<%= hallInventory.getInt("inventory_id") %>" class="btn btn-danger">Delete</a>
+                        </td>
+                    <%
+                        }
+                    %>
             </tr>
             
             <%

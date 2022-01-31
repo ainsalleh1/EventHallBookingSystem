@@ -15,4 +15,6 @@ import Model.Item;
 public interface InventoryDAO {
     public void InsertInventoryHall(Inventory i);
     public void InsertItem(Item i);
+    public void UpdateInventoryHall(int id, Inventory i);
+    public void DeleteInventoryHall(int id);
 }

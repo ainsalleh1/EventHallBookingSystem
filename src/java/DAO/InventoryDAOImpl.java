@@ -61,5 +61,53 @@ public class InventoryDAOImpl implements InventoryDAO {
         }
 
     }
+    
+    /**
+     *
+     * @param id
+     * @param i
+     */
+    @Override
+    public void UpdateInventoryHall(int id, Inventory i) {
+        
+        Inventory ni = i;
+        int cond_id=id;
+        try{
+            String sqlupdate = "update inventoryhall set quantity=? where inventory_id=?";
+            
+            conn = DBUtility.DBConnection.openConnection();
+            
+            ps = conn.prepareStatement(sqlupdate);
+            ps.setInt(1, ni.getQuantity());
+            ps.setInt(2, cond_id);
+            ps.executeUpdate();
+                  
+            
+        }
+        catch(Exception ex){}
+        
+    }
+    
+    /**
+     *
+     * @param id
+     */
+    @Override
+    public void DeleteInventoryHall(int id) {
+        
+        int cond_id=id;
+        try{
+            
+            String sqldelete = "delete from inventoryhall where inventory_id=?";
+            
+            conn = DBUtility.DBConnection.openConnection();
+            ps = conn.prepareStatement(sqldelete);
+            ps.setInt(1, cond_id);
+            ps.executeUpdate();        
+   
+        }
+        catch(Exception ex){ }
+        
+    }
 
 }
