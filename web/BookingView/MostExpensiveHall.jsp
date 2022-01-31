@@ -1,6 +1,6 @@
 <%-- 
-    Document   : MainBooking
-    Created on : Dec 29, 2021, 9:49:33 PM
+    Document   : MostExpensiveHall
+    Created on : Jan 31, 2022, 8:31:02 PM
     Author     : End-User
 --%>
 
@@ -67,8 +67,8 @@
                   Sort By...
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li><a class="dropdown-item" href="BookingView/CheapestHall.jsp">Cheapest</a></li>
-                  <li><a class="dropdown-item" href="BookingView/MostExpensiveHall.jsp">Most Expensive</a></li>
+                  <li><a class="dropdown-item" href="#">Cheapest</a></li>
+                  <li><a class="dropdown-item" href="#">Most Expensive</a></li>
                 </ul>
             </div>
             <br>
@@ -139,7 +139,7 @@
                 try{
                     Class.forName("com.mysql.jdbc.Driver");
                     Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
-                    String sql = "select * from hall";
+                    String sql = "select * from hall order by charge desc";
                     PreparedStatement ps = conn.prepareStatement(sql);
                     ResultSet rs = ps.executeQuery();
                     
