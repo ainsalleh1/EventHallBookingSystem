@@ -65,8 +65,8 @@
                         
                     </ul>
                     <span class="navbar-text">Promo :</span>
-                    <form class="d-flex">                
-                       <input class="form-control me-2" type="search" placeholder="promo name" aria-label="Search">
+                    <form class="d-flex" action="GetPromo" method="get">                
+                       <input class="form-control me-2" type="search" placeholder="promo name" aria-label="Search" name="PromoName">
                       <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
                 </div>
