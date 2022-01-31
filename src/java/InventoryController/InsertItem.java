@@ -44,6 +44,7 @@ public class InsertItem extends HttpServlet {
         
         InventoryDAO dao = new InventoryDAOImpl();
         Item i = new Item(itemName, itemType);
+        dao.InsertItem(i);
        
             response.sendRedirect("InventoryView/MainInventory.jsp");
             

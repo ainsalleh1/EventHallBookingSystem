@@ -35,26 +35,24 @@ public class InsertInventoryHall extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        
+
         int hallID = Integer.parseInt(request.getParameter("hall_id"));
         int item = Integer.parseInt(request.getParameter("hall_item"));
         int quantity = Integer.parseInt(request.getParameter("quantity"));
-        
+
         InventoryDAO dao = new InventoryDAOImpl();
-        Inventory i = new Inventory(hallID, item,quantity);
-        
+        Inventory i = new Inventory(hallID, item, quantity);
+
         dao.InsertInventoryHall(i);
-       
-            
-            out.println("<p style=\"color:red;\"> Item added to hall inventory successfully </p>");                
-            request.getRequestDispatcher("InventoryView/InsertHallInventory.jsp?hallID="+hallID).include(request, response);
-            
-        
-        
+
+        out.println("<p style=\"color:red;\"> Item added to hall inventory successfully </p>");
+        request.getRequestDispatcher("InventoryView/ListHallInventory.jsp?hallID=" + hallID).include(request, response);
+
     }
 
 }
