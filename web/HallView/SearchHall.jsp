@@ -103,7 +103,7 @@
             
             <br><br>
             
-            <div>
+            <div class="container">
                 <p><i>Search result of </i><mark><%= request.getAttribute("searchkey") %></mark><i> keyword.</i></p>
             </div>
                 
