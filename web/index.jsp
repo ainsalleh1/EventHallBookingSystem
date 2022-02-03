@@ -74,7 +74,7 @@ and open the template in the editor.
         <div class="container">
             <br>
             <h1>
-                <b>Halls Booking System</b>
+                <b>Event Hall Booking System</b>
             </h1><br><br>
             
             <div class="w3-content w3-display-container">
