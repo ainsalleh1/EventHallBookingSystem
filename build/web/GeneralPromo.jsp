@@ -27,7 +27,7 @@
             <div class="container">
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
-                      <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                      <a class="nav-link" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="GeneralHall.jsp">Halls</a>
@@ -36,7 +36,7 @@
                       <a class="nav-link active" href="GeneralPromo.jsp">Promo</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="AboutUs.html">About Us</a>
+                      <a class="nav-link" href="GeneralAboutUs.html">About Us</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="login.jsp">Login</a>
