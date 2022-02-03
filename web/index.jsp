@@ -59,7 +59,7 @@ and open the template in the editor.
                   <a class="nav-link" href="MainHall">Halls</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="GeneralPromo.jsp">Promo</a>
+                  <a class="nav-link" href="MainPromo">Promo</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="GeneralAboutUs.html">About Us</a>

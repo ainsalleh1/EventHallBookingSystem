@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -41,7 +42,12 @@ public class MainPromo extends HttpServlet {
         PromoDAO dao = new PromoDAOImpl();
         List<Promo> pl = dao.getAllPromo();
         request.setAttribute("pl",pl);
-        request.getRequestDispatcher("/MainPromo.jsp").forward(request,response);
+        HttpSession session = request.getSession();
+        if(session.getAttribute("sessionEmail") != null){       
+            request.getRequestDispatcher("/MainPromo.jsp").forward(request,response);
+        }else{
+            request.getRequestDispatcher("GeneralPromo.jsp").forward(request,response);
+        }
         
 }
 }
