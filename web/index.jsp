@@ -56,7 +56,7 @@ and open the template in the editor.
                   <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="GeneralHall.jsp">Halls</a>
+                  <a class="nav-link" href="MainHall">Halls</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="GeneralPromo.jsp">Promo</a>
