@@ -4,6 +4,7 @@
     Author     : End-User
 --%>
 
+<%@page import="java.util.List"%>
 <%@page import="Model.Hall"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -102,56 +103,38 @@
             
             <br><br>
             
+            <div>
+                <p><i>Search result of </i><mark><%= request.getAttribute("searchkey") %></mark><i> keyword.</i></p>
+            </div>
+                
+            
             <%
-                    Hall hu = (Hall)request.getAttribute("hu");
+                    List<Hall> hu = (List<Hall>)request.getAttribute("hu");
+                    for(int i=0;i<hu.size();i++){
                 %>
             
-            <div class="container border border-dark">
-                <h2 style="text-align: center">Hall Details</h2>
-                
-                <table width="100%" style="text-align:center">
-                    <tr>
-                        <th style="width: 30%;">Hall Name</th>
-                        <td style="width: 70%;background-color: lightblue"><%= hu.getName() %></td>
-                    </tr>
-                    <tr>
-                        <th style="width: 30%">Location</th>
-                        <td style="width: 70%;background-color: lightblue"><%= hu.getLocation() %></td>
-                    </tr>
-                    <tr>
-                        <th style="width: 30%">Charge</th>
-                        <td style="width: 70%;background-color: lightblue"><%= hu.getCharge() %></td>
-                    </tr>
-                    <tr>
-                        <th style="width: 30%">Capacity</th>
-                        <td style="width: 70%;background-color: lightblue"><%= hu.getCapacity() %></td>
-                    </tr>
-                    <tr>
-                        <th style="width: 30%">Description</th>
-                        <td style="width: 70%;background-color: lightblue"><%= hu.getDescription() %></td>
-                    </tr>
-                    <%
-                        if(session.getAttribute("sessionUserLevel").equals("Staff")){
-                    %>
-                    <tr>
-                        
-                        <td colspan="2" style="text-align:right">
-                            <a href="./HallView/UpdateHall.jsp?hallID=<%= hu.getHall_id() %>" class="btn btn-primary">Update</a>
-                        </td>
-                        <td>
-                            <a href="./HallView/DeleteHall.jsp?hallID=<%= hu.getHall_id() %>" class="btn btn-primary">Delete</a>
-                        </td>
-                    </tr>
-                    <%
-                        }
-                    %>
-                </table>
-                <br>
+            <div class="card w-100">    
+                <div class="card-body">               
+                    <div class="row">
+                       <div class="col">
+                            <h5 class="card-title" style="text-align: center"><%= hu.get(i).getName()%></h5>
+                            <img src="media/hall1.jpg" class="card-img-bottom" alt="hall">
+                        </div>
+                        <div class="col-6">
+                            <p class="card-text"><%= hu.get(i).getDescription() %></p>
+                        </div>
+                        <div class="col">
+                            <a href="HallView/HallDetails.jsp?hallID=<%= hu.get(i).getHall_id()%>" class="btn btn-primary">Detail</a>
+                        </div>
+
+                    </div>          
+                </div>                
             </div>
-                <br><br>
-                <div class="container">
-                    <a href="./InventoryView/InventoryHall.jsp?hallID=<%= hu.getHall_id() %>" class="btn btn-info">Inventory List</a>
-                </div>
+            
+            <br><br>
+            <%
+                }
+                %>
             
             <br><br>
             
