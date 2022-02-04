@@ -43,6 +43,10 @@ public class GetHall extends HttpServlet {
         List<Hall> hu = (List<Hall>) dao.getHall(HallName);
         request.setAttribute("searchkey",HallName);
         request.setAttribute("hu",hu);
+        if(hu.isEmpty()){
+            request.setAttribute("hk",null);
+            request.setAttribute("message","No result found for the entered keyword.");
+        }
         request.getRequestDispatcher("/HallView/SearchHall.jsp").forward(request,response);
        
         
