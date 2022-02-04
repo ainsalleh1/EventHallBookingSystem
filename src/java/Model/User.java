@@ -4,14 +4,11 @@
  * and open the template in the editor.
  */
 package Model;
-
-import java.io.Serializable;
-
 /**
  *
  * @author End-User
  */
-public class User implements Serializable{
+public class User{
     int user_id;
     String email;
     String password;
