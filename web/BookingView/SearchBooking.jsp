@@ -85,34 +85,35 @@
             
             <div class="container">
                 <p><i>Search result of </i><mark><%= request.getAttribute("searchkey") %></mark><i> keyword.</i></p>
+                <% if (request.getAttribute("message") != null ){ %>
+                    <p><i><%= request.getAttribute("message") %></p>
+                <% } %>
             </div>
             
-                <%
-                    Booking b = (Booking)request.getAttribute("b");
-                    %>
+                           
             <div class="container border border-dark">
                 <h2 style="text-align: center">Booking Details</h2>
 
                 <table width="100%" style="text-align:center">
                     <tr>
                         <th style="width: 30%;">Booking ID</th>
-                        <td style="width: 70%;background-color: lightblue"><%= b.getBooking_id() %></td>
+                        <td style="width: 70%;background-color: lightblue"> ${requestScope.b.booking_id}</td>
                     </tr>
                     <tr>
                         <th style="width: 30%">Booking Date</th>
-                        <td style="width: 70%;background-color: lightblue"><%= b.getDateBooked() %></td>
+                        <td style="width: 70%;background-color: lightblue">${requestScope.b.dateBooked}</td>
                     </tr>
                     <tr>
                         <th style="width: 30%">Status</th>
-                        <td style="width: 70%;background-color: lightblue"><%= b.getStatus() %> %</td>
+                        <td style="width: 70%;background-color: lightblue">${requestScope.b.status}</td>
                     </tr>
                     <tr>
                         <th style="width: 30%">Total Price</th>
-                        <td style="width: 70%;background-color: lightblue"><%= b.getTotalPrice() %></td>
+                        <td style="width: 70%;background-color: lightblue">${requestScope.b.totalPrice}</td>
                     </tr>
                     <tr>
                         <th style="width: 30%">Payment Slip</th>
-                        <td style="width: 70%;background-color: lightblue"><%= b.getFile() %></td>
+                        <td style="width: 70%;background-color: lightblue">${requestScope.b.file}</td>
                     </tr>
                     
                 </table>

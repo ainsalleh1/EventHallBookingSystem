@@ -46,6 +46,10 @@ public class GetBooking extends HttpServlet {
         request.setAttribute("searchkey",sc_id);
         request.setAttribute("b",b);
         
+        if(b.getBooking_id() == 0){
+            request.setAttribute("message","No entered booking ID is related to your account.");
+        }
+        
         request.getRequestDispatcher("/BookingView/SearchBooking.jsp").forward(request,response);
         
     }

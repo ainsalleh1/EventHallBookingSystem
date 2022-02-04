@@ -14,6 +14,10 @@ public class Booking implements Serializable{
     int promo_id;
     String file;
 
+    
+    public Booking() {
+    }
+    
     public Booking(double totalPrice, String status, int hallBooked, int customer, int promo_id) {
         this.totalPrice = totalPrice;
         this.status = status;
@@ -44,9 +48,6 @@ public class Booking implements Serializable{
 
     public String getFile() {
         return file;
-    }
-
-    public Booking() {
     }
 
     public double getTotalPrice() {
