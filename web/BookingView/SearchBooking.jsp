@@ -87,11 +87,49 @@
                 <p><i>Search result of </i><mark><%= request.getAttribute("searchkey") %></mark><i> keyword.</i></p>
                 <% if (request.getAttribute("message") != null ){ %>
                     <p><i><%= request.getAttribute("message") %></p>
-                <% } %>
+                
             </div>
+                 <%
+                    } else{
+                %>
             
-                           
+            <jsp:useBean id="b" class="Model.Booking" scope="request"></jsp:useBean>
+            
             <div class="container border border-dark">
+                <h2 style="text-align: center">Booking Details</h2>
+
+                <table width="100%" style="text-align:center">
+                    <tr>
+                        <th style="width: 30%;">Booking ID</th>
+                        <td style="width: 70%;background-color: lightblue"><jsp:getProperty name="b" property="booking_id"/></td>
+                    </tr>
+                    <tr>
+                        <th style="width: 30%">Booking Date</th>
+                        <td style="width: 70%;background-color: lightblue"><jsp:getProperty name="b" property="dateBooked"/></td>
+                    </tr>
+                    <tr>
+                        <th style="width: 30%">Status</th>
+                        <td style="width: 70%;background-color: lightblue"><jsp:getProperty name="b" property="status"/></td>
+                    </tr>
+                    <tr>
+                        <th style="width: 30%">Total Price</th>
+                        <td style="width: 70%;background-color: lightblue">RM <jsp:getProperty name="b" property="totalPrice"/></td>
+                    </tr>
+                    <tr>
+                        <th style="width: 30%">Payment Slip</th>
+                        <td style="width: 70%;background-color: lightblue"><jsp:getProperty name="b" property="file"/></td>
+                    </tr>
+                    
+                </table>
+                <br>
+            
+            </div>
+                        <%
+                            }
+                            %>
+                    
+                    <!--using EL-->
+<!--             <div class="container border border-dark">
                 <h2 style="text-align: center">Booking Details</h2>
 
                 <table width="100%" style="text-align:center">
@@ -119,7 +157,7 @@
                 </table>
                 <br>
             
-        </div>
+            </div>-->
         </div>
     </body>
 </html>
