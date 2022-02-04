@@ -104,4 +104,52 @@ public class BookingDAOImpl implements BookingDAO {
         }
     }
 
+    /**
+     *
+     * @param sc_id
+     * @param email
+     * @return
+     */
+    @Override
+    public Booking getBooking(int sc_id, String email) {
+        Booking b = new Booking();
+        int cond_id = sc_id;
+        String user_email=email;
+        int user_id = 0;
+        
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
+            
+            String sql_user = "SELECT * FROM user WHERE email=?";
+            PreparedStatement us = conn.prepareStatement(sql_user);
+            us.setString(1, user_email);
+            ResultSet urs = us.executeQuery();
+            if(urs.next()){
+                user_id = urs.getInt("user_id");
+                
+                String SQL = "SELECT * FROM booking WHERE id=? and customer=?";
+                PreparedStatement ps = conn.prepareStatement(SQL);
+                ps.setInt(1, cond_id);
+                ps.setInt(2, user_id);
+                ResultSet rs = ps.executeQuery();
+
+                while(rs.next()){
+                    b.setBooking_id(rs.getInt("id"));
+                    b.setDateBooked(rs.getDate("date"));
+                    b.setTotalPrice(rs.getDouble("totalPrice"));
+                    b.setStatus(rs.getString("status"));
+                    b.setHallBooked(rs.getInt("hallBooked"));
+                    b.setCustomer(rs.getInt("customer"));
+                    b.setPromo_id(rs.getInt("promo_id"));
+                    b.setFile(rs.getString("paymentSlip"));
+                }
+            }
+            
+        }catch(Exception ex){}
+        
+        
+        return b;
+    }
+
 }

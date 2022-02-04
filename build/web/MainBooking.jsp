@@ -97,8 +97,8 @@
                         </li> 
                     </ul>
                     <span class="navbar-text">Booking :</span>
-                    <form class="d-flex">                
-                       <input class="form-control me-2" type="search" placeholder="Booking id" aria-label="Search">
+                    <form class="d-flex" action="GetBooking" method="get">                
+                       <input class="form-control me-2" type="search" placeholder="Booking id" aria-label="Search" name="BookingID">
                       <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
                 </div>
