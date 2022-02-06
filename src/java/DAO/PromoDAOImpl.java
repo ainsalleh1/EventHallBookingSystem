@@ -47,7 +47,7 @@ public class PromoDAOImpl implements PromoDAO {
         Promo pu = new Promo();
         String cond = PromoName;
         try {
-            String SQL = "SELECT * FROM promotion WHERE name=?";
+            String SQL = "SELECT * FROM promotion WHERE promo_name=?";
             conn = DBConnection.openConnection();
             ps = conn.prepareStatement(SQL);
             ps.setString(1, cond);

@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package InventoryController;
+package ItemController;
 
-import DAO.InventoryDAO;
-import DAO.InventoryDAOImpl;
-import Model.Inventory;
+import DAO.ItemDAO;
+import DAO.ItemDAOImpl;
+import Model.Item;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -23,8 +23,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author End-User
  */
-@WebServlet(name = "InsertInventoryHall", urlPatterns = {"/InsertInventoryHall"})
-public class InsertInventoryHall extends HttpServlet {
+@WebServlet(name = "InsertItem", urlPatterns = {"/InsertItem"})
+public class InsertItem extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,20 +39,17 @@ public class InsertInventoryHall extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-
-        int hallID = Integer.parseInt(request.getParameter("hall_id"));
-        int item = Integer.parseInt(request.getParameter("hall_item"));
-        int quantity = Integer.parseInt(request.getParameter("quantity"));
-
-        InventoryDAO dao = new InventoryDAOImpl();
-        Inventory i = new Inventory(hallID, item, quantity);
-
-        dao.InsertInventoryHall(i);
-
-        out.println("<p style=\"color:red;\"> Item added to hall inventory successfully </p>");
-        request.getRequestDispatcher("InventoryView/ListHallInventory.jsp?hallID=" + hallID).include(request, response);
-
+        
+        String itemName = request.getParameter("ItemName");
+        String itemType = request.getParameter("ItemType");
+        
+        ItemDAO dao = new ItemDAOImpl();
+        Item i = new Item(itemName, itemType);
+        dao.InsertItem(i);
+       
+        response.sendRedirect("InventoryView/MainInventory.jsp");   
+        
     }
-
+        
+    
 }

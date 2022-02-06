@@ -118,9 +118,8 @@
                   Sort By...
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li><a class="dropdown-item" href="#">Cheapest</a></li>
-                  <li><a class="dropdown-item" href="#">Most Expensive</a></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <li><a class="dropdown-item" href="BookingView/CheapestHall.jsp">Cheapest</a></li>
+                  <li><a class="dropdown-item" href="BookingView/MostExpensiveHall.jsp">Most Expensive</a></li>
                 </ul>
                 </div>
                 <br>
@@ -155,6 +154,8 @@
                         <div class="card-body">
                           <h5 class="card-title"><%= rs.getString("name")%></h5>
                           <p class="card-text"><%= rs.getString("description") %></p>
+                          <p class="card-text">RM <%= rs.getDouble("charge") %></p>
+                          <p class="card-text"><%= rs.getString("location") %></p>
                           <a href="BookingView/createBooking.jsp?hallID=<%= rs.getString("hall_id")%>" class="btn btn-primary">Book Now</a>
                           
                         </div>

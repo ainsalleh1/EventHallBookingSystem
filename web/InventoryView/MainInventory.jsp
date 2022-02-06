@@ -147,6 +147,13 @@
                       <th scope="col">Number</th>
                       <th scope="col">Name</th>
                       <th scope="col">Type</th>
+                      <%
+                        if(session.getAttribute("sessionUserLevel").equals("Staff")){
+                    %>
+                          <th scope="col">Actions</th>
+                          <%
+                        }
+                    %>
                     </tr>
                   </thead>
                   <tbody>
@@ -170,7 +177,18 @@
             <tr>                    
                 <th scope="row"><%= counter %></th>
                       <td><%= item.getString("item_name")%></td>
-                      <td><%= item.getString("item_type")%></td>                   
+                      <td><%= item.getString("item_type")%></td>   
+                      <%
+                        if(session.getAttribute("sessionUserLevel").equals("Staff")){
+                    %>
+                        
+                        <td style="text-align:left;">
+                            <a href="UpdateItem.jsp?itemID=<%= item.getInt("item_id") %>" class="btn btn-warning">Update</a>
+                            <a href="DeleteItem.jsp?itemID=<%= item.getInt("item_id") %>" class="btn btn-danger">Delete</a>
+                        </td>
+                    <%
+                        }
+                    %>
             </tr>
             
             <%
