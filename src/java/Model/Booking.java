@@ -2,9 +2,11 @@
 package Model;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 public class Booking implements Serializable{
     int booking_id;
+    Date dateBooked;
     double totalPrice;
     String status;
     int hallBooked;
@@ -12,6 +14,10 @@ public class Booking implements Serializable{
     int promo_id;
     String file;
 
+    
+    public Booking() {
+    }
+    
     public Booking(double totalPrice, String status, int hallBooked, int customer, int promo_id) {
         this.totalPrice = totalPrice;
         this.status = status;
@@ -27,6 +33,14 @@ public class Booking implements Serializable{
     public void setBooking_id(int booking_id) {
         this.booking_id = booking_id;
     }
+    
+    public Date getDateBooked() {
+        return dateBooked;
+    }
+
+    public void setDateBooked(Date dateBooked) {
+        this.dateBooked = dateBooked;
+    }
 
     public void setFile(String file) {
         this.file = file;
@@ -34,9 +48,6 @@ public class Booking implements Serializable{
 
     public String getFile() {
         return file;
-    }
-
-    public Booking() {
     }
 
     public double getTotalPrice() {

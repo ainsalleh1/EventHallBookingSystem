@@ -62,6 +62,7 @@ and open the template in the editor.
             else{
         
         %>
+
         <header class="w3-panel w3-center w3-opacity" style="padding:128px 16px">
             <h1 class="w3-xlarge">HALLS BOOKING</h1>
             <h1>System</h1>
@@ -78,6 +79,35 @@ and open the template in the editor.
         </header> 
         
 <!--        <div class="container">
+
+        <div class="container">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="MainHall">Halls</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="MainPromo">Promo</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="GeneralAboutUs.html">About Us</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="login.jsp">Login</a>
+                </li>
+
+            </ul>
+        </div>
+        
+        <div class="container">
+            <br>
+            <h1>
+                <b>Event Hall Booking System</b>
+            </h1><br><br>
+            
+
             <div class="w3-content w3-display-container">
                 <img class="mySlides" src="media/1.jpg" style="max-width:100%">
                 <img class="mySlides" src="media/2.jpg" style="max-width:100%">

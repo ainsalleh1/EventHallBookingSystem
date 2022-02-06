@@ -4,6 +4,8 @@
     Author     : End-User
 --%>
 
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="java.util.List"%>
 <%@page import="Model.Promo"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -92,8 +94,8 @@
                         
                     </ul>
                     <span class="navbar-text">Promo :</span>
-                    <form class="d-flex">                
-                       <input class="form-control me-2" type="search" placeholder="promo name" aria-label="Search">
+                    <form class="d-flex" action="GetPromo" method="get">                
+                       <input class="form-control me-2" type="search" placeholder="promo name" aria-label="Search" name="PromoName">
                       <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
                 </div>
@@ -101,53 +103,38 @@
             </nav>
             
             <br><br>
-            
+            <div class="container">
+                <p><i>Search result of </i><mark><%= request.getAttribute("searchkey") %></mark><i> keyword.</i></p>
+            </div>
             <%
-                
-                Promo pu = (Promo)request.getAttribute("pu");
-                
-                double calcDiscount = pu.getDiscount()*100;
+                DecimalFormat df = new DecimalFormat("0.00");
+                List<Promo> pu = (List<Promo>)request.getAttribute("pu");
+                for(int i=0;i<pu.size();i++){
                 
             %>
             
-            <div class="container border border-dark">
-                <h2 style="text-align: center">Promotion Details</h2>
-                
-                <table width="100%" style="text-align:center">
-                    <tr>
-                        <th style="width: 30%;">Promotion Name</th>
-                        <td style="width: 70%;background-color: lightblue"><%= pu.getPromo_name() %></td>
-                    </tr>
-                    <tr>
-                        <th style="width: 30%">Discount</th>
-                        <td style="width: 70%;background-color: lightblue"><%= calcDiscount %> %</td>
-                    </tr>
-                    <tr>
-                        <th style="width: 30%">Period</th>
-                        <td style="width: 70%;background-color: lightblue"><%= pu.getStartDate() %> until <%= pu.getEndDate() %></td>
-                    </tr>
-                    <tr>
-                        <th style="width: 30%">Description</th>
-                        <td style="width: 70%;background-color: lightblue"><%= pu.getDescription() %></td>
-                    </tr>
-                    <%
-                        if(session.getAttribute("sessionUserLevel").equals("Staff")){
-                    %>
-                    <tr>
-                        
-                        <td colspan="2" style="text-align:right">
-                            <a href="PromotionView/UpdatePromo.jsp?promoID=<%= pu.getPromo_id() %>" class="btn btn-primary">Update</a>
-                        </td>
-                        <td>
-                            <a href="PromotionView/DeletePromo.jsp?promoID=<%= pu.getPromo_id() %>" class="btn btn-primary">Delete</a>
-                        </td>
-                    </tr>
-                    <%
-                        }
-                    %>
-                </table>
-                <br>
+            <div class="card w-100">    
+                <div class="card-body">               
+                    <div class="row">
+                       <div class="col">
+                           <h5 class="card-title" style="text-align: center"><%= pu.get(i).getPromo_name()  %></h5>
+                            <img src="media/hall1.jpg" class="card-img-bottom" alt="hall">
+                        </div>
+                        <div class="col-6">
+                            <h2 class="card-text" style="text-align: center">Discount: <%= df.format(pu.get(i).getDiscount()) %> %</h2>
+                        </div>
+                        <div class="col">
+                            <a href="./PromotionView/PromoDetails.jsp?promoID=<%= pu.get(i).getPromo_id() %>" class="btn btn-primary">Detail</a>
+                        </div>
+
+                    </div>          
+                </div>                
             </div>
+            
+            <br><br>
+            <%
+                    }
+                %>
             
             <br><br>
             

@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -53,6 +54,21 @@ public class LoginServlet extends HttpServlet {
             if(result.next()){
 //                    out.println("<h1> before jpane " + request.getContextPath() + "</h1>");
 //                    JOptionPane.showMessageDialog(null, "Login Successfull", "Login Success", JOptionPane.INFORMATION_MESSAGE);
+            
+                if (request.getParameter("remember") != null) {
+		String remember = request.getParameter("remember");
+		System.out.println("remember : " + remember);
+		Cookie cEmail = new Cookie("cookuser", user_email.trim());
+		Cookie cPassword = new Cookie("cookpass", user_password.trim());
+		Cookie cRemember = new Cookie("cookrem", remember.trim());
+		cEmail.setMaxAge(60 * 60 * 24 * 5);//60 * 60 * 24 * 5 = 5 days
+		cPassword.setMaxAge(60 * 60 * 24 * 5);
+		cRemember.setMaxAge(60 * 60 * 24 * 5);
+		response.addCookie(cEmail);
+                    response.addCookie(cPassword);
+                    response.addCookie(cRemember);
+				}
+
                 HttpSession session = request.getSession();
                 session.setAttribute("sessionEmail", user_email);
 //                    session.setAttribute("Login", "Yes");

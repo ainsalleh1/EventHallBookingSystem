@@ -86,6 +86,7 @@
         </header>  
     <body>
         <div class="container">
+
             <div class="w3-center" style="padding:2px 16px 0px 16px">
             <div class="w3-padding-32">
                     <div class="w3-bar w3-border">
@@ -97,6 +98,57 @@
                 
                     <form class="d-flex" action="GetHall" method="get"><span class="navbar-text">Hall :  </span>                
                         <input class="form-control me-2" type="search" placeholder="Hall Name" aria-label="Search" name="HallName">
+
+            
+            <div class="container">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                      <a class="nav-link" aria-current="page" href="MainHomepage.jsp">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link active" href="MainHall.jsp">Halls</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="MainBooking.jsp">Booking</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="MainPromo.jsp">Promo</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="AboutUs.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="profile.jsp">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="LogOut">Log Out</a>
+                    </li>
+                </ul>
+            </div>
+           
+        
+            <br><br>
+        
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="MainHall">Halls Management</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                  <div class="collapse navbar-collapse" id="navbarScroll">
+                    <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                        <li class="nav-item">
+                          <a class="nav-link active" aria-current="page" href="MainHall.jsp">Hall List</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="./HallView/InsertHall.html">Add Hall</a>
+                        </li>
+                        
+                    </ul>
+                    <span class="navbar-text">Hall :</span>
+                    <form class="d-flex" action="GetHall" method="get">                
+                        <input class="form-control me-2" type="search" placeholder="hall name" aria-label="Search" name="HallName">
+
                       <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
                 </div>

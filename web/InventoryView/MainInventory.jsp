@@ -128,11 +128,11 @@
                         </li>
                         
                     </ul>
-                    <span class="navbar-text">Inventory :</span>
+<!--                    <span class="navbar-text">Inventory :</span>
                     <form class="d-flex">                
                        <input class="form-control me-2" type="search" placeholder="items name" aria-label="Search">
                       <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
+                    </form>-->
                 </div>
                 </div>
             </nav>-->

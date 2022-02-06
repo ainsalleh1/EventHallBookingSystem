@@ -3,14 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package HallController;
+package BookingController;
 
-import DAO.HallDAO;
-import DAO.HallDAOImpl;
-import Model.Hall;
+import DAO.BookingDAO;
+import DAO.BookingDAOImpl;
+import Model.Booking;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,8 +21,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author End-User
  */
-@WebServlet(name = "MainHall", urlPatterns = {"/MainHall"})
-public class MainHall extends HttpServlet {
+@WebServlet(name = "GetBooking", urlPatterns = {"/GetBooking"})
+public class GetBooking extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,15 +37,21 @@ public class MainHall extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        HallDAO dao = new HallDAOImpl();
-        List<Hall> hl = dao.getAllHall();
-        request.setAttribute("hl",hl);
+        int sc_id = Integer.parseInt(request.getParameter("BookingID"));
         HttpSession session = request.getSession();
-        if(session.getAttribute("sessionEmail") != null){       
-            request.getRequestDispatcher("/HallView/MainHall.jsp").forward(request,response);
-        }else{
-            request.getRequestDispatcher("GeneralHall.jsp").forward(request,response);
+        String email = (String)session.getAttribute("sessionEmail");
+        
+        BookingDAO dao = new BookingDAOImpl();
+        Booking b = dao.getBooking(sc_id,email);
+        request.setAttribute("searchkey",sc_id);
+        request.setAttribute("b",b);
+        
+        if(b.getBooking_id() == 0){
+            request.setAttribute("message","No entered booking ID is related to your account.");
         }
-
+        
+        request.getRequestDispatcher("/BookingView/SearchBooking.jsp").forward(request,response);
+        
     }
+
 }

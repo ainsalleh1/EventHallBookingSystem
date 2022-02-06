@@ -43,17 +43,19 @@ public class PromoDAOImpl implements PromoDAO {
     }
 
     @Override
-    public Promo getPromo(String PromoName) {
-        Promo pu = new Promo();
+    public List<Promo> getPromo(String PromoName) {
+//        Promo pu = new Promo();
+        List<Promo> p1 = new ArrayList<Promo>();
         String cond = PromoName;
         try {
-            String SQL = "SELECT * FROM promotion WHERE promo_name=?";
+            String SQL = "SELECT * FROM promotion WHERE promo_name LIKE ?";
             conn = DBConnection.openConnection();
             ps = conn.prepareStatement(SQL);
-            ps.setString(1, cond);
+            ps.setString(1, "%" + cond + "%");
             rs = ps.executeQuery();
 
             while (rs.next()) {
+                Promo pu = new Promo();
                 pu.setPromo_id(rs.getInt("promo_id"));
                 pu.setPromo_name(rs.getString("promo_name"));
                 pu.setDiscount(rs.getDouble("discount"));
@@ -61,12 +63,13 @@ public class PromoDAOImpl implements PromoDAO {
                 pu.setEndDate(rs.getString("endDate"));
                 pu.setDescription(rs.getString("description"));
                 pu.setStatus(rs.getString("status"));
+                p1.add(pu);
             }
 
         } catch (Exception ex) {
         }
 
-        return pu;
+        return p1;
     }
 
     @Override

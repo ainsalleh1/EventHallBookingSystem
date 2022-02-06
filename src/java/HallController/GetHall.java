@@ -10,6 +10,7 @@ import DAO.HallDAOImpl;
 import Model.Hall;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,8 +40,13 @@ public class GetHall extends HttpServlet {
         String HallName = request.getParameter("HallName");
         
         HallDAO dao = new HallDAOImpl();
-        Hall hu = dao.getHall(HallName);
+        List<Hall> hu = (List<Hall>) dao.getHall(HallName);
+        request.setAttribute("searchkey",HallName);
         request.setAttribute("hu",hu);
+        if(hu.isEmpty()){
+            request.setAttribute("hk",null);
+            request.setAttribute("message","No result found for the entered keyword.");
+        }
         request.getRequestDispatcher("/HallView/SearchHall.jsp").forward(request,response);
        
         

@@ -61,9 +61,10 @@ public class HallDAOImpl implements HallDAO{
      * @return
      */
     @Override
-    public Hall getHall(String HallName) {
+    public List<Hall> getHall(String HallName) {
         
-        Hall hu = new Hall();
+//        Hall hu = new Hall();
+        List<Hall> h1 = new ArrayList<Hall>();
         String cond = HallName;
         try{
 //            String SQL = "SELECT * FROM hall WHERE name=?";
@@ -74,7 +75,7 @@ public class HallDAOImpl implements HallDAO{
             rs = ps.executeQuery();
             
             while(rs.next()){
-                
+                Hall hu = new Hall();
                 hu.setHall_id(rs.getInt("hall_id"));
                 hu.setName(rs.getString("name"));
                 hu.setLocation(rs.getString("location"));
@@ -82,13 +83,14 @@ public class HallDAOImpl implements HallDAO{
                 hu.setCapacity(rs.getString("capacity"));
                 hu.setDescription(rs.getString("description")); 
                 hu.setMedia(rs.getString("media"));  
+                h1.add(hu);
 
             }
             
         }catch(Exception ex){}
         
         
-        return hu;
+        return h1;
     }
 
     @Override
