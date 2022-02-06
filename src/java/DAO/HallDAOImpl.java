@@ -103,12 +103,12 @@ public class HallDAOImpl implements HallDAO{
             conn = DBUtility.DBConnection.openConnection();
             ps = conn.prepareStatement(sqlinsert);
             
-            ps.setString(1, h.getName());
-            ps.setString(2, h.getLocation());
-            ps.setDouble(3, h.getCharge());
-            ps.setString(4, h.getCapacity());
-            ps.setString(5, h.getDescription());
-            ps.setString(6, h.getMedia());
+            ps.setString(1, hu.getName());
+            ps.setString(2, hu.getLocation());
+            ps.setDouble(3, hu.getCharge());
+            ps.setString(4, hu.getCapacity());
+            ps.setString(5, hu.getDescription());
+            ps.setString(6, hu.getMedia());
 //            ps.setString(6, path);
             ps.executeUpdate();
             

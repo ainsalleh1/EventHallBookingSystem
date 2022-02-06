@@ -16,53 +16,104 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" crossorigin="anonymous">
         <title>Booking</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
-            
-            body {
-                background-image: url("media/background.png");
+            .mySlides {display:none;}
+            body,h1 {
+/*                background-image: url("media/background.png");*/
                 height: 100%;
 
                 /* Center and scale the image nicely */
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-attachment: fixed;
+                
+                Font-family: "Raleway", Arial, sans-serif;
+                
             }
+            
+            
+           h1{
+                    text-align: center;
+                    font-family: 'Playfair Display';
+                    font-size: 82px;
+                    color: black;
+                }
+            h3{
+                    text-align: center;
+                    font-family: 'Playfair Display';
+                    font-size: 22px;
+                    color: black;
+                   
+                }
+            h2{
+                    text-align: center;
+                    font-family: 'Playfair Display';
+                    color: black;
+                   
+                }
+            .w3-row-padding img {margin-bottom: 12px}
+            header{
+                    background-image: url("media/cool.jpg");
+                    background-position: center;
+                    
+                    
+                }
+                a{
+                    text-decoration: none;
+                    
+                }
         </style>
     </head>
+    <header class="w3-panel w3-center" style="padding:128px 16px 20px 16px">
+            <h1 class="w3-xlarge">HALLS BOOKING</h1>
+            <h1>System</h1>
+  
+                <div class="w3-padding-32">
+                    <div class="w3-bar w3-border">
+                    <a href="MainHomepage.jsp" class="w3-bar-item w3-button">Home</a>
+                    <a href="MainHall" class="w3-bar-item w3-button">Hall List</a>
+                    <a href="MainBooking.jsp" class="w3-bar-item w3-button w3-light-grey">Booking</a>
+                    <a href="MainPromo.jsp" class="w3-bar-item w3-button w3-hide-small">Promo</a>
+                    <a href="InventoryView/MainInventory.jsp" class="w3-bar-item w3-button">Inventory</a>
+                    <a href="AboutUs.html" class="w3-bar-item w3-button">About Us</a>
+                    <a href="profile.jsp" class="w3-bar-item w3-button">Profile</a>
+                    <a href="LogOut" class="w3-bar-item w3-button">Log Out</a>
+                    </div>
+                    
+                </div>
+        </header>  
     <body>
         <div class="container">
-            <div class="container">
-                <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                      <a class="nav-link" href="MainHomepage.jsp">Home</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="MainHall.jsp">Halls</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="MainBooking.jsp">Booking</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="MainPromo.jsp">Promo</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="AboutUs.html">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="profile.jsp">Profile</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="LogOut">Log Out</a>
-                    </li>
-                </ul>
-            </div>
+            <div class="w3-center" style="padding:2px 16px 0px 16px">
+                <div class="w3-padding-32">
+                    <div class="w3-bar w3-border">
+                        <%
+                            if(session.getAttribute("sessionUserLevel").equals("Staff")){
+                        %>
+                    <a href="MainBooking.jsp" class="w3-bar-item w3-button w3-light-grey">Booking Management</a>
+                    <a href="BookingView/ManageBooking.jsp" class="w3-bar-item w3-button">Manage Booking</a>
+                    <a href="#" class="w3-bar-item w3-button">Booking List</a>    
+                    <a href="BookingView/myBooking.jsp" class="w3-bar-item w3-button">My Booking</a>
+                <br><br>
+            <%
+                } else{
+            %>
             
-            <br><br>                        
-            <h1>Book now before it's too late!</h1>
-            <br>
+                    <a href="MainBooking.jsp" class="w3-bar-item w3-button w3-light-grey">Booking Management</a>
+                    <a href="BookingView/ManageBooking.jsp" class="w3-bar-item w3-button">Manage Booking</a>   
+                    <a href="BookingView/myBooking.jsp" class="w3-bar-item w3-button">My Booking</a>        
+                    </div>
             
-            <div class="dropdown">
+            <%
+                }
+            %>
+                </div>
+                <div class="w3-bar">
+                <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                   Sort By...
                 </button>
@@ -70,6 +121,8 @@
                   <li><a class="dropdown-item" href="BookingView/CheapestHall.jsp">Cheapest</a></li>
                   <li><a class="dropdown-item" href="BookingView/MostExpensiveHall.jsp">Most Expensive</a></li>
                 </ul>
+
+
             </div>
             <br>
             
@@ -101,38 +154,17 @@
                        <input class="form-control me-2" type="search" placeholder="Booking id" aria-label="Search" name="BookingID">
                       <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
+
                 </div>
-                </div>
-            </nav>
-            <br><br>
-            <%
-                } else{
-            %>
-            
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="MainBooking.jsp">Booking</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                  <div class="collapse navbar-collapse" id="navbarScroll">
-                    <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-                        <li class="nav-item">
-                          <a class="nav-link" aria-current="page" href="BookingView/myBooking.jsp">My Booking</a>
-                        </li> 
-                    </ul>
+                <br>
+                <form class="d-flex">                
                     <span class="navbar-text">Booking :</span>
-                    <form class="d-flex">                
-                       <input class="form-control me-2" type="search" placeholder="Booking id" aria-label="Search">
-                      <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-                </div>
-                </div>
-            </nav>
+                    <input class="form-control me-2" type="search" placeholder="Booking id" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>  
             
-            <%
-                }
-            %>
+            </div>
+            </div>
             <br>
             
             <%
@@ -149,7 +181,7 @@
             
             <div class="row">
                 <div class="col">
-                  <img src="media/hall1.jpg" class="img-fluid" alt="hall">
+                  <img src="media/4.jpg" class="img-fluid" alt="hall">
                 </div>
                 <div class="col">
                   <div class="card text-center h-100">
