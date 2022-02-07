@@ -130,11 +130,45 @@ and open the template in the editor.
         <br>
   <div class="w3-row-padding w3-padding-16 w3-center" id="food">
     <div class="w3-quarter">
+      <!--<
+                try{
+                    Class.forName("com.mysql.jdbc.Driver");
+                    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
+                    String sql = "select * from media where id = 1";
+                    PreparedStatement ps = conn.prepareStatement(sql);
+                    ResultSet rs = ps.executeQuery();
+                    
+                    while(rs.next()){             
+                
+            %>
+      <img src="<= rs.getString("img")%>" alt="Sandwich" style="width:100%">
+      <              
+                    }
+                    conn.close();
+                } catch(Exception ex){}              
+            %>-->
       <img src="media/1.jpg" alt="Sandwich" style="width:100%">
       <h3>The Perfect Sandwich, A Real NYC Classic</h3>
       <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
     </div>
     <div class="w3-quarter">
+      <!--<
+                try{
+                    Class.forName("com.mysql.jdbc.Driver");
+                    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
+                    String sql = "select * from media where id = 2";
+                    PreparedStatement ps = conn.prepareStatement(sql);
+                    ResultSet rs = ps.executeQuery();
+                    
+                    while(rs.next()){             
+                
+            %>
+      <img src="<= rs.getString("img")%>" alt="Steak" style="width:100%">
+      <              
+                    }
+                    conn.close();
+                } catch(Exception ex){}              
+            %>-->
       <img src="media/2.jpg" alt="Steak" style="width:100%">
       <h3>Let Me Tell You About This Steak</h3>
       <p>Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
