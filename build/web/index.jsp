@@ -64,14 +64,14 @@ and open the template in the editor.
         %>
 
         <header class="w3-panel w3-center w3-opacity" style="padding:128px 16px">
-            <h1 class="w3-xlarge">HALLS BOOKING</h1>
+            <h1 class="w3-xlarge">EVENT HALLS BOOKING</h1>
             <h1>System</h1>
   
                 <div class="w3-padding-32">
                     <div class="w3-bar w3-border">
-                    <a href="#" class="w3-bar-item w3-button w3-light-grey">Home</a>
-                    <a href="GeneralHall.jsp" class="w3-bar-item w3-button">Halls</a>
-                    <a href="GeneralPromo.jsp" class="w3-bar-item w3-button">Promo</a>
+                    <a href="index.jsp" class="w3-bar-item w3-button w3-light-grey">Home</a>
+                    <a href="MainHall" class="w3-bar-item w3-button">Halls</a>
+                    <a href="MainPromo" class="w3-bar-item w3-button">Promo</a>
                     <a href="GeneralAboutUs.html" class="w3-bar-item w3-button w3-hide-small">About Us</a>
                     <a href="login.jsp" class="w3-bar-item w3-button">Login</a>
                     </div>

@@ -39,7 +39,19 @@
             <h1>Registration</h1>
             <hr>
         </div>
-        <br>        
+        <br>
+        <%
+//            String msg = (String)request.getAttribute("msg");
+            if(request.getAttribute("msg") != null){
+            %>
+            <div class="container">
+                <p><%=request.getAttribute("msg")%> </p>
+            </div>
+            
+            <%
+                }
+                %>
+            <!--<p><%=request.getAttribute("msg")%> </p>-->
         
         <div class="container">
             

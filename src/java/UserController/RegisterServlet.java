@@ -111,9 +111,12 @@ public class RegisterServlet extends HttpServlet {
 
         User nu = new User(email,password,phoneNumber,userLevel,userGender,birthday,age,address,city,zip,state,description);
         UserDAO dao = new UserDAOImpl();
-        dao.insertUser(nu);
+        String msg = dao.insertUser(nu);
         
-        response.sendRedirect("index.jsp");  
+        request.setAttribute("msg", msg);
+        out.println("<h4>" + msg + "</h4>");
+        
+        response.sendRedirect("register.jsp");  
               
     }
 
