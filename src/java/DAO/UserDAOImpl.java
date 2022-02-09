@@ -53,7 +53,6 @@ public class UserDAOImpl implements UserDAO{
                 +")"; 
             
             conn = DBUtility.DBConnection.openConnection();
-//            conn = DBConnection.openConnection();
             Statement stmt = conn.createStatement();
             stmt.executeUpdate(sqlinsert);
             

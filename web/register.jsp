@@ -42,16 +42,15 @@
         <br>
         <%
 //            String msg = (String)request.getAttribute("msg");
-            if(request.getAttribute("msg") != null){
-            %>
-            <div class="container">
-                <p><%=request.getAttribute("msg")%> </p>
-            </div>
-            
-            <%
-                }
-                %>
-            <!--<p><%=request.getAttribute("msg")%> </p>-->
+            if (request.getAttribute("msg") != null) {
+        %>
+        <div class="container">
+            <p><%=request.getAttribute("msg")%> </p>
+        </div>
+
+        <%
+            }
+        %>
         
         <div class="container">
             

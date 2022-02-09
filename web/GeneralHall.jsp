@@ -24,10 +24,10 @@
                       <a class="nav-link" href="index.jsp">Home</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link active" href="GeneralHall.jsp">Halls</a>
+                      <a class="nav-link active" href="MainHall">Halls</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="GeneralPromo.jsp">Promo</a>
+                      <a class="nav-link" href="MainPromo">Promo</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="GeneralAboutUs.html">About Us</a>
