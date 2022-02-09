@@ -12,6 +12,22 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" crossorigin="anonymous">
         <title>Register</title>
     </head>
+    <header class="w3-panel w3-center" style="padding:128px 16px 20px 16px">
+            <h1 class="w3-xlarge">HALLS BOOKING</h1>
+            <h1>System</h1>
+  
+                <div class="w3-padding-32">
+                    <div class="w3-bar w3-border">
+                    <a href="index.jsp" class="w3-bar-item w3-button w3-light-grey">Home</a>
+                    <a href="#" class="w3-bar-item w3-button">Halls</a>
+                     <a href="#" class="w3-bar-item w3-button">Booking</a>
+                    <a href="#" class="w3-bar-item w3-button w3-hide-small">Promo</a>
+                    <a href="#" class="w3-bar-item w3-button ">About Us</a>
+                   
+                    </div>
+                    
+                </div>
+        </header>
     <body>
         <div class="container">
             <ul class="nav nav-tabs">
