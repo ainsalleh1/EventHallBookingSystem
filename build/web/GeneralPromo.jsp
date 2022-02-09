@@ -4,6 +4,9 @@
     Author     : End-User
 --%>
 
+<%@page import="Model.Promo"%>
+<%@page import="java.util.List"%>
+<%@page import="java.text.DecimalFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -56,45 +59,31 @@
             <br>
             <div class="row row-cols-1 row-cols-md-3 g-4">
                 <div class="col">
+                    <%
+                    DecimalFormat df = new DecimalFormat("0.00");
+
+                    List<Promo> p = (List<Promo>)request.getAttribute("pl");
+                    for(int i=0;i<p.size();i++){
+                
+            %>
                   <div class="card h-100 text-center">
-                    <img src="..." class="card-img-top" alt="...">
+                    <!--<img src="..." class="card-img-top" alt="...">-->
                     <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      <a href="#" class="btn btn-primary">More details</a>
+                      <h5 class="card-title"><%= p.get(i).getPromo_name()  %></h5>
+                      <p class="card-text">
+                      <ul>
+                          <li><%= p.get(i).getDescription() %> </li>
+                          <li>Discount: <%= df.format(p.get(i).getDiscount()) %> %</li>
+                      </ul>
+                      </p>
+                      <!--<a href="#" class="btn btn-primary">More details</a>-->
                     </div>
                   </div>
+                  <%
+                    }
+                %>
                 </div>
-                <div class="col">
-                  <div class="card h-100 text-center">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">This is a short card.</p>
-                      <a href="#" class="btn btn-primary">More details</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card h-100 text-center">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                      <a href="#" class="btn btn-primary">More details</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card h-100 text-center">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      <a href="#" class="btn btn-primary">More details</a>
-                    </div>
-                  </div>
-                </div>
+                
             </div>
             <br><br>
         </div>

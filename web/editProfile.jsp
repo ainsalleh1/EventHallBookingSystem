@@ -75,6 +75,7 @@
                     <div class="col-md-6">
                       <label for="inputPassword" class="form-label">Password</label>
                       <input type="password" class="form-control" id="inputPassword" name="password" value="<%= rs.getString("password")%>">
+                      <p><input type="checkbox" onclick="myFunction()">   Show Password</p>
                     </div>
                     <div class="col-md-6">
                       <label for="inputPhoneNumber" class="form-label">Phone Number</label>
@@ -239,12 +240,21 @@
                 </form>
                 
             </div>
-                
-                
+                               
                 <hr><hr>
-            
-            
+  
         </div>
+                
+                <script>
+        function myFunction() {
+            var x = document.getElementById("inputPassword");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
         
     </body>
 </html>

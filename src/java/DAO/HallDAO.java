@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface HallDAO {
     public List<Hall> getAllHall();
-    public Hall getHall(String HallName);
+    public List<Hall> getHall(String HallName);
     public void insertHall(Hall h);
     public void deleteHall(int id);
     public void updateHall(int id, Hall h);

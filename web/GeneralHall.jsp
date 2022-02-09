@@ -4,6 +4,8 @@
     Author     : End-User
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="Model.Hall"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -46,7 +48,37 @@
                 <br>
                 <h1><b>Book With Us!</b></h1>
                 <br><br>
-                <div class="container">
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <%
+                        List<Hall> hl = (List<Hall>)request.getAttribute("hl");
+                        for(int i=0;i<hl.size();i++){
+                            
+                    %>
+                    
+                        <div class="col">
+                          <div class="card h-100">
+                            <img src="media/hall1.jpg" class="card-img-top" alt="hall">
+                            <div class="card-body">
+                                <h5 class="card-title" style="text-align:center;text-transform: capitalize;"><%= hl.get(i).getName()%></h5>
+                              <p class="card-text">
+                              <ul>
+                                  <li><%= hl.get(i).getLocation()%></li>
+                                  <li>RM <%= hl.get(i).getCharge() %></li>
+                                  <li>Capacity: <%= hl.get(i).getCapacity() %></li>
+                              </ul>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        
+                     
+                    <%
+                }
+                %>
+                 </div>
+                </div>
+                
+ <!--               <div class="container">
                     <div class="row">
                       <div class="col">
                         <div class="card h-100">
@@ -111,8 +143,8 @@
                       </div>
                     </div>
                     <br>
-                </div>
-            </div>
+                </div>-->
+            
         </div>
     </body>
 </html>

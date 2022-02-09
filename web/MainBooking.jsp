@@ -121,6 +121,40 @@
                   <li><a class="dropdown-item" href="BookingView/CheapestHall.jsp">Cheapest</a></li>
                   <li><a class="dropdown-item" href="BookingView/MostExpensiveHall.jsp">Most Expensive</a></li>
                 </ul>
+
+
+            </div>
+            <br>
+            
+            <%
+                if(session.getAttribute("sessionUserLevel").equals("Staff")){
+            
+            %>
+            
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="MainBooking.jsp">Booking Management</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                  <div class="collapse navbar-collapse" id="navbarScroll">
+                    <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                        <li class="nav-item">
+                          <a class="nav-link" aria-current="page" href="BookingView/ManageBooking.jsp">Manage Booking</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" aria-current="page" href="#">Booking List</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" aria-current="page" href="BookingView/myBooking.jsp">My Booking</a>
+                        </li> 
+                    </ul>
+                    <span class="navbar-text">Booking :</span>
+                    <form class="d-flex" action="GetBooking" method="get">                
+                       <input class="form-control me-2" type="search" placeholder="Booking id" aria-label="Search" name="BookingID">
+                      <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+
                 </div>
                 <br>
                 <form class="d-flex">                
