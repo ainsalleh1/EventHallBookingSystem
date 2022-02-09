@@ -84,7 +84,7 @@
             <div class="w3-center" style="padding:2px 16px 0px 16px">
             <div class="w3-padding-32">
                     <div class="w3-bar w3-border">
-                    <a href="MainHall.jsp" class="w3-bar-item w3-button w3-light-grey">Halls Management</a>
+                    <a href="MainHall" class="w3-bar-item w3-button w3-light-grey">Halls Management</a>
                     <a href="MainHall" class="w3-bar-item w3-button">Hall List</a>
                     <a href="./HallView/InsertHall.html" class="w3-bar-item w3-button">Add Hall</a>
                     </div>
@@ -93,34 +93,6 @@
                     <form class="d-flex" action="GetHall" method="get"><span class="navbar-text">Hall :  </span>                
                         <input class="form-control me-2" type="search" placeholder="Hall Name" aria-label="Search" name="HallName">
 
-            
-<!--            <div class="container">
-                <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                      <a class="nav-link" aria-current="page" href="MainHomepage.jsp">Home</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link active" href="MainHall.jsp">Halls</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="MainBooking.jsp">Booking</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="MainPromo.jsp">Promo</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="AboutUs.html">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="profile.jsp">Profile</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="LogOut">Log Out</a>
-                    </li>
-                </ul>
-            </div>
-           
-        -->
             <br><br>
         
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
