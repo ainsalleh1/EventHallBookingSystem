@@ -29,6 +29,11 @@
                 text-align: center; 
                 height: 100%;
             }
+            #formPayment{
+                border-radius: 5px;
+                background-color: #f2f2f2;
+                padding: 20px;
+            }
         </style>
     </head>
     <body>
@@ -63,7 +68,7 @@
 
             <h3>
                 You're one step away from confirming your booking with us!<br>
-                <small class="text-muted">Please do the payment and insert the payment slip below</small>
+                <small class="text-muted">Please do the payment and complete the payment details below!</small>
             </h3>
             <br><br>
             <dl class="row">
@@ -77,29 +82,61 @@
                 <dt class="col-sm-3">Account Name</dt>
                 <dd class="col-sm-9">PPG EVENTS ORGANIZER</dd>
                 
-                <dt class="col-sm-3">Reference</dt>
-                <dd class="col-sm-9">...</dd>
+<!--                <dt class="col-sm-3">Reference</dt>
+                <dd class="col-sm-9">...</dd>-->
            
             </dl>
             
-            <form method="POST" class="container text-left" action="../insertPaymentSlip" enctype="multipart/form-data">
+            <h3>Payment Details</h3>
+            
+            <div id="formPayment">
+            <form method="POST" class="container text-left" action="../UpdatePaymentStatus" enctype="multipart/form-data">
                 
-                <div class="mb-3">
+<!--                <div class="mb-3">
                 <label for="formFile" class="form-label">Payment Slip (.pdf)</label>
                 <input class="form-control" type="file" id="formFile" name="PaymentSlip" accept='.pdf' required>
-              </div>
-                <input type="hidden" value="Payment pending approval" name="paymentStatus">
+              </div>-->
+<!--                <p>Payment status:</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="paymentStatus" id="flexRadioDefault1" value='Not done' checked>
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      Not done
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="paymentStatus" id="flexRadioDefault2" value='Done'>
+                    <label class="form-check-label" for="flexRadioDefault2">
+                      Done
+                    </label>
+                  </div>
+                <br/>-->
+                        <label for="bank">Bank</label> 
+                        <select class="form-select" id="bank" name="bank">
+                            <option value="Maybank" selected>Maybank</option>
+                            <option value="CIMB">CIMB</option>
+                            <option value="BSN">BSN</option>
+                            <option value="RHB">RHB</option>
+                            <option value="Public Bank">Public Bank</option>
+                            <option value="Bank Islam">Bank Islam</option>  
+                        </select>
+                        <br/>
+              <div class="col-12">
+                  <label for="inputReferenceNo" class="form-label">Reference No.:</label>
+                  <input type="text" class="form-control" id="inputReferenceNo" name="referenceNo" required>
+                </div>
+                <input type="hidden" value="Completed" name="paymentStatus">
+                <input type="hidden" value="Payment pending approval" name="bookingStatus">
                 <input type="hidden" value="<%= request.getParameter("booking") %>" name="bookingID">
-              <br><br>
+              <br>
               <div class="col-12">
                 <button type="submit" class="btn btn-success">Save</button>
                 <a href="myBooking.jsp" class="btn btn-primary">Later</a>
               </div>
               
-            </form>
-            
-            
-            
+            </form>  
+              
+            </div>
+            <br/><br/>
         </div>
     </body>
 </html>

@@ -90,9 +90,9 @@
             <div class="w3-center" >
                 <br>
                 <div class="w3-bar w3-border">
-                    <a href="MainBooking.jsp" class="w3-bar-item w3-button">Booking Management</a>
-                    <a href="BookingView/ManageBooking.jsp" class="w3-bar-item w3-button  w3-light-grey">Manage Booking</a>
-                    <a href="#" class="w3-bar-item w3-button">Booking List</a>    
+                    <a href="../MainBooking.jsp" class="w3-bar-item w3-button">Booking Management</a>
+                    <a href="ManageBooking.jsp" class="w3-bar-item w3-button  w3-light-grey">Manage Booking</a>
+                    <!--<a href="#" class="w3-bar-item w3-button">Booking List</a>-->    
                     <a href="myBooking.jsp" class="w3-bar-item w3-button">My Booking</a>
                 </div>
                 <div class="w3-bar" style="padding:0px 0px 0px 250px">
@@ -111,8 +111,10 @@
                       <th scope="col">Hall Booked</th>
                       <th scope="col">Hall Charge (RM)</th>
                       <th scope="col">Booking date</th>
-                      <th scope="col">Payment</th>
-                      <th scope="col">Status</th>
+                      <th scope="col">Payment Status</th>
+                      <th scope="col">Bank</th>
+                      <th scope="col">Reference No</th>
+                      <th scope="col">Booking Status</th>
                       <th scope="col">Action</th>
                     </tr>
                   </thead>
@@ -126,7 +128,7 @@
                     
                     Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");                   
      
-                    String sql_book = "select id,date,name,totalPrice,status,paymentSlip from booking,hall where hallBooked=hall_id and status!=?";                   
+                    String sql_book = "select id,date,name,totalPrice,status,paymentStatus,referenceNo,bank from booking,hall where hallBooked=hall_id and status!=?";                   
                     PreparedStatement ps_manageBooking = conn.prepareStatement(sql_book);
                     ps_manageBooking.setString(1, "Approved");
                     ResultSet booking = ps_manageBooking.executeQuery();
@@ -140,7 +142,9 @@
                       <td><%= booking.getString("name")%></td>
                       <td>RM <%= booking.getDouble("totalPrice")%></td>
                       <td><%= booking.getDate("date")%></td>
-                      <td><%= booking.getString("paymentSlip")%></td>
+                      <td><%= booking.getString("paymentStatus")%></td>
+                      <td><%= booking.getString("bank")%></td>
+                      <td><%= booking.getString("referenceNo")%></td>
                       <td><%= booking.getString("status")%></td>
                       <td><a href="../BookingView/UpdateBookingPaymentStatus.jsp?booking=<%= booking.getInt("id") %>" class="btn btn-primary">Update booking status</a></td>
                     </tr>
@@ -158,6 +162,8 @@
             </table>
         </div>
             </div>
+            
+            <br/><br/>
     </body>
 </html>
 

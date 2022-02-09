@@ -43,7 +43,7 @@ public class HallDAOImpl implements HallDAO{
                 h.setLocation(rs.getString("location"));
                 h.setCharge(rs.getDouble("charge"));              
                 h.setCapacity(rs.getString("capacity"));
-                h.setMedia(rs.getString("media"));
+                
                 h.setDescription(rs.getString("description"));
                 hl.add(h);
                 
@@ -82,7 +82,7 @@ public class HallDAOImpl implements HallDAO{
                 hu.setCharge(rs.getDouble("charge"));   
                 hu.setCapacity(rs.getString("capacity"));
                 hu.setDescription(rs.getString("description")); 
-                hu.setMedia(rs.getString("media"));  
+                  
                 h1.add(hu);
 
             }
@@ -108,7 +108,7 @@ public class HallDAOImpl implements HallDAO{
             ps.setDouble(3, hu.getCharge());
             ps.setString(4, hu.getCapacity());
             ps.setString(5, hu.getDescription());
-            ps.setString(6, hu.getMedia());
+            
 //            ps.setString(6, path);
             ps.executeUpdate();
             
@@ -152,7 +152,7 @@ public class HallDAOImpl implements HallDAO{
             ps.setDouble(3, hu.getCharge());
             ps.setString(4, hu.getCapacity());
             ps.setString(5, hu.getDescription());
-            ps.setString(6, hu.getMedia());
+            
             ps.setInt(7, cond_id);
             ps.executeUpdate();
             

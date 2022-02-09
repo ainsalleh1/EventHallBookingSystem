@@ -77,7 +77,7 @@
                     <a href="MainHomepage.jsp" class="w3-bar-item w3-button">Home</a>
                     <a href="MainHall" class="w3-bar-item w3-button">Halls</a>
                     <a href="MainBooking.jsp" class="w3-bar-item w3-button w3-light-grey">Booking</a>
-                    <a href="MainPromo.jsp" class="w3-bar-item w3-button w3-hide-small">Promo</a>
+                    <a href="MainPromo" class="w3-bar-item w3-button w3-hide-small">Promo</a>
                     <a href="InventoryView/MainInventory.jsp" class="w3-bar-item w3-button">Inventory</a>
                     <a href="AboutUs.html" class="w3-bar-item w3-button">About Us</a>
                     <a href="profile.jsp" class="w3-bar-item w3-button">Profile</a>
@@ -96,7 +96,7 @@
                         %>
                     <a href="MainBooking.jsp" class="w3-bar-item w3-button w3-light-grey">Booking Management</a>
                     <a href="BookingView/ManageBooking.jsp" class="w3-bar-item w3-button">Manage Booking</a>
-                    <a href="#" class="w3-bar-item w3-button">Booking List</a>    
+                    <!--<a href="#" class="w3-bar-item w3-button">Booking List</a>-->    
                     <a href="BookingView/myBooking.jsp" class="w3-bar-item w3-button">My Booking</a>
                 <br><br>
             <%
@@ -143,9 +143,9 @@
                         <li class="nav-item">
                           <a class="nav-link" aria-current="page" href="BookingView/ManageBooking.jsp">Manage Booking</a>
                         </li>
-                        <li class="nav-item">
+<!--                        <li class="nav-item">
                           <a class="nav-link" aria-current="page" href="#">Booking List</a>
-                        </li>
+                        </li>-->
                         <li class="nav-item">
                           <a class="nav-link" aria-current="page" href="BookingView/myBooking.jsp">My Booking</a>
                         </li> 

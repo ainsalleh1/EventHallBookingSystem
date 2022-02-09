@@ -171,7 +171,7 @@ and open the template in the editor.
     </div>
     <div class="w3-quarter">
       <img src="media/3.jpg" alt="Cherries" style="width:100%">
-      <h3><a href="MainPromo.jsp">Promo</a></h3>
+      <h3><a href="MainPromo">Promo</a></h3>
       <p>Don't miss out our best sales & discount of the year! Check it out now</p>
     </div>
     <div class="w3-quarter">

@@ -8,11 +8,13 @@ public class Booking implements Serializable{
     int booking_id;
     Date dateBooked;
     double totalPrice;
+    String paymentStatus;
+    String referenceNo;
+    String bank;
     String status;
     int hallBooked;
     int customer;
     int promo_id;
-    String file;
 
     
     public Booking() {
@@ -40,14 +42,6 @@ public class Booking implements Serializable{
 
     public void setDateBooked(Date dateBooked) {
         this.dateBooked = dateBooked;
-    }
-
-    public void setFile(String file) {
-        this.file = file;
-    }
-
-    public String getFile() {
-        return file;
     }
 
     public double getTotalPrice() {

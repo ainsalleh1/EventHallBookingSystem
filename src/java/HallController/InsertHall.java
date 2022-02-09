@@ -56,8 +56,8 @@ public class InsertHall extends HttpServlet {
         double charge = Double.parseDouble(request.getParameter("HallCharge"));
         String capacity = request.getParameter("Capacity");
         String description = request.getParameter("Description");
-        Part filePart = request.getPart("HallMedia");
-        String file = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+//        Part filePart = request.getPart("HallMedia");
+//        String file = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
         
         
 //        Part filePart = request.getPart("HallMedia");
@@ -124,42 +124,42 @@ public class InsertHall extends HttpServlet {
 //        }
 //        catch(Exception ex){}
 
-        Hall hu = new Hall(name,location,charge,capacity,description,file);
+        Hall hu = new Hall(name,location,charge,capacity,description);
         HallDAO dao = new HallDAOImpl();
         dao.insertHall(hu);
         
         response.sendRedirect("MainHall");
     }
     
-    public boolean uploadFile(InputStream is, String path){
-        boolean test = false;
-        try{
-            byte [] byt = new byte[is.available()];
-            is.read();
-            FileOutputStream fops = new FileOutputStream(path);
-            fops.write(byt);
-            fops.flush();
-            fops.close();
-            
-            test = true;
-            
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-        
-        return test;
-    }
-
-    
-    private String extractFileName(Part filePart){
-        String contentDisp = filePart.getHeader("content-disposition");
-        String [] items = contentDisp.split(";");
-        for (String s:items){
-            if(s.trim().startsWith("filename")){
-                return s.substring(s.indexOf("=") + 2, s.length()-1);
-            }
-        }
-        return "";
-    }
+//    public boolean uploadFile(InputStream is, String path){
+//        boolean test = false;
+//        try{
+//            byte [] byt = new byte[is.available()];
+//            is.read();
+//            FileOutputStream fops = new FileOutputStream(path);
+//            fops.write(byt);
+//            fops.flush();
+//            fops.close();
+//            
+//            test = true;
+//            
+//        }catch(Exception e){
+//            e.printStackTrace();
+//        }
+//        
+//        return test;
+//    }
+//
+//    
+//    private String extractFileName(Part filePart){
+//        String contentDisp = filePart.getHeader("content-disposition");
+//        String [] items = contentDisp.split(";");
+//        for (String s:items){
+//            if(s.trim().startsWith("filename")){
+//                return s.substring(s.indexOf("=") + 2, s.length()-1);
+//            }
+//        }
+//        return "";
+//    }
 
 }

@@ -14,18 +14,18 @@ public class Hall implements Serializable{
     double charge;
     String capacity;
     String description;
-    String media;
+    
 
     public Hall() {
     }
 
-    public Hall(String name, String location, double charge, String capacity, String description, String media) {
+    public Hall(String name, String location, double charge, String capacity, String description) {
         this.name = name;
         this.location = location;
         this.charge = charge;
         this.capacity = capacity;
         this.description = description;
-        this.media = media;
+        
     }
 
     public void setHall_id(int hall_id) {
@@ -75,15 +75,6 @@ public class Hall implements Serializable{
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getMedia() {
-        return media;
-    }
-
-    public void setMedia(String media) {
-        this.media = media;
-    }
-    
+    }  
     
 }

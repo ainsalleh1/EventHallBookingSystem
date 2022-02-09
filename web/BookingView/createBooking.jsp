@@ -81,8 +81,8 @@
                     <div class="w3-bar w3-border">
                     <a href="MainHomepage.jsp" class="w3-bar-item w3-button">Home</a>
                     <a href="MainHall" class="w3-bar-item w3-button">Hall List</a>
-                    <a href="MainBooking.jsp" class="w3-bar-item w3-button w3-light-grey">Booking</a>
-                    <a href="MainPromo.jsp" class="w3-bar-item w3-button w3-hide-small">Promo</a>
+                    <a href="../MainBooking.jsp" class="w3-bar-item w3-button w3-light-grey">Booking</a>
+                    <a href="MainPromo" class="w3-bar-item w3-button w3-hide-small">Promo</a>
                     <a href="InventoryView/MainInventory.jsp" class="w3-bar-item w3-button">Inventory</a>
                     <a href="AboutUs.html" class="w3-bar-item w3-button">About Us</a>
                     <a href="profile.jsp" class="w3-bar-item w3-button">Profile</a>
@@ -153,11 +153,11 @@
                     <form id="bookingForm" action="../createBooking" method="POST">
                             <div class="w3-half w3-margin-bottom">
                                 <label><i class="fa fa-calendar-o"></i> Start date:</label>
-                                <input class="w3-input w3-border" type="text" placeholder="DD MM YYYY" name="startDate" id="startDate" required>
+                                <input class="w3-input w3-border" type="date" placeholder="DD MM YYYY" name="startDate" id="startDate" required>
                                 </div>
                             <div class="w3-half">
                                 <label><i class="fa fa-calendar-o"></i> End date:</label>
-                                <input class="w3-input w3-border" type="text" placeholder="DD MM YYYY" name="endDate" id="endDate" required>
+                                <input class="w3-input w3-border" type="date" placeholder="DD MM YYYY" name="endDate" id="endDate" required>
                                 </div>
 <!--                        <div class="col-md-6">
                             <label for="startDate" class="form-label">Start Date:</label>

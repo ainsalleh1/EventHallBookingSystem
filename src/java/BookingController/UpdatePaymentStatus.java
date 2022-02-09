@@ -25,9 +25,9 @@ import javax.servlet.http.Part;
  *
  * @author End-User
  */
-@WebServlet(name = "insertPaymentSlip", urlPatterns = {"/insertPaymentSlip"})
+@WebServlet(name = "UpdatePaymentStatus", urlPatterns = {"/UpdatePaymentStatus"})
 @MultipartConfig
-public class insertPaymentSlip extends HttpServlet {
+public class UpdatePaymentStatus extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,17 +38,21 @@ public class insertPaymentSlip extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
         BookingDAO dao = new BookingDAOImpl();
-        String status = request.getParameter("paymentStatus");
+        String paymentStatus = request.getParameter("paymentStatus");
+        String bank = request.getParameter("bank");
+        String referenceNo = request.getParameter("referenceNo");
+        String status = request.getParameter("bookingStatus");
         int booking_id = Integer.parseInt(request.getParameter("bookingID"));
-        Part filePart = request.getPart("PaymentSlip");
-        String file = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+//        Part filePart = request.getPart("PaymentSlip");
+//        String file = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
         
-        dao.insertPaymentSlip(file, status, booking_id);
+        dao.updatePaymentStatus(paymentStatus, bank, referenceNo, status, booking_id);
          response.sendRedirect("BookingView/myBooking.jsp");
     }
         

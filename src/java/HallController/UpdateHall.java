@@ -45,8 +45,8 @@ public class UpdateHall extends HttpServlet {
         double charge = Double.parseDouble(request.getParameter("HallCharge"));
         String capacity = request.getParameter("Capacity");
         String description = request.getParameter("Description");
-        Part filePart = request.getPart("HallMedia");
-        String file = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+//        Part filePart = request.getPart("HallMedia");
+//        String file = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
         
 //        try{
 //            
@@ -75,7 +75,7 @@ public class UpdateHall extends HttpServlet {
 
         out.println(charge);
 
-        Hall hu = new Hall(name,location,charge,capacity,description,file);
+        Hall hu = new Hall(name,location,charge,capacity,description);
         HallDAO dao = new HallDAOImpl();
         dao.updateHall(id, hu);
 

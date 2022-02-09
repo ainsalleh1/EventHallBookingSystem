@@ -171,13 +171,6 @@
 
                             </td>
                         </tr>
-                        <tr>
-                            <th>Media</th>
-                            <td>
-                                <input class="form-control" type="file" id="formFile" name="HallMedia" required>
-
-                            </td>
-                        </tr>
                         
                     </table>
                     <p style="text-align:center">

@@ -92,14 +92,16 @@
             <div class="w3-center" >
                 <br>
                 <div class="w3-bar w3-border">
-                    <a href="MainBooking.jsp" class="w3-bar-item w3-button">Booking</a>
+                    <a href="../MainBooking.jsp" class="w3-bar-item w3-button">Booking</a>
                     <a href="#" class="w3-bar-item w3-button w3-light-grey">My Booking</a>
-                    <a href="#" class="w3-bar-item w3-button">Past Booking</a>
+<!--                    <a href="#" class="w3-bar-item w3-button">Past Booking</a>-->
+                    <!--<a class="nav-link" aria-current="page" href="BookingView/ManageBooking.jsp">Manage Booking</a>-->
+                    <a href="ManageBooking.jsp" class="w3-bar-item w3-button">Manage Booking</a>   
                 </div>
                 <div class="w3-bar" style="padding:0px 0px 0px 250px">
                     <form class="d-flex">                
-                    <span class="navbar-text">Booking :</span>
-                    <input class="form-control me-2" type="search" placeholder="Booking id" aria-label="Search">
+                    <span class="navbar-text" action="GetBooking" method="get">Booking :</span>
+                    <input class="form-control me-2" type="search" placeholder="Booking id" aria-label="Search" name="BookingID">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
                 </div>
@@ -112,8 +114,10 @@
                       <th scope="col">Hall Booked</th>
                       <th scope="col">Hall Charge (RM)</th>
                       <th scope="col">Booking date</th>
-                      <th scope="col">Payment</th>
-                      <th scope="col">Status</th>
+                      <th scope="col">Payment Status</th>
+                      <th scope="col">Bank</th>
+                      <th scope="col">Reference No</th>
+                      <th scope="col">Booking Status</th>
                       <th scope="col">Action</th>
                     </tr>
                   </thead>
@@ -135,7 +139,7 @@
                     if(user.next()){
                         user_id=user.getInt("user_id");
                     }
-                    String sql_book = "select id,date,name,totalPrice,status,paymentSlip from booking,hall where hallBooked=hall_id and customer=?";                   
+                    String sql_book = "select id,date,name,totalPrice,status,paymentStatus,referenceNo,bank from booking,hall where hallBooked=hall_id and customer=?";                   
                     PreparedStatement ps_book = conn.prepareStatement(sql_book);
                     ps_book.setInt(1, user_id);
                     ResultSet booking = ps_book.executeQuery();
@@ -149,9 +153,11 @@
                       <td><%= booking.getString("name")%></td>
                       <td>RM <%= booking.getDouble("totalPrice")%></td>
                       <td><%= booking.getDate("date")%></td>
-                      <td><%= booking.getString("paymentSlip")%></td>
+                      <td><%= booking.getString("paymentStatus")%></td>
+                      <td><%= booking.getString("bank")%></td>
+                      <td><%= booking.getString("referenceNo")%></td>
                       <td><%= booking.getString("status")%></td>
-                      <td><a href="../BookingView/BookingPayment.jsp?booking=<%= booking.getInt("id") %>" class="btn btn-primary">Insert payment slip</a></td>
+                      <td><a href="../BookingView/BookingPayment.jsp?booking=<%= booking.getInt("id") %>" class="btn btn-primary">Update payment status</a></td>
                     </tr>
 
             

@@ -82,20 +82,22 @@ public class BookingDAOImpl implements BookingDAO {
     }
 
     @Override
-    public void insertPaymentSlip(String file, String status, int booking_id) {
+    public void updatePaymentStatus(String paymentStatus, String bank, String referenceNo, String status, int booking_id) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         try {
 
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
 
-            String sqlupdate = "update booking set paymentSlip=?,status=? where id=?";
+            String sqlupdate = "update booking set paymentStatus=?,referenceNo=?,bank=?,status=? where id=?";
 
             PreparedStatement ps = conn.prepareStatement(sqlupdate);
 
-            ps.setString(1, file);
-            ps.setString(2, status);
-            ps.setInt(3, booking_id);
+            ps.setString(1, paymentStatus);
+            ps.setString(2, referenceNo);
+            ps.setString(3, bank);
+            ps.setString(4, status);
+            ps.setInt(5, booking_id);
             ps.executeUpdate();
 
             conn.close();
@@ -142,7 +144,7 @@ public class BookingDAOImpl implements BookingDAO {
                     b.setHallBooked(rs.getInt("hallBooked"));
                     b.setCustomer(rs.getInt("customer"));
                     b.setPromo_id(rs.getInt("promo_id"));
-                    b.setFile(rs.getString("paymentSlip"));
+                    
                 }
             }
             

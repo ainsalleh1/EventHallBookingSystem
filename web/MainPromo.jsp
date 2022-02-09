@@ -95,7 +95,7 @@
                 <br>
                 <div class="w3-bar w3-border">
                     <a href="MainPromo" class="w3-bar-item w3-button  w3-light-grey">Promotion Management</a>
-                    <a href="#" class="w3-bar-item w3-button">Promo List</a>
+                    <!--<a href="#" class="w3-bar-item w3-button">Promo List</a>-->
                     <a href="PromotionView/InsertPromo.html" class="w3-bar-item w3-button">Add Promo</a>    
                 </div>
                 <div class="w3-bar" style="padding:0px 0px 0px 250px">
