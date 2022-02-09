@@ -15,10 +15,78 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" crossorigin="anonymous">
         <title>Profile</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+            .mySlides {display:none;}
+            body,h1 {
+/*                background-image: url("media/background.png");*/
+                height: 100%;
+
+                /* Center and scale the image nicely */
+                
+                Font-family: "Raleway", Arial, sans-serif;
+                
+            }
+            
+            
+           h1{
+                    text-align: center;
+                    font-family: 'Playfair Display';
+                    font-size: 82px;
+                    color: black;
+                }
+            h3{
+                    text-align: center;
+                    font-family: 'Playfair Display';
+                    font-size: 22px;
+                    color: black;
+                   
+                }
+            h2{
+                    text-align: center;
+                    font-family: 'Playfair Display';
+                    color: black;
+                   
+                }
+            .w3-row-padding img {margin-bottom: 12px}
+            header{
+                    background-image: url("media/cool.jpg");
+                    background-position: center;
+                    
+                    
+                }
+                a{
+                    text-decoration: none;
+                    
+                }
+        </style>
     </head>
+    <header class="w3-panel w3-center" style="padding:128px 16px 20px 16px">
+            <h1 class="w3-xlarge">HALLS BOOKING</h1>
+            <h1>System</h1>
+  
+                <div class="w3-padding-32">
+                    <div class="w3-bar w3-border">
+                    <a href="MainHomepage.jsp" class="w3-bar-item w3-button">Home</a>
+                    <a href="MainHall" class="w3-bar-item w3-button">Hall List</a>
+                    <a href="MainBooking.jsp" class="w3-bar-item w3-button">Booking</a>
+                    <a href="MainPromo.jsp" class="w3-bar-item w3-button w3-hide-small">Promo</a>
+                    <a href="InventoryView/MainInventory.jsp" class="w3-bar-item w3-button">Inventory</a>
+                    <a href="AboutUs.html" class="w3-bar-item w3-button">About Us</a>
+                    <a href="profile.jsp" class="w3-bar-item w3-button w3-light-grey">Profile</a>
+                    <a href="LogOut" class="w3-bar-item w3-button">Log Out</a>
+                    </div>
+                    
+                </div>
+        </header>
     <body>
         <div class="container">
-            <ul class="nav nav-tabs">
+<!--            <ul class="nav nav-tabs">
                 <li class="nav-item">
                   <a class="nav-link" href="MainHomepage.jsp">Home</a>
                 </li>
@@ -37,7 +105,7 @@
                 <li class="nav-item">
                   <a class="nav-link active" aria-current="page" href="profile.jsp">Profile</a>
                 </li>
-            </ul>
+            </ul>-->
         </div>
         <br><br>
         <section class="section about-section gray-bg" id="about">
