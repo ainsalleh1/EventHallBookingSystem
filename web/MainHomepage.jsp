@@ -83,9 +83,9 @@ and open the template in the editor.
                 <div class="w3-padding-32">
                     <div class="w3-bar w3-border">
                     <a href="#" class="w3-bar-item w3-button w3-light-grey">Home</a>
-                    <a href="MainHall" class="w3-bar-item w3-button">MainHall</a>
+                    <a href="MainHall" class="w3-bar-item w3-button">Halls</a>
                     <a href="MainBooking.jsp" class="w3-bar-item w3-button">Booking</a>
-                    <a href="MainPromo.jsp" class="w3-bar-item w3-button w3-hide-small">Promo</a>
+                    <a href="MainPromo" class="w3-bar-item w3-button w3-hide-small">Promo</a>
                     <a href="InventoryView/MainInventory.jsp" class="w3-bar-item w3-button">Inventory</a>
                     <a href="AboutUs.html" class="w3-bar-item w3-button">About Us</a>
                     <a href="profile.jsp" class="w3-bar-item w3-button">Profile</a>
@@ -111,7 +111,7 @@ and open the template in the editor.
 <!--                <li class="nav-item">
                   <a class="nav-link" href="MainPromo.jsp">Promo</a>
                 </li>-->
-                <li class="nav-item">
+<!--                <li class="nav-item">
                   <a class="nav-link" href="MainPromo">Promo</a>
                 </li>
                 <li class="nav-item">

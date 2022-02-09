@@ -62,6 +62,6 @@ public class UpdatePromo extends HttpServlet {
         PromoDAO dao = new PromoDAOImpl();
         dao.updatePromo(id, pu);
         
-        response.sendRedirect("MainPromo.jsp");
+        response.sendRedirect("MainPromo");
     }
 }

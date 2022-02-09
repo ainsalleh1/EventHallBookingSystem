@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <title>EventHallBookingSystem</title>
@@ -70,8 +64,8 @@ and open the template in the editor.
                 <div class="w3-padding-32">
                     <div class="w3-bar w3-border">
                     <a href="index.jsp" class="w3-bar-item w3-button w3-light-grey">Home</a>
-                    <a href="MainHall" class="w3-bar-item w3-button">Halls</a>
-                    <a href="MainPromo" class="w3-bar-item w3-button">Promo</a>
+                    <a href="GeneralHall.jsp" class="w3-bar-item w3-button">Halls</a>
+                    <a href="GeneralPromo.jsp" class="w3-bar-item w3-button">Promo</a>
                     <a href="GeneralAboutUs.html" class="w3-bar-item w3-button w3-hide-small">About Us</a>
                     <a href="login.jsp" class="w3-bar-item w3-button">Login</a>
                     </div>

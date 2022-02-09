@@ -60,6 +60,6 @@ public class InsertPromo extends HttpServlet {
         PromoDAO dao = new PromoDAOImpl();
         dao.insertPromo(pu);
         
-        response.sendRedirect("MainPromo.jsp");
+        response.sendRedirect("MainPromo");
     }
 }

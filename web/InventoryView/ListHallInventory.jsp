@@ -39,13 +39,13 @@
                   <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="../MainHall.jsp">Halls</a>
+                  <a class="nav-link" href="../MainHall">Halls</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="MainBooking.jsp">Booking</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="MainPromo.jsp">Promo</a>
+                  <a class="nav-link" href="MainPromo">Promo</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="MainInventory.jsp">Inventory</a>

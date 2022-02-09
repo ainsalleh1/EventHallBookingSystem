@@ -1,9 +1,3 @@
-<%-- 
-    Document   : MainHall
-    Created on : Dec 29, 2021, 9:48:12 PM
-    Author     : End-User
---%>
-
 <%@page import="Model.Hall"%>
 <%@page import="java.util.List"%>
 <%@page import="java.sql.ResultSet"%>
@@ -75,7 +69,7 @@
                     <a href="MainHomepage.jsp" class="w3-bar-item w3-button">Home</a>
                     <a href="MainHall" class="w3-bar-item w3-button w3-light-grey">Hall List</a>
                     <a href="MainBooking.jsp" class="w3-bar-item w3-button">Booking</a>
-                    <a href="MainPromo.jsp" class="w3-bar-item w3-button w3-hide-small">Promo</a>
+                    <a href="MainPromo" class="w3-bar-item w3-button w3-hide-small">Promo</a>
                     <a href="InventoryView/MainInventory.jsp" class="w3-bar-item w3-button">Inventory</a>
                     <a href="AboutUs.html" class="w3-bar-item w3-button">About Us</a>
                     <a href="profile.jsp" class="w3-bar-item w3-button">Profile</a>
@@ -100,7 +94,7 @@
                         <input class="form-control me-2" type="search" placeholder="Hall Name" aria-label="Search" name="HallName">
 
             
-            <div class="container">
+<!--            <div class="container">
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
                       <a class="nav-link" aria-current="page" href="MainHomepage.jsp">Home</a>
@@ -126,7 +120,7 @@
                 </ul>
             </div>
            
-        
+        -->
             <br><br>
         
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -138,7 +132,7 @@
                   <div class="collapse navbar-collapse" id="navbarScroll">
                     <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                         <li class="nav-item">
-                          <a class="nav-link active" aria-current="page" href="MainHall.jsp">Hall List</a>
+                          <a class="nav-link active" aria-current="page" href="MainHall">Hall List</a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="./HallView/InsertHall.html">Add Hall</a>

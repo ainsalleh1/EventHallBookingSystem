@@ -75,7 +75,7 @@
                 <div class="w3-padding-32">
                     <div class="w3-bar w3-border">
                     <a href="MainHomepage.jsp" class="w3-bar-item w3-button">Home</a>
-                    <a href="MainHall" class="w3-bar-item w3-button">Hall List</a>
+                    <a href="MainHall" class="w3-bar-item w3-button">Halls</a>
                     <a href="MainBooking.jsp" class="w3-bar-item w3-button w3-light-grey">Booking</a>
                     <a href="MainPromo.jsp" class="w3-bar-item w3-button w3-hide-small">Promo</a>
                     <a href="InventoryView/MainInventory.jsp" class="w3-bar-item w3-button">Inventory</a>
