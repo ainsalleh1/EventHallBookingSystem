@@ -1,9 +1,3 @@
-<%-- 
-    Document   : MainHall
-    Created on : Dec 29, 2021, 9:48:12 PM
-    Author     : End-User
---%>
-
 <%@page import="java.util.List"%>
 <%@page import="Model.Hall"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

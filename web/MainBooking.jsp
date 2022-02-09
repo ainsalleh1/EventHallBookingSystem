@@ -69,13 +69,13 @@
         </style>
     </head>
     <header class="w3-panel w3-center" style="padding:128px 16px 20px 16px">
-            <h1 class="w3-xlarge">HALLS BOOKING</h1>
+            <h1 class="w3-xlarge">EVENT HALLS BOOKING</h1>
             <h1>System</h1>
   
                 <div class="w3-padding-32">
                     <div class="w3-bar w3-border">
                     <a href="MainHomepage.jsp" class="w3-bar-item w3-button">Home</a>
-                    <a href="MainHall" class="w3-bar-item w3-button">Hall List</a>
+                    <a href="MainHall" class="w3-bar-item w3-button">Halls</a>
                     <a href="MainBooking.jsp" class="w3-bar-item w3-button w3-light-grey">Booking</a>
                     <a href="MainPromo.jsp" class="w3-bar-item w3-button w3-hide-small">Promo</a>
                     <a href="InventoryView/MainInventory.jsp" class="w3-bar-item w3-button">Inventory</a>
@@ -124,6 +124,7 @@
 
 
             </div>
+                    </div>
             <br>
             
             <%
@@ -157,14 +158,12 @@
 
                 </div>
                 <br>
-                <form class="d-flex">                
-                    <span class="navbar-text">Booking :</span>
-                    <input class="form-control me-2" type="search" placeholder="Booking id" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>  
             
             </div>
-            </div>
+            </nav>
+            <%
+                }
+            %>
             <br>
             
             <%

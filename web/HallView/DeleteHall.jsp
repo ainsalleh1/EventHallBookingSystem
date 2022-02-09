@@ -49,16 +49,16 @@
             <div class="container">
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
-                      <a class="nav-link" aria-current="page" href="MainHomepage.jsp">Home</a>
+                      <a class="nav-link" href="MainHomepage.jsp">Home</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link active" href="MainHall.jsp">Halls</a>
+                      <a class="nav-link active" href="MainHall">Halls</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="MainBooking.jsp">Booking</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="MainPromo.jsp">Promo</a>
+                      <a class="nav-link" href="MainPromo">Promo</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="AboutUs.html">About Us</a>
@@ -76,7 +76,7 @@
             
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="MainHall.jsp">Halls Management</a>
+                    <a class="navbar-brand" href="MainHall">Halls Management</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>

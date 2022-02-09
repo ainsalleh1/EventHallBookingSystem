@@ -15,7 +15,7 @@ and open the template in the editor.
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-=======
+
         <link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet'>
 
         <style>
@@ -55,7 +55,7 @@ and open the template in the editor.
                     
                 }
                 a{
-=======
+
             h1{
                     text-align: center;
                     font-family: 'Playfair Display';
@@ -77,15 +77,15 @@ and open the template in the editor.
     
     <!-- Header -->
     <header class="w3-panel w3-center w3-opacity" style="padding:128px 16px">
-            <h1 class="w3-xlarge">HALLS BOOKING</h1>
+            <h1 class="w3-xlarge">EVENT HALLS BOOKING</h1>
             <h1>System</h1>
   
                 <div class="w3-padding-32">
                     <div class="w3-bar w3-border">
                     <a href="#" class="w3-bar-item w3-button w3-light-grey">Home</a>
-                    <a href="MainHall" class="w3-bar-item w3-button">MainHall</a>
+                    <a href="MainHall" class="w3-bar-item w3-button">Halls</a>
                     <a href="MainBooking.jsp" class="w3-bar-item w3-button">Booking</a>
-                    <a href="MainPromo.jsp" class="w3-bar-item w3-button w3-hide-small">Promo</a>
+                    <a href="MainPromo" class="w3-bar-item w3-button w3-hide-small">Promo</a>
                     <a href="InventoryView/MainInventory.jsp" class="w3-bar-item w3-button">Inventory</a>
                     <a href="AboutUs.html" class="w3-bar-item w3-button">About Us</a>
                     <a href="profile.jsp" class="w3-bar-item w3-button">Profile</a>

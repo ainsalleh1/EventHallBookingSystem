@@ -35,33 +35,31 @@
     <body>
         <div class="container">
             
-            <ul class="nav nav-tabs">
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="../MainHomepage.jsp">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="../MainHall.jsp">Halls</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="MainBooking.jsp">Booking</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="MainPromo.jsp">Promo</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" href="MainInventory.jsp">Inventory</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="AboutUs.html">About Us</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="profile.jsp">Profile</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="LogOut">Log Out</a>
-                </li>
-
-            </ul>
+            <div class="container">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                      <a class="nav-link" href="../MainHomepage.jsp">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link active" href="../MainHall">Halls</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="../MainBooking.jsp">Booking</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="../MainPromo">Promo</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="../AboutUs.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="../profile.jsp">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="../LogOut">Log Out</a>
+                    </li>
+                </ul>
+            </div>
             
             <br><br>
             

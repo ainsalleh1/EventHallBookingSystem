@@ -9,6 +9,7 @@ import Model.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class UserDAOImpl implements UserDAO{
     }
 
     @Override
-    public void insertUser(User u) {
+    public String insertUser(User u) {
         User su = u;
         try{
             
@@ -56,7 +57,17 @@ public class UserDAOImpl implements UserDAO{
             Statement stmt = conn.createStatement();
             stmt.executeUpdate(sqlinsert);
             
-        }catch(Exception ex){}
+            return "Account successfully created!";
+            
+        }
+        catch (SQLIntegrityConstraintViolationException e){
+            String msg = "Account already exist!";
+            return msg;
+        }
+        catch(Exception ex){
+            String msg = "Account already exist!";
+            return msg;
+        }
     }
 
     @Override

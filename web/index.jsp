@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <title>EventHallBookingSystem</title>
@@ -64,14 +58,14 @@ and open the template in the editor.
         %>
 
         <header class="w3-panel w3-center w3-opacity" style="padding:128px 16px">
-            <h1 class="w3-xlarge">HALLS BOOKING</h1>
+            <h1 class="w3-xlarge">EVENT HALLS BOOKING</h1>
             <h1>System</h1>
   
                 <div class="w3-padding-32">
                     <div class="w3-bar w3-border">
-                    <a href="#" class="w3-bar-item w3-button w3-light-grey">Home</a>
-                    <a href="GeneralHall.jsp" class="w3-bar-item w3-button">Halls</a>
-                    <a href="GeneralPromo.jsp" class="w3-bar-item w3-button">Promo</a>
+                    <a href="index.jsp" class="w3-bar-item w3-button w3-light-grey">Home</a>
+                    <a href="MainHall" class="w3-bar-item w3-button">Halls</a>
+                    <a href="MainPromo" class="w3-bar-item w3-button">Promo</a>
                     <a href="GeneralAboutUs.html" class="w3-bar-item w3-button w3-hide-small">About Us</a>
                     <a href="login.jsp" class="w3-bar-item w3-button">Login</a>
                     </div>
@@ -130,11 +124,45 @@ and open the template in the editor.
         <br>
   <div class="w3-row-padding w3-padding-16 w3-center" id="food">
     <div class="w3-quarter">
+      <!--<
+                try{
+                    Class.forName("com.mysql.jdbc.Driver");
+                    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
+                    String sql = "select * from media where id = 1";
+                    PreparedStatement ps = conn.prepareStatement(sql);
+                    ResultSet rs = ps.executeQuery();
+                    
+                    while(rs.next()){             
+                
+            %>
+      <img src="<= rs.getString("img")%>" alt="Sandwich" style="width:100%">
+      <              
+                    }
+                    conn.close();
+                } catch(Exception ex){}              
+            %>-->
       <img src="media/1.jpg" alt="Sandwich" style="width:100%">
       <h3>The Perfect Sandwich, A Real NYC Classic</h3>
       <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
     </div>
     <div class="w3-quarter">
+      <!--<
+                try{
+                    Class.forName("com.mysql.jdbc.Driver");
+                    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventhallbookingsystem", "root", "");
+                    String sql = "select * from media where id = 2";
+                    PreparedStatement ps = conn.prepareStatement(sql);
+                    ResultSet rs = ps.executeQuery();
+                    
+                    while(rs.next()){             
+                
+            %>
+      <img src="<= rs.getString("img")%>" alt="Steak" style="width:100%">
+      <              
+                    }
+                    conn.close();
+                } catch(Exception ex){}              
+            %>-->
       <img src="media/2.jpg" alt="Steak" style="width:100%">
       <h3>Let Me Tell You About This Steak</h3>
       <p>Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>

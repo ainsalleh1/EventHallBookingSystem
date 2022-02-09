@@ -1,9 +1,3 @@
-<%-- 
-    Document   : MainInventory
-    Created on : Jan 20, 2022, 5:49:20 PM
-    Author     : End-User
---%>
-
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>
@@ -76,13 +70,13 @@
   
                 <div class="w3-padding-32">
                     <div class="w3-bar w3-border">
-                    <a href="MainHomepage.jsp" class="w3-bar-item w3-button">Home</a>
-                    <a href="MainHall" class="w3-bar-item w3-button">Hall List</a>
-                    <a href="MainBooking.jsp" class="w3-bar-item w3-button">Booking</a>
-                    <a href="MainPromo.jsp" class="w3-bar-item w3-button w3-hide-small">Promo</a>
-                    <a href="InventoryView/MainInventory.jsp" class="w3-bar-item w3-button w3-light-grey">Inventory</a>
-                    <a href="AboutUs.html" class="w3-bar-item w3-button">About Us</a>
-                    <a href="profile.jsp" class="w3-bar-item w3-button">Profile</a>
+                    <a href="../MainHomepage.jsp" class="w3-bar-item w3-button">Home</a>
+                    <a href="../MainHall" class="w3-bar-item w3-button">Hall List</a>
+                    <a href="../MainBooking.jsp" class="w3-bar-item w3-button">Booking</a>
+                    <a href="../MainPromo" class="w3-bar-item w3-button w3-hide-small">Promo</a>
+                    <a href="MainInventory.jsp" class="w3-bar-item w3-button w3-light-grey">Inventory</a>
+                    <a href="../AboutUs.html" class="w3-bar-item w3-button">About Us</a>
+                    <a href="../profile.jsp" class="w3-bar-item w3-button">Profile</a>
                     <a href="LogOut" class="w3-bar-item w3-button">Log Out</a>
                     </div>
                     
@@ -133,10 +127,8 @@
                        <input class="form-control me-2" type="search" placeholder="items name" aria-label="Search">
                       <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>-->
-                </div>
-                </div>
-            </nav>-->
-            
+        </div>
+                        
             <hr>
             <h2>Items</h2>
             <hr>

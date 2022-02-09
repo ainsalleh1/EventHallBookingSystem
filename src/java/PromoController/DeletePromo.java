@@ -44,6 +44,6 @@ public class DeletePromo extends HttpServlet {
 
         PromoDAO dao = new PromoDAOImpl();
         dao.deletePromo(id);
-        response.sendRedirect("MainPromo.jsp");
+        response.sendRedirect("MainPromo");
     }
 }

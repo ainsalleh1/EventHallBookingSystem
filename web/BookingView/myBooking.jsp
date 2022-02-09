@@ -79,7 +79,7 @@
                     <a href="../MainHomepage.jsp" class="w3-bar-item w3-button">Home</a>
                     <a href="../MainHall" class="w3-bar-item w3-button">Hall List</a>
                     <a href="../MainBooking.jsp" class="w3-bar-item w3-button w3-light-grey">Booking</a>
-                    <a href="../MainPromo.jsp" class="w3-bar-item w3-button w3-hide-small">Promo</a>
+                    <a href="../MainPromo" class="w3-bar-item w3-button w3-hide-small">Promo</a>
                     <a href="../InventoryView/MainInventory.jsp" class="w3-bar-item w3-button">Inventory</a>
                     <a href="../AboutUs.html" class="w3-bar-item w3-button">About Us</a>
                     <a href="../profile.jsp" class="w3-bar-item w3-button">Profile</a>

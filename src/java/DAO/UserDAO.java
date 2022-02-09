@@ -15,7 +15,7 @@ import java.util.List;
 public interface UserDAO {
     public List<User> getAllUser();
     public User getUser(int id);
-    public void insertUser(User u);
+    public String insertUser(User u);
     public void deleteUser(int id);
     public void updateUser(int id, User u);
 }

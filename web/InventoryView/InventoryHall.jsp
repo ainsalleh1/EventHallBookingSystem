@@ -96,7 +96,7 @@
                 <div class="w3-bar w3-border">
                     <a href="MainInventory.jsp" class="w3-bar-item w3-button w3-light-grey">Inventory Management</a>
                     <a href="#" class="w3-bar-item w3-button">Item List</a>
-                    <a href="InventoryHall" class="w3-bar-item w3-button">Inventory List</a> 
+                    <a href="InventoryHall.jsp" class="w3-bar-item w3-button">Inventory List</a> 
                     <a href="InsertItem.html" class="w3-bar-item w3-button">Add Item</a> 
                 </div>
                 <div class="w3-bar" style="padding:0px 0px 0px 250px">
