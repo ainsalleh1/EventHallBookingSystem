@@ -69,7 +69,7 @@
         </style>
     </head>
     <header class="w3-panel w3-center" style="padding:128px 16px 20px 16px">
-            <h1 class="w3-xlarge">HALLS BOOKING</h1>
+            <h1 class="w3-xlarge">EVENT HALLS BOOKING</h1>
             <h1>System</h1>
   
                 <div class="w3-padding-32">
@@ -124,6 +124,7 @@
 
 
             </div>
+                    </div>
             <br>
             
             <%
@@ -157,14 +158,12 @@
 
                 </div>
                 <br>
-                <form class="d-flex">                
-                    <span class="navbar-text">Booking :</span>
-                    <input class="form-control me-2" type="search" placeholder="Booking id" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>  
             
             </div>
-            </div>
+            </nav>
+            <%
+                }
+            %>
             <br>
             
             <%

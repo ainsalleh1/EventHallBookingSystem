@@ -77,7 +77,7 @@ and open the template in the editor.
     
     <!-- Header -->
     <header class="w3-panel w3-center w3-opacity" style="padding:128px 16px">
-            <h1 class="w3-xlarge">HALLS BOOKING</h1>
+            <h1 class="w3-xlarge">EVENT HALLS BOOKING</h1>
             <h1>System</h1>
   
                 <div class="w3-padding-32">
